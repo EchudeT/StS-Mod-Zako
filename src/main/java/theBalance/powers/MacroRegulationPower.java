@@ -62,7 +62,7 @@ public class MacroRegulationPower extends AbstractPower implements CloneablePowe
             dex = owner.getPower("Dexterity").amount;
         }
 
-        int avg = (str + dex) / 2;
+        int avg = (str + dex + 1) / 2;
         int strDiff = avg - str;
         int dexDiff = avg - dex;
 

@@ -9,12 +9,12 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import theBalance.BalanceMod;
-import theBalance.characters.TheDefault;
+import theBalance.characters.Zako;
 
 public class DexToStrConvert extends AbstractDynamicCard {
     public static final String ID = BalanceMod.makeID(DexToStrConvert.class.getSimpleName());
     public static final String IMG = BalanceMod.makeCardPath("DexToStrConvert.png");
-    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
+    public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     public DexToStrConvert() {
         super(ID, IMG, 2, CardType.SKILL, COLOR, CardRarity.RARE, CardTarget.SELF);

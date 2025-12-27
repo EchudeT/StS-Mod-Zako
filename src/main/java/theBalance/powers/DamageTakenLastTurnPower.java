@@ -42,13 +42,19 @@ public class DamageTakenLastTurnPower extends AbstractPower implements Cloneable
         updateDescription();
     }
 
+    // --- 隐藏逻辑开始 ---
+    @Override
+    public void renderIcons(com.badlogic.gdx.graphics.g2d.SpriteBatch sb, float x, float y, com.badlogic.gdx.graphics.Color c) {
+    }
+
+    @Override
+    public void renderAmount(com.badlogic.gdx.graphics.g2d.SpriteBatch sb, float x, float y, com.badlogic.gdx.graphics.Color c) {
+    }
+    // --- 隐藏逻辑结束 ---
+
     @Override
     public void updateDescription() {
-        if (amount > 0) {
-            description = DESCRIPTIONS[0];  // "上回合受到过伤害"
-        } else {
-            description = DESCRIPTIONS[1];  // "上回合未受到伤害"
-        }
+        this.description = ""; // 隐藏的 Power 不需要描述
     }
 
     @Override

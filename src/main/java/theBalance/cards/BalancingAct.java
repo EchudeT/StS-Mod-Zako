@@ -1,12 +1,11 @@
 package theBalance.cards;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theBalance.BalanceMod;
-import theBalance.characters.TheDefault;
+import theBalance.characters.Zako;
 
 import static theBalance.BalanceMod.makeCardPath;
 
@@ -21,7 +20,7 @@ public class BalancingAct extends AbstractDynamicCard {
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
+    public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
     private static final int BLOCK = 5;
@@ -36,15 +35,11 @@ public class BalancingAct extends AbstractDynamicCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        boolean damagedLastTurn = theBalance.patches.DamageTrackerPatch.DamageFields.tookDamageLastTurn.get(p);
         int blockAmount = block;
 
-        // 检查上回合是否失去过生命（Power在战斗开始时已自动添加）
-        if (p.hasPower(theBalance.powers.DamageTakenLastTurnPower.POWER_ID)) {
-            theBalance.powers.DamageTakenLastTurnPower power =
-                (theBalance.powers.DamageTakenLastTurnPower) p.getPower(theBalance.powers.DamageTakenLastTurnPower.POWER_ID);
-            if (power.wasDamagedLastTurn()) {
-                blockAmount = magicNumber;
-            }
+        if (damagedLastTurn) {
+            blockAmount = magicNumber;
         }
 
         AbstractDungeon.actionManager.addToBottom(

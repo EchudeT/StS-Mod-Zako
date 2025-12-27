@@ -24,6 +24,7 @@ theBalance\cards\BadDebtDeduction.class
 theBalance\cards\Doomsday.class
 theBalance\powers\InformationAsymmetryPower.class
 theBalance\cards\BalancedTrim.class
+theBalance\skins\SkinSelectionUI.class
 theBalance\cards\PostWarReparations.class
 theBalance\cards\ResonanceShield.class
 theBalance\cards\SuperpositionState.class
@@ -31,6 +32,7 @@ theBalance\cards\ParityDefend.class
 theBalance\cards\HedgeFund.class
 theBalance\cards\CompoundInterest.class
 theBalance\relics\ObservationNotes.class
+theBalance\skins\CharacterSkin.class
 theBalance\cards\ImbalancedBooks.class
 theBalance\cards\AbsoluteNeutrality.class
 theBalance\relics\DoodlePaper.class
@@ -38,12 +40,15 @@ theBalance\powers\NetWorthTrackingPower.class
 theBalance\powers\DamageTakenLastTurnPower.class
 theBalance\powers\CalibratedWeightPower.class
 theBalance\cards\CardTemplate.class
+theBalance\patches\DamageTrackerPatch$PlayerDamageTracker.class
 theBalance\cards\Transfer.class
+theBalance\patches\DamageTrackerPatch.class
 theBalance\relics\PlaceholderRelic.class
 theBalance\cards\BasicStrike.class
 theBalance\cards\AbstractDynamicCard.class
 theBalance\powers\HighInterestStoragePower.class
 theBalance\relics\MobiusLoop.class
+theBalance\patches\DamageTrackerPatch$TurnStartSwitchPatch.class
 theBalance\cards\TemporaryImmunity.class
 theBalance\powers\HedgeFundPower.class
 theBalance\cards\Frenzy.class
@@ -72,6 +77,7 @@ theBalance\cards\InventoryClearance.class
 theBalance\patches\relics\BottledPlaceholderField$MakeStatEquivalentCopy.class
 theBalance\powers\CombatGoldPower.class
 theBalance\events\IdentityCrisisEvent.class
+theBalance\powers\CountercurrentPower$ConvertedBuffData.class
 theBalance\characters\TheDefault.class
 theBalance\cards\SpreadDamage.class
 theBalance\powers\HedgePower.class
@@ -89,6 +95,7 @@ theBalance\relics\PlaceholderRelic2.class
 theBalance\powers\CeasefirePower.class
 theBalance\powers\TemporaryPreservationDelayedPower.class
 theBalance\cards\MoneyOffensive.class
+theBalance\patches\DamageTrackerPatch$BattleResetPatch.class
 theBalance\variables\DefaultSecondMagicNumber.class
 theBalance\cards\GoldShatter.class
 theBalance\cards\MultilayerFortress.class
@@ -121,6 +128,7 @@ theBalance\cards\TurtleUp.class
 theBalance\actions\ChooseFromDrawPileAction.class
 theBalance\relics\DoubleSidedCoin.class
 theBalance\cards\InsuranceContract.class
+theBalance\patches\DamageTrackerPatch$DamageFields.class
 theBalance\cards\EnergyConservation.class
 theBalance\relics\FinancialPlan.class
 theBalance\potions\PlaceholderPotion.class
@@ -147,18 +155,20 @@ theBalance\cards\BadDebtRecovery.class
 theBalance\cards\MacroRegulation.class
 theBalance\cards\ParityStrike.class
 theBalance\cards\InfiniteOverdraft.class
+theBalance\skins\SkinManager.class
 theBalance\powers\EnrageMarketPower.class
 theBalance\cards\WealthEqualization.class
 theBalance\cards\RiskHedge.class
 theBalance\relics\HandMirror.class
 theBalance\relics\AceAgent.class
+theBalance\patches\BuffTrackerField.class
 theBalance\powers\RiskActuaryPower.class
 theBalance\relics\BlackCard.class
 theBalance\cards\HighInterestStorage.class
 theBalance\cards\MirrorShield.class
 theBalance\cards\Collection.class
+theBalance\patches\ApplyPowerPatch.class
 theBalance\powers\CapitalAccumulationPower.class
-theBalance\powers\CountercurrentPower$PowerData.class
 theBalance\powers\ExposedPower.class
 theBalance\powers\CalibratedScalePower.class
 theBalance\powers\ExemptionPower.class

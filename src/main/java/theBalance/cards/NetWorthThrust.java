@@ -1,14 +1,15 @@
 package theBalance.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theBalance.BalanceMod;
-import theBalance.characters.TheDefault;
+import theBalance.characters.Zako;
 
 import static theBalance.BalanceMod.makeCardPath;
 
@@ -19,11 +20,12 @@ public class NetWorthThrust extends AbstractDynamicCard {
 
     public static final String ID = BalanceMod.makeID(NetWorthThrust.class.getSimpleName());
     public static final String IMG = makeCardPath("NetWorthThrust.png");
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
+    public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
     private static final int DAMAGE = 6;
@@ -36,27 +38,25 @@ public class NetWorthThrust extends AbstractDynamicCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        // 首次使用时应用追踪Power
-        if (!p.hasPower(theBalance.powers.NetWorthTrackingPower.POWER_ID)) {
-            AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(p, p, new theBalance.powers.NetWorthTrackingPower(p), -1));
-        }
+        int buffGainCount = theBalance.patches.BuffTrackerField.buffCount.get(p);
 
-        // 获取本回合获得buff的次数
-        int buffGainCount = 0;
-        if (p.hasPower(theBalance.powers.NetWorthTrackingPower.POWER_ID)) {
-            buffGainCount = p.getPower(theBalance.powers.NetWorthTrackingPower.POWER_ID).amount;
-        }
+        int totalHits = 1 + buffGainCount;
 
-        // 至少攻击一次，然后根据buff获得次数额外攻击
-        int attackTimes = 1 + buffGainCount;
-
-        for (int i = 0; i < attackTimes; i++) {
-            AbstractDungeon.actionManager.addToBottom(
-                new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
+        for (int i = 0; i < totalHits; i++) {
+            AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
                     AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         }
     }
+
+    @Override
+    public void applyPowers() {
+        int buffGainCount = theBalance.patches.BuffTrackerField.buffCount.get(AbstractDungeon.player);
+        this.magicNumber = this.baseMagicNumber = 1 + buffGainCount;
+        super.applyPowers();
+        this.rawDescription = cardStrings.DESCRIPTION + " (当前攻击 " + this.magicNumber + " 次)";
+        initializeDescription();
+    }
+
 
     @Override
     public void upgrade() {

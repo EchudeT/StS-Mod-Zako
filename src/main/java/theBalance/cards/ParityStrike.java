@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theBalance.BalanceMod;
-import theBalance.characters.TheDefault;
+import theBalance.characters.Zako;
 
 import static theBalance.BalanceMod.makeCardPath;
 
@@ -22,12 +22,12 @@ public class ParityStrike extends AbstractDynamicCard {
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
+    public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
     private static final int DAMAGE = 6;
     private static final int UPGRADE_PLUS_DMG = 3;
-    private static final int MAGIC = 4;  // 额外伤害
+    private static final int MAGIC = 4;
     private static final int UPGRADE_PLUS_MAGIC = 2;
 
     public ParityStrike() {
@@ -40,20 +40,27 @@ public class ParityStrike extends AbstractDynamicCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        boolean damagedLastTurn = theBalance.patches.DamageTrackerPatch.DamageFields.tookDamageLastTurn.get(p);
         int totalDamage = damage;
 
-        // 检查上回合是否受到过伤害（Power在战斗开始时已自动添加）
-        if (p.hasPower(theBalance.powers.DamageTakenLastTurnPower.POWER_ID)) {
-            theBalance.powers.DamageTakenLastTurnPower power =
-                (theBalance.powers.DamageTakenLastTurnPower) p.getPower(theBalance.powers.DamageTakenLastTurnPower.POWER_ID);
-            if (power.wasDamagedLastTurn()) {
-                totalDamage += magicNumber;
-            }
+        if (damagedLastTurn) {
+            totalDamage += magicNumber;
         }
 
         AbstractDungeon.actionManager.addToBottom(
             new DamageAction(m, new DamageInfo(p, totalDamage, damageTypeForTurn),
                 AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+    }
+
+    @Override
+    public void applyPowers() {
+        boolean damagedLastTurn = theBalance.patches.DamageTrackerPatch.DamageFields.tookDamageLastTurn.get(com.megacrit.cardcrawl.dungeons.AbstractDungeon.player);
+
+        if (damagedLastTurn) {
+            this.isDamageModified = true; // 让数字变绿
+        }
+
+        super.applyPowers();
     }
 
     @Override

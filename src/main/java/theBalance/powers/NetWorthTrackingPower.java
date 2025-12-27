@@ -19,45 +19,54 @@ public class NetWorthTrackingPower extends AbstractPower implements CloneablePow
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power.png"));
 
-    public NetWorthTrackingPower(final AbstractCreature owner) {
-        name = NAME;
-        ID = POWER_ID;
+    public NetWorthTrackingPower(AbstractCreature owner) {
+        this.name = powerStrings.NAME;
+        this.ID = POWER_ID;
         this.owner = owner;
-        this.amount = 0; // 本回合获得的buff次数
-        type = PowerType.BUFF;
-        isTurnBased = true;
+        this.amount = 0; // 记录次数
+        this.type = PowerType.BUFF;
+        this.isTurnBased = false;
 
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
-
         updateDescription();
-    }
 
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 
     @Override
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        // 当玩家获得正面buff时计数
-        if (target == owner && power.type == PowerType.BUFF && power.amount > 0) {
-            this.amount++;
-            this.fontScale = 8.0F;
-            updateDescription();
+        if (target == this.owner && power.type == PowerType.BUFF) {
+            this.amount++; // 计数增加
+            this.flash();
         }
     }
 
+    // --- 隐藏逻辑开始 ---
     @Override
-    public void atEndOfRound() {
-        // 回合结束时重置计数
+    public void renderIcons(com.badlogic.gdx.graphics.g2d.SpriteBatch sb, float x, float y, com.badlogic.gdx.graphics.Color c) {
+    }
+
+    @Override
+    public void renderAmount(com.badlogic.gdx.graphics.g2d.SpriteBatch sb, float x, float y, com.badlogic.gdx.graphics.Color c) {
+    }
+    // --- 隐藏逻辑结束 ---
+
+    @Override
+    public void updateDescription() {
+        this.description = ""; // 隐藏的 Power 不需要描述
+    }
+
+    // 每个回合开始时重置计数（如果你希望是“本回合获得过”）
+    @Override
+    public void atStartOfTurn() {
         this.amount = 0;
         updateDescription();
     }
+
 
     @Override
     public AbstractPower makeCopy() {

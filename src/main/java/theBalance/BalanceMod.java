@@ -8,20 +8,25 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.screens.charSelect.CharacterOption;
+import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
+import com.megacrit.cardcrawl.screens.mainMenu.MainMenuScreen;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theBalance.cards.*;
-import theBalance.characters.TheDefault;
+import theBalance.characters.Zako;
 import theBalance.events.IdentityCrisisEvent;
 import theBalance.potions.PlaceholderPotion;
 import theBalance.relics.BottledPlaceholderRelic;
@@ -32,6 +37,9 @@ import theBalance.util.IDCheckDontTouchPls;
 import theBalance.util.TextureLoader;
 import theBalance.variables.DefaultCustomVariable;
 import theBalance.variables.DefaultSecondMagicNumber;
+import theBalance.skins.CharacterSkin;
+import theBalance.skins.SkinManager;
+import theBalance.skins.SkinSelectionUI;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -76,7 +84,9 @@ public class BalanceMod implements
         EditStringsSubscriber,
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
-        PostInitializeSubscriber {
+        PostInitializeSubscriber,
+        PostRenderSubscriber,
+        PostUpdateSubscriber {
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(BalanceMod.class.getName());
@@ -126,7 +136,9 @@ public class BalanceMod implements
     // Character assets
     private static final String THE_DEFAULT_BUTTON = "theBalanceResources/images/charSelect/DefaultCharacterButton.png";
     private static final String THE_DEFAULT_PORTRAIT = "theBalanceResources/images/charSelect/CharacterPortraitBG1.png";
-    public static final String THE_DEFAULT_STATIC_CHARACTER = "theBalanceResources/images/char/main.png";
+    private static final String THE_DEFAULT_PORTRAIT2 = "theBalanceResources/images/charSelect/CharacterPortraitBG2.png";
+    private static final String THE_DEFAULT_PORTRAIT3 = "theBalanceResources/images/charSelect/CharacterPortraitBG2.png";
+    public static final String[] THE_DEFAULT_STATIC_CHARACTER = {"theBalanceResources/images/char/main.png", "theBalanceResources/images/char/main2.png", "theBalanceResources/images/char/main3.png"};
 
     public static final String THE_DEFAULT_SHOULDER_1 = "theBalanceResources/images/char/defaultCharacter/shoulder.png";
     public static final String THE_DEFAULT_SHOULDER_2 = "theBalanceResources/images/char/defaultCharacter/shoulder2.png";
@@ -206,9 +218,9 @@ public class BalanceMod implements
 
         logger.info("Done subscribing");
 
-        logger.info("Creating the color " + TheDefault.Enums.COLOR_GRAY.toString());
+        logger.info("Creating the color " + Zako.Enums.COLOR_GRAY.toString());
 
-        BaseMod.addColor(TheDefault.Enums.COLOR_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
+        BaseMod.addColor(Zako.Enums.COLOR_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
                 DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
                 ATTACK_DEFAULT_GRAY, SKILL_DEFAULT_GRAY, POWER_DEFAULT_GRAY, ENERGY_ORB_DEFAULT_GRAY,
                 ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
@@ -231,7 +243,69 @@ public class BalanceMod implements
         }
         logger.info("Done adding mod settings");
 
+        logger.info("Initializing skin system");
+        initializeSkins();
+        logger.info("Done initializing skin system");
     }
+
+    // =============== SKIN SYSTEM =================
+
+    private void initializeSkins() {
+        // Initialize the skin manager
+        SkinManager.initialize();
+
+        // Register default skin
+        CharacterSkin defaultSkin = new CharacterSkin(
+                0,
+            "default",
+            "默认皮肤",
+            "平衡者的默认外观",
+            THE_DEFAULT_SHOULDER_1,
+            THE_DEFAULT_SHOULDER_2,
+            THE_DEFAULT_CORPSE,
+            THE_DEFAULT_SKELETON_ATLAS,
+            THE_DEFAULT_SKELETON_JSON,
+            THE_DEFAULT_BUTTON,
+            THE_DEFAULT_PORTRAIT
+        );
+        SkinManager.registerSkin(defaultSkin, true);
+
+        // Register alternate skin 1 - 用户可以填写自己的资源路径
+        CharacterSkin alternateSkin1 = new CharacterSkin(
+                1,
+            "alternate1",
+            "替代皮肤1",
+            "平衡者的第一个替代外观",
+            THE_DEFAULT_SHOULDER_1,
+            THE_DEFAULT_SHOULDER_2,
+            THE_DEFAULT_CORPSE,
+            THE_DEFAULT_SKELETON_ATLAS,
+            THE_DEFAULT_SKELETON_JSON,
+            THE_DEFAULT_BUTTON,
+            THE_DEFAULT_PORTRAIT2
+        );
+        SkinManager.registerSkin(alternateSkin1, false);
+
+        // Register alternate skin 2 - 用户可以填写自己的资源路径
+        CharacterSkin alternateSkin2 = new CharacterSkin(
+                2,
+            "alternate2",
+            "替代皮肤2",
+            "平衡者的第二个替代外观",
+            THE_DEFAULT_SHOULDER_1,
+            THE_DEFAULT_SHOULDER_2,
+            THE_DEFAULT_CORPSE,
+            THE_DEFAULT_SKELETON_ATLAS,
+            THE_DEFAULT_SKELETON_JSON,
+            THE_DEFAULT_BUTTON,
+            THE_DEFAULT_PORTRAIT3
+        );
+        SkinManager.registerSkin(alternateSkin2, false);
+
+        logger.info("Registered " + SkinManager.getSkinCount() + " skins");
+    }
+
+    // =============== /SKIN SYSTEM/ =================
 
     // ====== NO EDIT AREA ======
     // DON'T TOUCH THIS STUFF. IT IS HERE FOR STANDARDIZATION BETWEEN MODS AND TO ENSURE GOOD CODE PRACTICES.
@@ -290,13 +364,20 @@ public class BalanceMod implements
 
     @Override
     public void receiveEditCharacters() {
-        logger.info("Beginning to edit characters. " + "Add " + TheDefault.Enums.THE_DEFAULT.toString());
+        logger.info("Beginning to edit characters. " + "Add " + Zako.Enums.THE_DEFAULT.toString());
 
-        BaseMod.addCharacter(new TheDefault("the Default", TheDefault.Enums.THE_DEFAULT),
-                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, TheDefault.Enums.THE_DEFAULT);
+        // Get current skin for character select screen
+        CharacterSkin currentSkin = SkinManager.getCurrentSkin();
+        if (currentSkin == null) {
+            logger.error("No skin found! Using default paths as fallback.");
+            currentSkin = SkinManager.getDefaultSkin();
+        }
+
+        BaseMod.addCharacter(new Zako("the Default", Zako.Enums.THE_DEFAULT),
+                currentSkin.buttonPath, currentSkin.portraitPath, Zako.Enums.THE_DEFAULT);
 
         receiveEditPotions();
-        logger.info("Added " + TheDefault.Enums.THE_DEFAULT.toString());
+        logger.info("Added " + Zako.Enums.THE_DEFAULT.toString());
     }
 
     // =============== /LOAD THE CHARACTER/ =================
@@ -332,9 +413,9 @@ public class BalanceMod implements
                 e.printStackTrace();
             }
         });
-        
+
         settingsPanel.addUIElement(enableNormalsButton); // Add the button to the settings panel. Button is a go.
-        
+
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 
         
@@ -354,7 +435,7 @@ public class BalanceMod implements
         // Since this is a builder these method calls (outside of create()) can be skipped/added as necessary
         AddEventParams eventParams = new AddEventParams.Builder(IdentityCrisisEvent.ID, IdentityCrisisEvent.class) // for this specific event
             .dungeonID(TheCity.ID) // The dungeon (act) this event will appear in
-            .playerClass(TheDefault.Enums.THE_DEFAULT) // Character specific event
+            .playerClass(Zako.Enums.THE_DEFAULT) // Character specific event
             .create();
 
         // Add the event
@@ -374,7 +455,7 @@ public class BalanceMod implements
         // Class Specific Potion. If you want your potion to not be class-specific,
         // just remove the player class at the end (in this case the "TheDefaultEnum.THE_DEFAULT".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
-        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, TheDefault.Enums.THE_DEFAULT);
+        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, Zako.Enums.THE_DEFAULT);
         
         logger.info("Done editing potions");
     }
@@ -396,37 +477,37 @@ public class BalanceMod implements
         // in order to automatically differentiate which pool to add the relic too.
 
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
-        BaseMod.addRelicToCustomPool(new PlaceholderRelic(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheDefault.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new PlaceholderRelic(), Zako.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), Zako.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), Zako.Enums.COLOR_GRAY);
 
         // Add new character-specific relics
         // Financial/Allowance Stream
-        BaseMod.addRelicToCustomPool(new theBalance.relics.TatteredWallet(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new theBalance.relics.BandAid(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new theBalance.relics.LuckyCoin(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new theBalance.relics.AutoCalculator(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new theBalance.relics.HushMoney(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new theBalance.relics.FinancialPlan(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new theBalance.relics.BlackCard(), TheDefault.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new theBalance.relics.TatteredWallet(), Zako.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new theBalance.relics.BandAid(), Zako.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new theBalance.relics.LuckyCoin(), Zako.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new theBalance.relics.AutoCalculator(), Zako.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new theBalance.relics.HushMoney(), Zako.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new theBalance.relics.FinancialPlan(), Zako.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new theBalance.relics.BlackCard(), Zako.Enums.COLOR_GRAY);
 
         // Attribute Balancing Stream
-        BaseMod.addRelicToCustomPool(new theBalance.relics.CalibratedScale(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new theBalance.relics.SymmetricPaper(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new theBalance.relics.CalibratedWeight(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new theBalance.relics.TauntMask(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new theBalance.relics.CheatingProof(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new theBalance.relics.MobiusLoop(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new theBalance.relics.DoubleSidedCoin(), TheDefault.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new theBalance.relics.CalibratedScale(), Zako.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new theBalance.relics.SymmetricPaper(), Zako.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new theBalance.relics.CalibratedWeight(), Zako.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new theBalance.relics.TauntMask(), Zako.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new theBalance.relics.CheatingProof(), Zako.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new theBalance.relics.MobiusLoop(), Zako.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new theBalance.relics.DoubleSidedCoin(), Zako.Enums.COLOR_GRAY);
 
         // Mirror/Symbiosis Stream
-        BaseMod.addRelicToCustomPool(new theBalance.relics.HandMirror(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new theBalance.relics.ObservationNotes(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new theBalance.relics.DoodlePaper(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new theBalance.relics.Semipermeable(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new theBalance.relics.CheapCopier(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new theBalance.relics.EmpathyDoll(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new theBalance.relics.AceAgent(), TheDefault.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new theBalance.relics.HandMirror(), Zako.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new theBalance.relics.ObservationNotes(), Zako.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new theBalance.relics.DoodlePaper(), Zako.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new theBalance.relics.Semipermeable(), Zako.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new theBalance.relics.CheapCopier(), Zako.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new theBalance.relics.EmpathyDoll(), Zako.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new theBalance.relics.AceAgent(), Zako.Enums.COLOR_GRAY);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
         BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
@@ -576,4 +657,59 @@ public class BalanceMod implements
     public static String makeID(String idText) {
         return getModID() + ":" + idText;
     }
+
+    // =============== SKIN SELECTION UI IN CHARACTER SELECT =================
+
+    @Override
+    public void receivePostRender(SpriteBatch sb) {
+        // 只在主菜单的角色选择界面显示
+        if (CardCrawlGame.mode != CardCrawlGame.GameMode.CHAR_SELECT) {
+            return;
+        }
+
+        if (CardCrawlGame.mainMenuScreen != null &&
+            CardCrawlGame.mainMenuScreen.screen == MainMenuScreen.CurScreen.CHAR_SELECT) {
+
+            CharacterSelectScreen charSelectScreen = CardCrawlGame.mainMenuScreen.charSelectScreen;
+            if (charSelectScreen != null && charSelectScreen.options != null) {
+                // 找到我们的角色选项
+                for (CharacterOption option : charSelectScreen.options) {
+                    if (option != null && option.c != null &&
+                        option.c.chosenClass == Zako.Enums.THE_DEFAULT) {
+                        // 渲染皮肤选择UI
+                        SkinSelectionUI.render(sb, option);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    public void receivePostUpdate() {
+        // 只在主菜单的角色选择界面处理输入
+        if (CardCrawlGame.mode != CardCrawlGame.GameMode.CHAR_SELECT) {
+            return;
+        }
+
+        if (CardCrawlGame.mainMenuScreen != null &&
+            CardCrawlGame.mainMenuScreen.screen == MainMenuScreen.CurScreen.CHAR_SELECT) {
+
+            CharacterSelectScreen charSelectScreen = CardCrawlGame.mainMenuScreen.charSelectScreen;
+            if (charSelectScreen != null && charSelectScreen.options != null) {
+                // 找到我们的角色选项
+                for (CharacterOption option : charSelectScreen.options) {
+                    if (option != null && option.c != null &&
+                        option.c.chosenClass == Zako.Enums.THE_DEFAULT) {
+                        // 更新皮肤选择UI（处理输入）
+                        SkinSelectionUI.setCharacterOption(option);
+                        SkinSelectionUI.update();
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    // =============== /SKIN SELECTION UI IN CHARACTER SELECT/ =================
 }

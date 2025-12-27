@@ -56,8 +56,8 @@ public class EnrageMarketPower extends AbstractPower implements CloneablePowerIn
 
             flash();
             // 玩家获得相同数量的力量乘以激怒市场的倍率
-            int strengthGain = this.amount;
-            AbstractDungeon.actionManager.addToBottom(
+            int strengthGain = this.amount * power.amount;
+            AbstractDungeon.actionManager.addToTop(
                 new ApplyPowerAction(owner, owner, new StrengthPower(owner, strengthGain), strengthGain));
         }
     }

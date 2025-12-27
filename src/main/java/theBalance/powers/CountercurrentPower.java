@@ -10,12 +10,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.WeakPower;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
-import com.megacrit.cardcrawl.powers.FrailPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
-import com.megacrit.cardcrawl.powers.DexterityPower;
+import com.megacrit.cardcrawl.powers.*;
 import theBalance.BalanceMod;
 import theBalance.util.TextureLoader;
 
@@ -23,139 +18,114 @@ import java.util.ArrayList;
 
 import static theBalance.BalanceMod.makePowerPath;
 
-// 逆流 - Countercurrent
-// 将自身负面属性转为正面，下回合敌人获双倍该属性
 public class CountercurrentPower extends AbstractPower implements CloneablePowerInterface {
     public static final String POWER_ID = BalanceMod.makeID("CountercurrentPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-    public static final String NAME = powerStrings.NAME;
-    public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
+    // 用来记录玩家具体转换了哪些正面效果，以便双倍送给敌人
+    private ArrayList<ConvertedBuffData> buffList = new ArrayList<>();
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power.png"));
 
-    private ArrayList<PowerData> storedDebuffs = new ArrayList<>();
-
     public CountercurrentPower(final AbstractCreature owner) {
-        name = NAME;
-        ID = POWER_ID;
+        this.name = powerStrings.NAME;
+        this.ID = POWER_ID;
         this.owner = owner;
         this.amount = -1;
-        type = PowerType.BUFF;
-        isTurnBased = true;
+        this.type = PowerType.BUFF; // 这是一个对自己有利的转化，所以分类是BUFF
+        this.isTurnBased = false;
 
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
-
-        // 保存并转换负面效果
-        convertDebuffs();
         updateDescription();
     }
 
-    private void convertDebuffs() {
-        // 处理虚弱 -> 强化
-        if (owner.hasPower(WeakPower.POWER_ID)) {
-            int weakAmount = owner.getPower(WeakPower.POWER_ID).amount;
-            storedDebuffs.add(new PowerData(WeakPower.POWER_ID, weakAmount));
-            AbstractDungeon.actionManager.addToBottom(
-                new RemoveSpecificPowerAction(owner, owner, WeakPower.POWER_ID));
-            // 给玩家强化
-            AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(owner, owner, new EmpoweredPower(owner, weakAmount), weakAmount));
-        }
-
-        // 处理易伤 -> 抗性
-        if (owner.hasPower(VulnerablePower.POWER_ID)) {
-            int vulnAmount = owner.getPower(VulnerablePower.POWER_ID).amount;
-            storedDebuffs.add(new PowerData(VulnerablePower.POWER_ID, vulnAmount));
-            AbstractDungeon.actionManager.addToBottom(
-                new RemoveSpecificPowerAction(owner, owner, VulnerablePower.POWER_ID));
-            // 给玩家抗性
-            AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(owner, owner, new ResilientPower(owner, vulnAmount), vulnAmount));
-        }
-
-        // 处理脆弱 -> 坚固
-        if (owner.hasPower(FrailPower.POWER_ID)) {
-            int frailAmount = owner.getPower(FrailPower.POWER_ID).amount;
-            storedDebuffs.add(new PowerData(FrailPower.POWER_ID, frailAmount));
-            AbstractDungeon.actionManager.addToBottom(
-                new RemoveSpecificPowerAction(owner, owner, FrailPower.POWER_ID));
-            // 给玩家坚固
-            AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(owner, owner, new SolidPower(owner, frailAmount), frailAmount));
-        }
-
-        // 处理负力量
-        if (owner.hasPower(StrengthPower.POWER_ID)) {
-            int strAmount = owner.getPower(StrengthPower.POWER_ID).amount;
-            if (strAmount < 0) {
-                storedDebuffs.add(new PowerData(StrengthPower.POWER_ID, -strAmount));
-                AbstractDungeon.actionManager.addToBottom(
-                    new ApplyPowerAction(owner, owner, new StrengthPower(owner, -strAmount * 2), -strAmount * 2));
-            }
-        }
-
-        // 处理负敏捷 -> 转换为正敏捷，给敌人防御姿态（因为敌人正敏捷格挡没意义）
-        if (owner.hasPower(DexterityPower.POWER_ID)) {
-            int dexAmount = owner.getPower(DexterityPower.POWER_ID).amount;
-            if (dexAmount < 0) {
-                // 存储负敏捷的绝对值
-                storedDebuffs.add(new PowerData("CONVERTED_DEX_TO_STANCE", -dexAmount));
-                // 将负敏捷转为正敏捷
-                AbstractDungeon.actionManager.addToBottom(
-                    new ApplyPowerAction(owner, owner, new DexterityPower(owner, -dexAmount), -dexAmount));
-            }
-        }
-
-        this.amount = storedDebuffs.size();
-    }
-
     @Override
-    public void updateDescription() {
-        if (storedDebuffs.isEmpty()) {
-            description = DESCRIPTIONS[0];
-        } else {
-            description = DESCRIPTIONS[1] + storedDebuffs.size() + DESCRIPTIONS[2];
-        }
+    public void onInitialApplication() {
+        this.flash();
+        this.convertAndStore();
     }
 
+    /**
+     * 第一阶段：清除负面，转化正面
+     */
+    private void convertAndStore() {
+        // 处理虚弱 -> 转化给玩家 EmpoweredPower
+        if (owner.hasPower(WeakPower.POWER_ID)) {
+            int amt = owner.getPower(WeakPower.POWER_ID).amount;
+            buffList.add(new ConvertedBuffData("EMPOWERED", amt));
+            addToTop(new ApplyPowerAction(owner, owner, new EmpoweredPower(owner, amt), amt));
+            addToTop(new RemoveSpecificPowerAction(owner, owner, WeakPower.POWER_ID));
+        }
+
+        // 处理易伤 -> 转化给玩家 ResilientPower
+        if (owner.hasPower(VulnerablePower.POWER_ID)) {
+            int amt = owner.getPower(VulnerablePower.POWER_ID).amount;
+            buffList.add(new ConvertedBuffData("RESILIENT", amt));
+            addToTop(new ApplyPowerAction(owner, owner, new ResilientPower(owner, amt), amt));
+            addToTop(new RemoveSpecificPowerAction(owner, owner, VulnerablePower.POWER_ID));
+        }
+
+        // 处理负力量 -> 转化为正力量
+        // 注意逻辑：如果玩家有 -3 力量，我们需要 Apply (+6) 力量才能变成 +3 力量
+        if (owner.hasPower(StrengthPower.POWER_ID)) {
+            int strAmt = owner.getPower(StrengthPower.POWER_ID).amount;
+            if (strAmt < 0) {
+                int positiveValue = -strAmt; // 比如 3
+                buffList.add(new ConvertedBuffData(StrengthPower.POWER_ID, positiveValue));
+                // 让玩家从 -3 变成 +3，需要增加 2倍的绝对值
+                addToTop(new ApplyPowerAction(owner, owner, new StrengthPower(owner, positiveValue * 2), positiveValue * 2));
+            }
+        }
+
+        // 处理负敏捷 -> 转化为正敏捷
+        if (owner.hasPower(DexterityPower.POWER_ID)) {
+            int dexAmt = owner.getPower(DexterityPower.POWER_ID).amount;
+            if (dexAmt < 0) {
+                int positiveValue = -dexAmt;
+                buffList.add(new ConvertedBuffData(DexterityPower.POWER_ID, positiveValue));
+                addToTop(new ApplyPowerAction(owner, owner, new DexterityPower(owner, positiveValue * 2), positiveValue * 2));
+            }
+        }
+
+        this.updateDescription();
+    }
+
+    /**
+     * 第二阶段：回合结束，敌人获得双倍玩家刚才得到的正面 Buff
+     */
     @Override
     public void atEndOfTurn(boolean isPlayer) {
-        if (isPlayer && !storedDebuffs.isEmpty()) {
-            flash();
-            // 给所有敌人双倍debuff
-            for (AbstractMonster monster : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                if (!monster.isDeadOrEscaped()) {
-                    for (PowerData data : storedDebuffs) {
-                        AbstractPower powerToApply = null;
-                        int doubleAmount = data.amount * 2;
+        if (isPlayer && !buffList.isEmpty()) {
+            this.flash();
 
-                        if (data.powerId.equals(WeakPower.POWER_ID)) {
-                            powerToApply = new WeakPower(monster, doubleAmount, false);
-                        } else if (data.powerId.equals(VulnerablePower.POWER_ID)) {
-                            powerToApply = new VulnerablePower(monster, doubleAmount, false);
-                        } else if (data.powerId.equals(FrailPower.POWER_ID)) {
-                            powerToApply = new FrailPower(monster, doubleAmount, false);
-                        } else if (data.powerId.equals(StrengthPower.POWER_ID)) {
-                            powerToApply = new StrengthPower(monster, -doubleAmount);
-                        } else if (data.powerId.equals("CONVERTED_DEX_TO_STANCE")) {
-                            // 负敏捷转换为防御姿态（敌人攻击后获得格挡）
-                            powerToApply = new DefensiveStancePower(monster, doubleAmount);
-                        }
+            // 遍历所有怪物
+            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+                if (!m.isDeadOrEscaped()) {
+                    for (ConvertedBuffData data : buffList) {
+                        int enemyAmount = data.amount * 2; // 敌人获得双倍玩家转化后的量
 
-                        if (powerToApply != null) {
-                            AbstractDungeon.actionManager.addToBottom(
-                                new ApplyPowerAction(monster, owner, powerToApply, doubleAmount));
+                        switch (data.typeID) {
+                            case "EMPOWERED":
+                                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, owner, new EmpoweredPower(m, enemyAmount), enemyAmount));
+                                break;
+                            case "RESILIENT":
+                                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, owner, new ResilientPower(m, enemyAmount), enemyAmount));
+                                break;
+                            case StrengthPower.POWER_ID:
+                                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, owner, new StrengthPower(m, enemyAmount), enemyAmount));
+                                break;
+                            case DexterityPower.POWER_ID:
+                                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, owner, new DefensiveStancePower(m, enemyAmount), enemyAmount));
+                                break;
                         }
                     }
                 }
             }
-        }
 
-        // 回合结束后移除Power
-        AbstractDungeon.actionManager.addToBottom(
-            new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
+            // 效果完成后，逆流能力消失
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(owner, owner, this.ID));
+        }
     }
 
     @Override
@@ -163,14 +133,9 @@ public class CountercurrentPower extends AbstractPower implements CloneablePower
         return new CountercurrentPower(owner);
     }
 
-    // 内部类用于存储Power数据
-    private static class PowerData {
-        String powerId;
+    private static class ConvertedBuffData {
+        String typeID;
         int amount;
-
-        PowerData(String id, int amt) {
-            this.powerId = id;
-            this.amount = amt;
-        }
+        ConvertedBuffData(String id, int amt) { this.typeID = id; this.amount = amt; }
     }
 }

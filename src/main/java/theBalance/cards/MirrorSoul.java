@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theBalance.BalanceMod;
-import theBalance.characters.TheDefault;
+import theBalance.characters.Zako;
 
 import static theBalance.BalanceMod.makeCardPath;
 
@@ -21,7 +21,7 @@ public class MirrorSoul extends AbstractDynamicCard {
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
+    public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
 
@@ -32,24 +32,51 @@ public class MirrorSoul extends AbstractDynamicCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        // 移除自己的负面效果
-        p.powers.removeIf(power -> power.type == AbstractPower.PowerType.DEBUFF);
+        for (AbstractPower pow : p.powers) {
+            if (pow.type == AbstractPower.PowerType.DEBUFF) {
+                AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction(p, p, pow.ID));
+            }
+        }
 
-        // 复制敌人的Buff
         if (m != null) {
-            for (AbstractPower power : m.powers) {
-                if (power.type == AbstractPower.PowerType.BUFF) {
-                    try {
-                        AbstractPower copiedPower = power.getClass().newInstance();
-                        AbstractDungeon.actionManager.addToBottom(
-                            new ApplyPowerAction(p, p, copiedPower, power.amount));
-                    } catch (Exception e) {
-                        // 忽略无法复制的power
+            for (AbstractPower pow : m.powers) {
+                if (pow.type == AbstractPower.PowerType.BUFF) {
+                    AbstractPower copiedPower = null;
+
+                    // 方法 A: 如果是支持 BaseMod 的 Mod Power，它们通常实现了 CloneablePowerInterface
+                    if (pow instanceof basemod.interfaces.CloneablePowerInterface) {
+                        copiedPower = ((basemod.interfaces.CloneablePowerInterface) pow).makeCopy();
+                        copiedPower.owner = p; // 将拥有者改为玩家
+                    }
+                    else {
+                        // 方法 B: 针对原版 Power，使用反射尝试调用标准构造函数 (Creature, int)
+                        try {
+                            // 尝试寻找 (拥有者, 层数) 这种构造函数
+                            java.lang.reflect.Constructor<? extends AbstractPower> c =
+                                    pow.getClass().getConstructor(com.megacrit.cardcrawl.core.AbstractCreature.class, int.class);
+                            copiedPower = c.newInstance(p, pow.amount);
+                        } catch (Exception e) {
+                            // 如果没有标准构造函数（比如某些复杂的 Power），尝试 (拥有者) 构造函数
+                            try {
+                                java.lang.reflect.Constructor<? extends AbstractPower> c =
+                                        pow.getClass().getConstructor(com.megacrit.cardcrawl.core.AbstractCreature.class);
+                                copiedPower = c.newInstance(p);
+                                copiedPower.amount = pow.amount;
+                            } catch (Exception e2) {
+                                // 实在复制不了的特殊 Power 只能手动 hardcode 或者放弃
+                                System.out.println("无法复制能力: " + pow.ID);
+                            }
+                        }
+                    }
+
+                    if (copiedPower != null) {
+                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, copiedPower, pow.amount));
                     }
                 }
             }
         }
     }
+
 
     @Override
     public void upgrade() {

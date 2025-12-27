@@ -2,15 +2,13 @@ package theBalance.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.EnemyMoveInfo;
 import theBalance.BalanceMod;
-import theBalance.characters.TheDefault;
+import theBalance.characters.Zako;
 
 import java.lang.reflect.Field;
 import static theBalance.BalanceMod.makeCardPath;
@@ -26,7 +24,7 @@ public class MirrorProjection extends AbstractDynamicCard {
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
+    public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = 2;
 
@@ -46,7 +44,7 @@ public class MirrorProjection extends AbstractDynamicCard {
                 moveInfo.setAccessible(true);
                 EnemyMoveInfo info = (EnemyMoveInfo) moveInfo.get(m);
                 if (info != null) {
-                    enemyDamage = info.baseDamage;
+                    enemyDamage = info.baseDamage * info.multiplier;
                 }
             } catch (Exception e) {
                 // 如果无法获取，使用默认值
