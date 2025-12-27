@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theBalance.BalanceMod;
 import theBalance.characters.Zako;
+import theBalance.powers.TimeArbitragePower;
 
 import static theBalance.BalanceMod.makeCardPath;
 
@@ -33,7 +34,7 @@ public class TimeArbitrage extends AbstractDynamicCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         // 应用时空套利Power：玩家连续行动2回合，然后第3回合无法行动
         AbstractDungeon.actionManager.addToBottom(
-            new ApplyPowerAction(p, p, new theBalance.powers.TimeArbitragePower(p), -1));
+                new ApplyPowerAction(p, p, new TimeArbitragePower(p, 4), 4));
     }
 
     @Override

@@ -105,7 +105,10 @@
   },
   "theBalance:TimeArbitragePower": {
     "NAME": "时空套利",
-    "DESCRIPTIONS": ["优势阶段：敌人跳过行动", "惩罚阶段：能量为0", " 回合", ""]
+    "DESCRIPTIONS": [
+      "杂鱼~ 敌人还能动弹吗？接下来的 #b", " 回合敌人都无法行动。",
+      "糟糕啦... 接下来 #b", " 回合你的能量将固定为 #b0 。"
+    ]
   },
   "theBalance:CountercurrentPower": {
     "NAME": "逆流",
