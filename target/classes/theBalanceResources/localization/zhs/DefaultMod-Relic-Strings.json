@@ -1,0 +1,182 @@
+{
+  "theBalance:PlaceholderRelic": {
+    "NAME": "Placeholder Energy Relic",
+    "FLAVOR": "The snake is a friend.",
+    "DESCRIPTIONS": [
+      "Gain #b1 [E] ."
+    ]
+  },
+  "theBalance:PlaceholderRelic2": {
+    "NAME": "Placeholder Relic 2",
+    "FLAVOR": "You feel stronger.",
+    "DESCRIPTIONS": [
+      "At the start of each combat, gain #b1 #yStrength."
+    ]
+  },
+  "theBalance:DefaultClickableRelic": {
+    "NAME": "Right-Clicky Relic",
+    "FLAVOR": "The more you right-click it, the more orbs you've evoked in your lifetime.",
+    "DESCRIPTIONS": [
+      "[#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]turn.[] NL #yEvoke your rightmost Orb.",
+      "YOU ARE MINE!"
+    ]
+  },
+  "theBalance:BottledPlaceholderRelic": {
+    "NAME": "Bottled Placeholder",
+    "FLAVOR": "What is this?",
+    "DESCRIPTIONS": [
+      "Choose a card. Whenever you take play any card, draw the chosen card.",
+      "Whenever you play a card, draw ",
+      ".",
+      "Select a card to bottle for "
+    ]
+  },
+  "theBalance:TatteredWallet": {
+    "NAME": "杂鱼的钱包",
+    "FLAVOR": "破破烂烂的钱包，装着爸妈给的零花钱。",
+    "DESCRIPTIONS": [
+      "战斗开始时，获得 #b15 点 #y战斗津贴 。"
+    ]
+  },
+  "theBalance:BandAid": {
+    "NAME": "杂鱼贴纸",
+    "FLAVOR": "用创可贴当作强大的证明。",
+    "DESCRIPTIONS": [
+      "每当你因自己的卡牌效果失去生命时，获得 #b4 点 #y格挡 。"
+    ]
+  },
+  "theBalance:LuckyCoin": {
+    "NAME": "大叔的赏赐",
+    "FLAVOR": "被摸头之后，大叔塞给你的硬币。",
+    "DESCRIPTIONS": [
+      "每次战斗获胜后额外获得 #b10-15 金币。"
+    ]
+  },
+  "theBalance:AutoCalculator": {
+    "NAME": "乱动脑筋",
+    "FLAVOR": "算不来就用计算器！",
+    "DESCRIPTIONS": [
+      "每当你洗牌时，获得等同于当前 #y战斗津贴 #b50% 的格挡。"
+    ]
+  },
+  "theBalance:HushMoney": {
+    "NAME": "封口费",
+    "FLAVOR": "收了钱就不要到处说。",
+    "DESCRIPTIONS": [
+      "商店商品降价 #b15% 。每次在商店购买东西，永久提升 #b2 点 #y力量 。"
+    ]
+  },
+  "theBalance:FinancialPlan": {
+    "NAME": "理财计划书",
+    "FLAVOR": "存起来才是真正的钱！",
+    "DESCRIPTIONS": [
+      "战斗结束时，剩余 #y战斗津贴 的 #b20% 转化为永久金币。"
+    ]
+  },
+  "theBalance:BlackCard": {
+    "NAME": "大叔的黑卡",
+    "FLAVOR": "有钱爸爸给的无限信用卡！",
+    "DESCRIPTIONS": [
+      "获得 [E] 。 NL 每打出一张非攻击牌，失去 #b5 金币（不足则扣 #b2 血）。"
+    ]
+  },
+  "theBalance:CalibratedScale": {
+    "NAME": "校准天平",
+    "FLAVOR": "力量和敏捷要保持平衡！",
+    "DESCRIPTIONS": [
+      "每回合中，第一次 #y力量 与 #y敏捷 相等时（不为0），获得 [E] 。"
+    ]
+  },
+  "theBalance:SymmetricPaper": {
+    "NAME": "对称剪纸",
+    "FLAVOR": "对称才是最美的。",
+    "DESCRIPTIONS": [
+      "回合开始时，如果你的 #y力量 与 #y敏捷 相等，获得 #b6 点 #y格挡 。"
+    ]
+  },
+  "theBalance:CalibratedWeight": {
+    "NAME": "校准砝码",
+    "FLAVOR": "失去的会以另一种方式补偿回来。",
+    "DESCRIPTIONS": [
+      "每当你失去 #y力量 ，获得 #b3 点 #y格挡 ；每当你失去 #y敏捷 ，对随机敌人造成 #b5 点伤害。"
+    ]
+  },
+  "theBalance:TauntMask": {
+    "NAME": "挑衅面具",
+    "FLAVOR": "比不过就气死对方！",
+    "DESCRIPTIONS": [
+      "回合结束时，如果敌人的 #y力量 高于你，下回合获得 [E] 。"
+    ]
+  },
+  "theBalance:CheatingProof": {
+    "NAME": "耍赖证明",
+    "FLAVOR": "我就是要耍赖！",
+    "DESCRIPTIONS": [
+      "每回合你打出的第一张带负面效果的牌，其负面部分不再生效。"
+    ]
+  },
+  "theBalance:MobiusLoop": {
+    "NAME": "莫比乌斯环",
+    "FLAVOR": "完美平衡的无限循环。",
+    "DESCRIPTIONS": [
+      "#y力量 与 #y敏捷 相等时，所有卡牌数值（伤害/格挡）提升 #b25% 。"
+    ]
+  },
+  "theBalance:DoubleSidedCoin": {
+    "NAME": "双面硬币",
+    "FLAVOR": "不管怎么抛都是正面！",
+    "DESCRIPTIONS": [
+      "获得 [E] 。 NL 每进入商店，必须选择移除一张非 #y打击 / #y防御 的卡牌。",
+      "选择一张卡牌移除。"
+    ]
+  },
+  "theBalance:HandMirror": {
+    "NAME": "手持小镜子",
+    "FLAVOR": "照着镜子学大叔的样子。",
+    "DESCRIPTIONS": [
+      "战斗开始时，选择一名敌人。该敌人每有 #b2 点 #y力量 ，你获得 #b1 点 #y敏捷 。"
+    ]
+  },
+  "theBalance:ObservationNotes": {
+    "NAME": "大叔观察日记",
+    "FLAVOR": "记录大叔的弱点！",
+    "DESCRIPTIONS": [
+      "每当你对敌人施加 #y负面状态 时，下一次攻击伤害提升 #b3 点。"
+    ]
+  },
+  "theBalance:DoodlePaper": {
+    "NAME": "涂鸦画纸",
+    "FLAVOR": "不好的东西大家一起分担。",
+    "DESCRIPTIONS": [
+      "你被施加 #y负面状态 时， #b50% 概率将该状态也施加给全体敌人。"
+    ]
+  },
+  "theBalance:Semipermeable": {
+    "NAME": "半透膜",
+    "FLAVOR": "只让好东西进来！",
+    "DESCRIPTIONS": [
+      "每当你偷取属性时，额外获得 #b2 点对应的临时属性。"
+    ]
+  },
+  "theBalance:CheapCopier": {
+    "NAME": "劣质复印机",
+    "FLAVOR": "复印质量很差，但还能用。",
+    "DESCRIPTIONS": [
+      "每场战斗中，第一张被 #y消耗 的 #y镜像 系列牌改为放入弃牌堆。"
+    ]
+  },
+  "theBalance:EmpathyDoll": {
+    "NAME": "共感娃娃",
+    "FLAVOR": "感同身受，加倍奉还。",
+    "DESCRIPTIONS": [
+      "当你拥有 #y负面状态 时，你对敌人施加的 #y负面状态 层数 #b+1 。"
+    ]
+  },
+  "theBalance:AceAgent": {
+    "NAME": "杂鱼代理人",
+    "FLAVOR": "让别人帮你挡刀！",
+    "DESCRIPTIONS": [
+      "每当敌人获得 #y格挡 ，你同步获得等量 #y格挡 （单次上限 #b15 ）。"
+    ]
+  }
+}

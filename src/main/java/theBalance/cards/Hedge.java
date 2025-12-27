@@ -1,0 +1,56 @@
+package theBalance.cards;
+
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theBalance.BalanceMod;
+import theBalance.characters.TheDefault;
+
+import static theBalance.BalanceMod.makeCardPath;
+
+public class Hedge extends AbstractDynamicCard {
+
+    // 对冲 - Hedge
+    // 获得 8(11) 点格挡。若受到攻击伤害，敌人获得 1 力量。
+
+    public static final String ID = BalanceMod.makeID(Hedge.class.getSimpleName());
+    public static final String IMG = makeCardPath("Hedge.png");
+
+    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardTarget TARGET = CardTarget.SELF;
+    private static final CardType TYPE = CardType.SKILL;
+    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
+
+    private static final int COST = 1;
+    private static final int BLOCK = 8;
+    private static final int UPGRADE_PLUS_BLOCK = 3;
+    private static final int MAGIC = 1;  // 敌人获得的力量
+
+    public Hedge() {
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        baseBlock = BLOCK;
+        baseMagicNumber = magicNumber = MAGIC;
+    }
+
+    @Override
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        // 获得格挡
+        AbstractDungeon.actionManager.addToBottom(
+            new GainBlockAction(p, p, block));
+
+        // 应用对冲Power，受到攻击伤害时触发
+        AbstractDungeon.actionManager.addToBottom(
+            new ApplyPowerAction(p, p, new theBalance.powers.HedgePower(p, magicNumber), magicNumber));
+    }
+
+    @Override
+    public void upgrade() {
+        if (!upgraded) {
+            upgradeName();
+            upgradeBlock(UPGRADE_PLUS_BLOCK);
+            initializeDescription();
+        }
+    }
+}

@@ -1,0 +1,339 @@
+{
+  "theBalance:ParityStrike": {
+    "NAME": "对等打击",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 若上回合失去过生命，额外造成 !M! 点伤害。"
+  },
+  "theBalance:ParityDefend": {
+    "NAME": "对等防御",
+    "DESCRIPTION": "获得 !B! 点格挡。"
+  },
+  "theBalance:BasicStrike": {
+    "NAME": "普通打击",
+    "DESCRIPTION": "造成 !D! 点伤害。"
+  },
+  "theBalance:BalancingAct": {
+    "NAME": "配平",
+    "DESCRIPTION": "获得 !B! 点格挡。 NL 若上回合失去过生命，改为获得 !M! 点格挡。"
+  },
+  "theBalance:HighInterestLoan": {
+    "NAME": "高利贷",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 下回合敌人获得 !M! 点力量。"
+  },
+  "theBalance:ImbalancedBooks": {
+    "NAME": "收支不平",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 如果敌人的力量高于你，伤害翻倍。"
+  },
+  "theBalance:RiskyInvestment": {
+    "NAME": "风险投资",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 抽 1 张牌，若非攻击牌，失去 !M! 点生命。"
+  },
+  "theBalance:Kickback": {
+    "NAME": "回扣",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 获得 !M! 层战斗津贴。"
+  },
+  "theBalance:EquivalentStrike": {
+    "NAME": "等价重击",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 将一张 *伤口 加入弃牌堆。"
+  },
+  "theBalance:ChainReaction": {
+    "NAME": "连锁反应",
+    "DESCRIPTION": "造成 !D! 点伤害 !M! 次。 NL 获得 !theBalance:SM! 层 易伤 。"
+  },
+  "theBalance:GoldShatter": {
+    "NAME": "碎金击",
+    "DESCRIPTION": "消耗 !M! 金币。 NL 造成 !D! 点伤害。"
+  },
+  "theBalance:Collection": {
+    "NAME": "催收",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 若目标有 debuff ，抽 !M! 张牌。"
+  },
+  "theBalance:BadDebtRecovery": {
+    "NAME": "坏账回收",
+    "DESCRIPTION": "从弃牌堆或抽牌堆选择 1 张牌加入手牌。 NL 将一张 *虚空 加入抽牌堆。",
+    "UPGRADE_DESCRIPTION": "固有 。 NL 从弃牌堆或抽牌堆选择 1 张牌加入手牌。 NL 将一张 *虚空 加入抽牌堆。"
+  },
+  "theBalance:BadDebtLoss": {
+    "NAME": "坏账损失",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 将 !M! 张 *虚空 加入抽牌堆。"
+  },
+  "theBalance:SpreadDamage": {
+    "NAME": "平摊伤害",
+    "DESCRIPTION": "对 所有 敌人造成 !D! 点伤害。 NL 你失去 !M! 点生命。"
+  },
+  "theBalance:Blade": {
+    "NAME": "利刃",
+    "DESCRIPTION": "造成 !D! 点伤害 !M! 次。"
+  },
+  "theBalance:MoneyOffensive": {
+    "NAME": "金钱攻势",
+    "DESCRIPTION": "消耗 。 NL 消耗 !M! 金币。 NL 造成 !D! 点伤害。"
+  },
+  "theBalance:LastStrike": {
+    "NAME": "最后一击",
+    "DESCRIPTION": "消耗 。 NL 造成 !D! 点伤害。 NL 失去 !M! 点力量。"
+  },
+  "theBalance:MirrorProjection": {
+    "NAME": "镜像投射",
+    "DESCRIPTION": "造成等同于敌人意图伤害 !M! %的伤害。"
+  },
+  "theBalance:BankruptcyRush": {
+    "NAME": "破产冲击",
+    "DESCRIPTION": "消耗 !M! 金币。 NL 造成 !D! 点伤害。 NL 金币不足则扣 !theBalance:SM! 生命。"
+  },
+  "theBalance:DebtHarvest": {
+    "NAME": "债务收割",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 身上每有一个负面状态，重复一次。"
+  },
+  "theBalance:AssetSwap": {
+    "NAME": "资产置换",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 交换你与敌人的 易伤 层数。"
+  },
+  "theBalance:LeverageStrike": {
+    "NAME": "杠杆打击",
+    "DESCRIPTION": "造成 !D! 点伤害 X 次。 NL 你获得 X 层 虚弱 。"
+  },
+  "theBalance:NetWorthThrust": {
+    "NAME": "净值突刺",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 本回合每获得过一次正面buff，重复一次。"
+  },
+  "theBalance:BalancePivot": {
+    "NAME": "天平支点",
+    "DESCRIPTION": "消耗 。 NL 造成 !D! 点伤害。 NL 本回合将敌人的力量和敏捷变为 0 。"
+  },
+  "theBalance:BalancedTrim": {
+    "NAME": "均衡剪裁",
+    "DESCRIPTION": "对 敌人造成 !D! 点伤害。 NL 双方格挡重置为两人的平均值。"
+  },
+  "theBalance:Doomsday": {
+    "NAME": "末日",
+    "DESCRIPTION": "对 全场 （含自己）造成 !D! 点伤害 !M! 次。"
+  },
+  "theBalance:ZeroSumJudgment": {
+    "NAME": "零和裁决",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 偷取敌人所有力量，回合结束归还。"
+  },
+  "theBalance:CapitalBlackHole": {
+    "NAME": "资本黑洞",
+    "DESCRIPTION": "消耗所有战斗津贴。 NL 每 !M! 点津贴对全体敌人造成 !theBalance:SM! 点伤害。"
+  },
+  "theBalance:InfiniteExpansion": {
+    "NAME": "无限膨胀",
+    "DESCRIPTION": "保留 。 NL 造成 !D! 伤害。 NL 每存留一回合伤害翻倍。受伤后倍率重置。"
+  },
+  "theBalance:AbsoluteNeutrality": {
+    "NAME": "绝对中立",
+    "DESCRIPTION": "消耗 。 NL 若敌血量比你高，将其生命降至与你相同（伤害上限 !M! ）。"
+  },
+  "theBalance:DevilsOption": {
+    "NAME": "恶魔期权",
+    "DESCRIPTION": "获得 !M! 金币。 NL 将两张 *茫然 放入弃牌堆。"
+  },
+  "theBalance:Hedge": {
+    "NAME": "对冲",
+    "DESCRIPTION": "获得 !B! 点格挡。 NL 若受到攻击伤害，敌人获得 !M! 力量。"
+  },
+  "theBalance:RiskMortgage": {
+    "NAME": "风险抵押",
+    "DESCRIPTION": "获得 !B! 点格挡。 NL 下回合失去 1 点能量。"
+  },
+  "theBalance:InsuranceContract": {
+    "NAME": "保险合同",
+    "DESCRIPTION": "获得 !B! 点格挡。 NL 若格挡被打破，获得 !M! 点战斗津贴。"
+  },
+  "theBalance:InventoryClearance": {
+    "NAME": "库存清理",
+    "DESCRIPTION": "弃所有手牌。 NL 每弃一张抽 1 张牌并获 !M! 点战斗津贴。"
+  },
+  "theBalance:QuickFinancing": {
+    "NAME": "快速融资",
+    "DESCRIPTION": "固有 。 NL 获得 [E] 。 NL 将一张 *黏液 加入抽牌堆。"
+  },
+  "theBalance:EnergyConservation": {
+    "NAME": "能量守恒",
+    "DESCRIPTION": "丢弃 1 张牌，抽 !M! 张牌。"
+  },
+  "theBalance:WealthEqualization": {
+    "NAME": "均贫卡",
+    "DESCRIPTION": "双方力量取平均值。"
+  },
+  "theBalance:TemporaryPreservation": {
+    "NAME": "临时保全",
+    "DESCRIPTION": "获得 !B! 点格挡。 NL 下回合敌人获得 !M! 点力量。"
+  },
+  "theBalance:DuskPact": {
+    "NAME": "黄昏协定",
+    "DESCRIPTION": "双方减 !M! 点力量。 NL 获得 2 层 !theBalance:SM! 点格挡。"
+  },
+  "theBalance:TimeArbitrage": {
+    "NAME": "时空套利",
+    "DESCRIPTION": "耗尽 。 NL 接下来 2 回合敌人跳过行动，之后 2 回合你的能量为 0 。"
+  },
+  "theBalance:Frenzy": {
+    "NAME": "狂热",
+    "DESCRIPTION": "获得 !M! 力量， !theBalance:SM! 敏捷。"
+  },
+  "theBalance:TurtleUp": {
+    "NAME": "龟缩",
+    "DESCRIPTION": "获得 !M! 敏捷， !theBalance:SM! 力量。"
+  },
+  "theBalance:Fluctuation": {
+    "NAME": "波动",
+    "DESCRIPTION": "消耗 。 NL 全场所有状态层数翻倍。"
+  },
+  "theBalance:MirrorShield": {
+    "NAME": "镜像之盾",
+    "DESCRIPTION": "消耗 。双方获得 !M! 层 缓冲 ， !theBalance:SM! 层 荆棘 。"
+  },
+  "theBalance:PhaseShift": {
+    "NAME": "相位转移",
+    "DESCRIPTION": "消耗 。获得 !M! 层 缓冲 。 NL 下回合敌人获得 1 层 缓冲 。"
+  },
+  "theBalance:Countercurrent": {
+    "NAME": "逆流",
+    "DESCRIPTION": "将自身负面属性转为正面。 NL 下回合敌人获双倍该属性。"
+  },
+  "theBalance:RiskHedge": {
+    "NAME": "风险对冲",
+    "DESCRIPTION": "消耗金币。 NL 每 !M! 金币获 !theBalance:SM! 层 多层护甲 。赛后不返还。"
+  },
+  "theBalance:ResonanceShield": {
+    "NAME": "共振护盾",
+    "DESCRIPTION": "获得 !B! 点格挡。 NL 敌人获得 !M! 点格挡。"
+  },
+  "theBalance:LiquidAssets": {
+    "NAME": "流动资产",
+    "DESCRIPTION": "格挡不再消失。 NL 每当触发格挡，失去等量战斗津贴。"
+  },
+  "theBalance:TemporaryImmunity": {
+    "NAME": "暂时性免疫",
+    "DESCRIPTION": "获得 !M! 层 灵体 。 NL 下回合失去 15% 当前生命。"
+  },
+  "theBalance:InformationAsymmetry": {
+    "NAME": "资讯不对称",
+    "DESCRIPTION": "抽 !M! 张牌。 NL 下回合少抽 2 张。"
+  },
+  "theBalance:Liquidation": {
+    "NAME": "清算",
+    "DESCRIPTION": "消耗 。 NL 移除自身所有效果。 NL 每移一个，抽 1 牌获 [E] 。"
+  },
+  "theBalance:EquivalentExchange": {
+    "NAME": "等价置换",
+    "DESCRIPTION": "消耗 。 NL 将一张手牌换成同色随机稀有牌，0费。"
+  },
+  "theBalance:Exemption": {
+    "NAME": "豁免",
+    "DESCRIPTION": "本回合下一张牌的负面效果不再生效。"
+  },
+  "theBalance:Transfer": {
+    "NAME": "传递",
+    "DESCRIPTION": "本回合失去1点能量和1层力量， NL 下回合获得 !M! 点能量和 !M! 层力量，并多抽 !M! 张牌。"
+  },
+  "theBalance:ZeroSumGame": {
+    "NAME": "零和博弈",
+    "DESCRIPTION": "偷取敌人 !M! 点力量。 NL 回合结束归还。"
+  },
+  "theBalance:PostWarReparations": {
+    "NAME": "战后赔偿",
+    "DESCRIPTION": "消耗 。 NL 获得 !M! 点 再生 。 NL 全体敌人获得 !theBalance:SM! 点力量。"
+  },
+  "theBalance:MultilayerFortress": {
+    "NAME": "多层堡垒",
+    "DESCRIPTION": "消耗 X*!M! 金币。 NL 获得 X*!theBalance:SM! 层 多层护甲 。"
+  },
+  "theBalance:EnrageMarket": {
+    "NAME": "激怒市场",
+    "DESCRIPTION": "所有敌人获得 激怒 。 NL 每当敌人通过激怒获得力量，你获得 !M! 点力量。"
+  },
+  "theBalance:Quagmire": {
+    "NAME": "泥潭",
+    "DESCRIPTION": "消耗 。 NL 双方给予 !M! 回合 虚弱 。"
+  },
+  "theBalance:MagnifyingLens": {
+    "NAME": "放大镜",
+    "DESCRIPTION": "获 !M! 力量。 NL 下回合敌人获 !theBalance:SM! 力量。"
+  },
+  "theBalance:SuperpositionState": {
+    "NAME": "叠加态",
+    "DESCRIPTION": "获得 0 点格挡 !M! 次。"
+  },
+  "theBalance:Lending": {
+    "NAME": "放贷",
+    "DESCRIPTION": "虚无 。 NL -30 金币。战胜后获 !theBalance:SM! 金币。 NL 全体敌人获得 3 力量。"
+  },
+  "theBalance:MirrorSoul": {
+    "NAME": "镜像之魂",
+    "DESCRIPTION": "消耗 。 NL 移除负面效果。 NL 复制指定敌人Buff给自己。"
+  },
+  "theBalance:Ceasefire": {
+    "NAME": "全面停火",
+    "DESCRIPTION": "消耗 。 NL 本回合全场伤害变为 0 。"
+  },
+  "theBalance:LifeLeverage": {
+    "NAME": "生命杠杆",
+    "DESCRIPTION": "获得已损生命值的格挡。"
+  },
+  "theBalance:InfiniteOverdraft": {
+    "NAME": "无限透支",
+    "DESCRIPTION": "消耗 。 NL 本回合费用为 0 。 NL 下回合跳过。"
+  },
+  "theBalance:AssetReorganization": {
+    "NAME": "资产重组",
+    "DESCRIPTION": "将弃牌堆和抽牌堆互换。"
+  },
+  "theBalance:ScaleTilt": {
+    "NAME": "天平倾斜",
+    "DESCRIPTION": "敌人获得 !M! 点力量。 NL 每当敌人获得力量，你获得等量的力量。"
+  },
+  "theBalance:RiskActuary": {
+    "NAME": "风险精算",
+    "DESCRIPTION": "每当你获得一个负面状态，获得 !M! 点格挡。"
+  },
+  "theBalance:HighInterestStorage": {
+    "NAME": "高息存储",
+    "DESCRIPTION": "结余能量转为下回合的 [E] 和 !M! 点战斗津贴。"
+  },
+  "theBalance:EnergyRecycling": {
+    "NAME": "能量回收",
+    "DESCRIPTION": "每当打出 消耗 牌，随机将一张 对等打击 加入手牌，0 费。"
+  },
+  "theBalance:BadDebtDeduction": {
+    "NAME": "坏账抵扣",
+    "DESCRIPTION": "每当你抽到 状态/诅咒牌 ，抽 !M! 张牌。"
+  },
+  "theBalance:SymmetricalAesthetics": {
+    "NAME": "对称美学",
+    "DESCRIPTION": "你与敌人同步获得所有 debuff 。"
+  },
+  "theBalance:HedgeFund": {
+    "NAME": "对冲基金",
+    "DESCRIPTION": "固有 。 NL 若本回合失去了生命，下回合获得 [E] 。"
+  },
+  "theBalance:StableManagement": {
+    "NAME": "稳健经营",
+    "DESCRIPTION": "不再获得力量。 NL 每回合开始获得 !M! 点敏捷。"
+  },
+  "theBalance:CompoundInterest": {
+    "NAME": "复利加持",
+    "DESCRIPTION": "每 150 金币在回合始提供 1 力量。 NL 每有 1 力，结束扣 !M! 金币。"
+  },
+  "theBalance:MacroRegulation": {
+    "NAME": "宏观调控",
+    "DESCRIPTION": "固有 。 NL 你的力量和敏捷永远取两者的平均值。"
+  },
+  "theBalance:CapitalAccumulation": {
+    "NAME": "资本积累",
+    "DESCRIPTION": "战后额外获 !M! 金币。 NL 每有 100 金币，卡牌负面数值 +1 。"
+  },
+  "theBalance:MirrorBarrier": {
+    "NAME": "镜像结界",
+    "DESCRIPTION": "受伤时敌人受到等量伤害。"
+  },
+  "theBalance:BurnBoats": {
+    "NAME": "破釜沉舟",
+    "DESCRIPTION": "无法格挡。 NL 伤害提升 !M! %。"
+  },
+  "theBalance:DexToStrConvert": {
+    "NAME": "暴力转化",
+    "DESCRIPTION": "消耗 。消耗所有 !M! 点 *敏捷 。 NL 每消耗 1 点，获得 !M! 点 *力量 。"
+  }
+}
