@@ -1,3 +1,4 @@
+theBalance\characters\Zako$Enums.class
 theBalance\powers\CountercurrentPower.class
 theBalance\relics\TatteredWallet.class
 theBalance\cards\Liquidation.class
@@ -78,7 +79,6 @@ theBalance\patches\relics\BottledPlaceholderField$MakeStatEquivalentCopy.class
 theBalance\powers\CombatGoldPower.class
 theBalance\events\IdentityCrisisEvent.class
 theBalance\powers\CountercurrentPower$ConvertedBuffData.class
-theBalance\characters\TheDefault.class
 theBalance\cards\SpreadDamage.class
 theBalance\powers\HedgePower.class
 theBalance\cards\Lending.class
@@ -153,6 +153,7 @@ theBalance\powers\ResilientPower.class
 theBalance\cards\MagnifyingLens.class
 theBalance\cards\BadDebtRecovery.class
 theBalance\cards\MacroRegulation.class
+theBalance\characters\Zako.class
 theBalance\cards\ParityStrike.class
 theBalance\cards\InfiniteOverdraft.class
 theBalance\skins\SkinManager.class
@@ -176,7 +177,6 @@ theBalance\cards\EquivalentExchange.class
 theBalance\powers\LiquidAssetsPower.class
 theBalance\powers\TransferPower.class
 theBalance\powers\EmpathyDollPower.class
-theBalance\characters\TheDefault$Enums.class
 theBalance\cards\BalancePivot.class
 theBalance\cards\RiskMortgage.class
 theBalance\relics\CheatingProof.class
