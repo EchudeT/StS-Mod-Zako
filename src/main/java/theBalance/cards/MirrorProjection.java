@@ -44,7 +44,8 @@ public class MirrorProjection extends AbstractDynamicCard {
                 moveInfo.setAccessible(true);
                 EnemyMoveInfo info = (EnemyMoveInfo) moveInfo.get(m);
                 if (info != null) {
-                    enemyDamage = info.baseDamage * info.multiplier;
+                    int multi = Math.max(1, info.multiplier);
+                    enemyDamage = info.baseDamage * multi;
                 }
             } catch (Exception e) {
                 // 如果无法获取，使用默认值

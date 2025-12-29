@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theBalance.BalanceMod;
@@ -39,6 +40,8 @@ public class CapitalAccumulationPower extends AbstractPower implements Cloneable
     @Override
     public void onVictory() {
         flash();
+        int hasGold = AbstractDungeon.player.gold;
+        int gainGold = Math.max(0, amount - hasGold / 100 * 5);
         com.megacrit.cardcrawl.dungeons.AbstractDungeon.player.gainGold(amount);
     }
 

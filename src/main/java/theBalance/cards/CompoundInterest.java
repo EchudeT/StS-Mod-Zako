@@ -22,9 +22,10 @@ public class CompoundInterest extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
-    private static final int COST = 2;
-    private static final int MAGIC = 20;
-    private static final int UPGRADE_REDUCE_COST = 10;
+    private static final int COST = 1; // 降为1费，更灵活
+    private static final int MAGIC = 50; // 转化率 50%
+    private static final int UPGRADE_MAGIC = 30; // 升级后 80%
+
 
     public CompoundInterest() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -34,14 +35,15 @@ public class CompoundInterest extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
-            new ApplyPowerAction(p, p, new theBalance.powers.CompoundInterestPower(p, magicNumber), magicNumber));
+                new ApplyPowerAction(p, p,
+                        new theBalance.powers.CompoundInterestPower(p, magicNumber), magicNumber));
     }
 
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(-UPGRADE_REDUCE_COST);
+            upgradeMagicNumber(UPGRADE_MAGIC);
             initializeDescription();
         }
     }

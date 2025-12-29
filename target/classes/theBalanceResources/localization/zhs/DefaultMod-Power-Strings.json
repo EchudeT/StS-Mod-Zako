@@ -45,7 +45,10 @@
   },
   "theBalance:CompoundInterestPower": {
     "NAME": "复利加持",
-    "DESCRIPTIONS": ["每 150 金币在回合始提供 1 力量。每有 1 力，回合结束扣 #b", " 金币。"]
+    "DESCRIPTIONS": [
+      "每当你失去金币或消耗 #y战斗津贴 时，获得等同于消耗量 #b",
+      "% 的 #y格挡 。"
+    ]
   },
   "theBalance:CapitalAccumulationPower": {
     "NAME": "资本积累",
@@ -53,7 +56,7 @@
   },
   "theBalance:CombatGoldPower": {
     "NAME": "战斗津贴",
-    "DESCRIPTIONS": ["拥有 #b", " 点战斗津贴（战斗结束后消失）。"]
+    "DESCRIPTIONS": ["拥有 #b", " 点战斗津贴，消耗金币的卡牌优先使用战斗津贴。"]
   },
   "theBalance:CeasefirePower": {
     "NAME": "全面停火",
@@ -199,7 +202,7 @@
     "DESCRIPTIONS": ["每回合中，第一次力量与敏捷相等时（不为0），获得 [E] 。"]
   },
   "theBalance:AceAgentPower": {
-    "NAME": "王牌代理人",
+    "NAME": "杂鱼代理人",
     "DESCRIPTIONS": ["每当敌人获得格挡，你同步获得等量格挡（单次上限 15 ）。"]
   }
 }

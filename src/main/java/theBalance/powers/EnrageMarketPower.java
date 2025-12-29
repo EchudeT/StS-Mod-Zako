@@ -4,10 +4,13 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.AngerPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
@@ -47,18 +50,34 @@ public class EnrageMarketPower extends AbstractPower implements CloneablePowerIn
     }
 
     @Override
-    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        // 检查是否是敌人通过激怒获得力量
-        if (power.ID.equals(StrengthPower.POWER_ID) &&
-            target != owner &&
-            target.hasPower(AngerPower.POWER_ID) &&
-            power.amount > 0) {
+    public void onUseCard(AbstractCard card, UseCardAction action) {
+        // 1. 激怒只对技能牌生效
+        if (card.type == AbstractCard.CardType.SKILL) {
 
-            flash();
-            // 玩家获得相同数量的力量乘以激怒市场的倍率
-            int strengthGain = this.amount * power.amount;
-            AbstractDungeon.actionManager.addToTop(
-                new ApplyPowerAction(owner, owner, new StrengthPower(owner, strengthGain), strengthGain));
+            int totalStrengthToGain = 0;
+
+            // 2. 遍历所有活着的敌人
+            if (AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().monsters != null) {
+                for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
+                    // 3. 检查敌人是否有 [激怒] 状态
+                    if (!m.isDeadOrEscaped() && m.hasPower(AngerPower.POWER_ID)) {
+
+                        // 逻辑：每有一个敌人触发激怒，玩家就获得 [this.amount] 点力量
+                        totalStrengthToGain += this.amount;
+                    }
+                }
+            }
+
+            // 4. 如果有收益，施加力量
+            if (totalStrengthToGain > 0) {
+                this.flash(); // 闪烁激怒市场图标
+                this.addToBot(new ApplyPowerAction(
+                        this.owner,
+                        this.owner,
+                        new StrengthPower(this.owner, totalStrengthToGain),
+                        totalStrengthToGain
+                ));
+            }
         }
     }
 

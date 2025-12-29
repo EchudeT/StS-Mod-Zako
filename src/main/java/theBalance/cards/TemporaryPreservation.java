@@ -13,7 +13,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class TemporaryPreservation extends AbstractDynamicCard {
 
     // 临时保全 - Temporary Preservation
-    // 获得 8(11) 点格挡。下回合敌人获得 1 点力量。
+    // 获得 15(20) 点格挡。下回合敌人获得 1 点力量。
 
     public static final String ID = BalanceMod.makeID(TemporaryPreservation.class.getSimpleName());
     public static final String IMG = makeCardPath("TemporaryPreservation.png");
@@ -24,8 +24,8 @@ public class TemporaryPreservation extends AbstractDynamicCard {
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
-    private static final int BLOCK = 8;
-    private static final int UPGRADE_PLUS_BLOCK = 3;
+    private static final int BLOCK = 15;
+    private static final int UPGRADE_PLUS_BLOCK = 20;
     private static final int MAGIC = 1;  // 敌人获得的力量
 
     public TemporaryPreservation() {

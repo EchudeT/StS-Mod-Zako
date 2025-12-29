@@ -31,9 +31,9 @@ public class InformationAsymmetry extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, magicNumber));
-        // 下回合少抽2张
+        // 下回合少抽1张
         AbstractDungeon.actionManager.addToBottom(
-            new ApplyPowerAction(p, p, new theBalance.powers.InformationAsymmetryPower(p, 2), 2));
+            new ApplyPowerAction(p, p, new theBalance.powers.InformationAsymmetryPower(p, 1), 1));
     }
 
     @Override

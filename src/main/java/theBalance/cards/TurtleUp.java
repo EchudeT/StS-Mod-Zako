@@ -14,7 +14,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class TurtleUp extends AbstractDynamicCard {
 
     // 龟缩 - Turtle Up
-    // 获得 3(5) 敏捷，-5 力量。
+    // 获得 3(5) 敏捷，-4 力量。
 
     public static final String ID = BalanceMod.makeID(TurtleUp.class.getSimpleName());
     public static final String IMG = makeCardPath("TurtleUp.png");
@@ -27,7 +27,7 @@ public class TurtleUp extends AbstractDynamicCard {
     private static final int COST = 1;
     private static final int MAGIC = 3;  // 敏捷
     private static final int UPGRADE_PLUS_MAGIC = 2;
-    private static final int MAGIC2 = -5;  // 力量
+    private static final int MAGIC2 = 4;  // 失去力量
 
     public TurtleUp() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -42,7 +42,7 @@ public class TurtleUp extends AbstractDynamicCard {
             new ApplyPowerAction(p, p, new DexterityPower(p, magicNumber), magicNumber));
 
         AbstractDungeon.actionManager.addToBottom(
-            new ApplyPowerAction(p, p, new StrengthPower(p, defaultSecondMagicNumber), defaultSecondMagicNumber));
+            new ApplyPowerAction(p, p, new StrengthPower(p, -defaultSecondMagicNumber), -defaultSecondMagicNumber));
     }
 
     @Override

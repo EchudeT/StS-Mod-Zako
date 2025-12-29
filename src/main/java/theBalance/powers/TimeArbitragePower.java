@@ -35,7 +35,7 @@ public class TimeArbitragePower extends AbstractPower implements CloneablePowerI
 
     @Override
     public void atEndOfTurn(boolean isPlayer) {
-        if (isPlayer && this.amount > 2) {
+        if (isPlayer && this.amount >= 2) {
             // 优势阶段：在玩家结束回合时，强制设定房间跳过怪物回合
             this.flash();
             AbstractDungeon.getCurrRoom().skipMonsterTurn = true;
@@ -45,7 +45,7 @@ public class TimeArbitragePower extends AbstractPower implements CloneablePowerI
     @Override
     public void onEnergyRecharge() {
         // 当能量恢复时（每回合开始时），如果是惩罚阶段
-        if (this.amount <= 2) {
+        if (this.amount <= 1) {
             this.flash();
             // 将玩家能量强制设为 0
             AbstractDungeon.player.energy.use(999);

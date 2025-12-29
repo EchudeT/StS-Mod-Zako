@@ -15,7 +15,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class Kickback extends AbstractDynamicCard {
 
     // 回扣 - Kickback
-    // 造成 8(11) 点伤害。获得 5(8) 点战斗津贴（不可带出战斗）。
+    // 造成 8(11) 点伤害。获得 5(8) 点战斗津贴。
 
     public static final String ID = BalanceMod.makeID(Kickback.class.getSimpleName());
     public static final String IMG = makeCardPath("Kickback.png");

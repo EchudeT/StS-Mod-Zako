@@ -29,10 +29,6 @@ import theBalance.cards.*;
 import theBalance.characters.Zako;
 import theBalance.events.IdentityCrisisEvent;
 import theBalance.potions.PlaceholderPotion;
-import theBalance.relics.BottledPlaceholderRelic;
-import theBalance.relics.DefaultClickableRelic;
-import theBalance.relics.PlaceholderRelic;
-import theBalance.relics.PlaceholderRelic2;
 import theBalance.util.IDCheckDontTouchPls;
 import theBalance.util.TextureLoader;
 import theBalance.variables.DefaultCustomVariable;
@@ -151,6 +147,11 @@ public class BalanceMod implements
     public static final String THE_DEFAULT_SKELETON_ATLAS = "theBalanceResources/images/char/defaultCharacter/skeleton.atlas";
     public static final String THE_DEFAULT_SKELETON_JSON = "theBalanceResources/images/char/defaultCharacter/skeleton.json";
 
+    static {
+        System.out.println("==================================================");
+        System.out.println(">>> BalanceMod 已被 JVM 加载 <<<");
+        System.out.println("==================================================");
+    }
     // =============== MAKE IMAGE PATHS =================
 
     public static String makeCardPath(String resourcePath) {
@@ -258,8 +259,8 @@ public class BalanceMod implements
         CharacterSkin defaultSkin = new CharacterSkin(
                 0,
             "default",
-            "默认皮肤",
-            "平衡者的默认外观",
+            "杂鱼酱",
+            "雌小鬼的默认外观",
             THE_DEFAULT_SHOULDER_1,
             THE_DEFAULT_SHOULDER_2,
             THE_DEFAULT_CORPSE,
@@ -274,8 +275,8 @@ public class BalanceMod implements
         CharacterSkin alternateSkin1 = new CharacterSkin(
                 1,
             "alternate1",
-            "替代皮肤1",
-            "平衡者的第一个替代外观",
+            "黑化杂鱼酱",
+            "雌小鬼黑化了",
             THE_DEFAULT_SHOULDER_1,
             THE_DEFAULT_SHOULDER_2,
             THE_DEFAULT_CORPSE,
@@ -287,20 +288,20 @@ public class BalanceMod implements
         SkinManager.registerSkin(alternateSkin1, false);
 
         // Register alternate skin 2 - 用户可以填写自己的资源路径
-        CharacterSkin alternateSkin2 = new CharacterSkin(
-                2,
-            "alternate2",
-            "替代皮肤2",
-            "平衡者的第二个替代外观",
-            THE_DEFAULT_SHOULDER_1,
-            THE_DEFAULT_SHOULDER_2,
-            THE_DEFAULT_CORPSE,
-            THE_DEFAULT_SKELETON_ATLAS,
-            THE_DEFAULT_SKELETON_JSON,
-            THE_DEFAULT_BUTTON,
-            THE_DEFAULT_PORTRAIT3
-        );
-        SkinManager.registerSkin(alternateSkin2, false);
+//        CharacterSkin alternateSkin2 = new CharacterSkin(
+//                2,
+//            "alternate2",
+//            "替代皮肤2",
+//            "平衡者的第二个替代外观",
+//            THE_DEFAULT_SHOULDER_1,
+//            THE_DEFAULT_SHOULDER_2,
+//            THE_DEFAULT_CORPSE,
+//            THE_DEFAULT_SKELETON_ATLAS,
+//            THE_DEFAULT_SKELETON_JSON,
+//            THE_DEFAULT_BUTTON,
+//            THE_DEFAULT_PORTRAIT3
+//        );
+//        SkinManager.registerSkin(alternateSkin2, false);
 
         logger.info("Registered " + SkinManager.getSkinCount() + " skins");
     }
@@ -476,10 +477,6 @@ public class BalanceMod implements
         // Of note is that the bard mod uses it's own custom relic class (not dissimilar to our AbstractDefaultCard class for cards) that adds the 'color' field,
         // in order to automatically differentiate which pool to add the relic too.
 
-        // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
-        BaseMod.addRelicToCustomPool(new PlaceholderRelic(), Zako.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), Zako.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), Zako.Enums.COLOR_GRAY);
 
         // Add new character-specific relics
         // Financial/Allowance Stream
@@ -509,13 +506,10 @@ public class BalanceMod implements
         BaseMod.addRelicToCustomPool(new theBalance.relics.EmpathyDoll(), Zako.Enums.COLOR_GRAY);
         BaseMod.addRelicToCustomPool(new theBalance.relics.AceAgent(), Zako.Enums.COLOR_GRAY);
 
-        // This adds a relic to the Shared pool. Every character can find this relic.
-        BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
-
         // Mark relics as seen - makes it visible in the compendium immediately
         // If you don't have this it won't be visible in the compendium until you see them in game
         // (the others are all starters so they're marked as seen in the character file)
-        UnlockTracker.markRelicAsSeen(BottledPlaceholderRelic.ID);
+//        UnlockTracker.markRelicAsSeen(BottledPlaceholderRelic.ID);
         logger.info("Done adding relics!");
     }
     

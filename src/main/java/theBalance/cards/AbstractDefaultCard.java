@@ -19,7 +19,7 @@ public abstract class AbstractDefaultCard extends CustomCard {
     public int baseDefaultSecondMagicNumber;
 
     private boolean needsSecondMagicNumberUpdate = false; // 标记是否需要更新第二魔法数字
-    private String originalRawDescription = null; // 保存原始描述
+    protected String originalRawDescription = null; // 保存原始描述
 
     public AbstractDefaultCard(final String id,
                                final String name,

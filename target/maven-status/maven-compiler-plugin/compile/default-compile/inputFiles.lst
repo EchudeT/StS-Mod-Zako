@@ -34,7 +34,6 @@ E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBala
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\cards\MagnifyingLens.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\cards\InsuranceContract.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\cards\ZeroSumGame.java
-E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\patches\ApplyPowerPatch.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\cards\BadDebtRecovery.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\cards\DexToStrConvert.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\powers\CalibratedWeightPower.java
@@ -68,6 +67,7 @@ E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBala
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\cards\BalancePivot.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\cards\BankruptcyRush.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\cards\MirrorShield.java
+E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\patches\InfiniteExpansionPatch.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\powers\LendingPower.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\powers\LiquidAssetsPower.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\powers\EmpathyDollPower.java
@@ -75,6 +75,7 @@ E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBala
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\powers\DamageTakenLastTurnPower.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\relics\CheapCopier.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\BalanceMod.java
+E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\patches\testPatch.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\cards\HedgeFund.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\util\TextureLoader.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\cards\GoldShatter.java
@@ -102,6 +103,7 @@ E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBala
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\cards\HighInterestStorage.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\relics\DoubleSidedCoin.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\relics\HandMirror.java
+E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\patches\InfiniteExpansionIntentPatch.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\powers\EnrageMarketPower.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\powers\InfiniteOverdraftPower.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\cards\LeverageStrike.java
@@ -130,7 +132,6 @@ E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBala
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\relics\EmpathyDoll.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\relics\DoodlePaper.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\cards\Lending.java
-E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\relics\BottledPlaceholderRelic.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\variables\DefaultCustomVariable.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\cards\RiskActuary.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\actions\ChooseFromDrawPileAction.java
@@ -138,10 +139,9 @@ E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBala
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\cards\Frenzy.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\powers\StableManagementPower.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\powers\EmpoweredPower.java
-E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\relics\PlaceholderRelic.java
+E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\patches\ScaleTiltPatch.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\cards\AbsoluteNeutrality.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\powers\TransferPower.java
-E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\relics\DefaultClickableRelic.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\cards\QuickFinancing.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\cards\SuperpositionState.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\relics\TauntMask.java
@@ -173,6 +173,6 @@ E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBala
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\cards\BalancingAct.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\powers\AceAgentPower.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\powers\ObservationNotesPower.java
-E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\relics\PlaceholderRelic2.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\cards\CapitalBlackHole.java
 E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\cards\InventoryClearance.java
+E:\Code\SlayTheSpire\StS-DefaultModBase-master\StS-DefaultModBase-master\theBalance\src\main\java\theBalance\patches\SymmetricalAestheticsPatch.java

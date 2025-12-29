@@ -14,7 +14,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class Frenzy extends AbstractDynamicCard {
 
     // 狂热 - Frenzy
-    // 获得 3(5) 力量，-5 敏捷。
+    // 获得 3(5) 力量，失去 4 敏捷。
 
     public static final String ID = BalanceMod.makeID(Frenzy.class.getSimpleName());
     public static final String IMG = makeCardPath("Frenzy.png");
@@ -27,7 +27,7 @@ public class Frenzy extends AbstractDynamicCard {
     private static final int COST = 2;
     private static final int MAGIC = 3;  // 力量
     private static final int UPGRADE_PLUS_MAGIC = 2;
-    private static final int MAGIC2 = -5;  // 敏捷
+    private static final int MAGIC2 = 4;  // 失去敏捷
 
     public Frenzy() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -42,7 +42,7 @@ public class Frenzy extends AbstractDynamicCard {
             new ApplyPowerAction(p, p, new StrengthPower(p, magicNumber), magicNumber));
 
         AbstractDungeon.actionManager.addToBottom(
-            new ApplyPowerAction(p, p, new DexterityPower(p, defaultSecondMagicNumber), defaultSecondMagicNumber));
+            new ApplyPowerAction(p, p, new DexterityPower(p, -defaultSecondMagicNumber), -defaultSecondMagicNumber));
     }
 
     @Override

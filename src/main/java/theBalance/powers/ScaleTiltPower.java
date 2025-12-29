@@ -47,16 +47,6 @@ public class ScaleTiltPower extends AbstractPower implements CloneablePowerInter
     }
 
     @Override
-    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        // 当敌人获得力量时，玩家也获得等量力量
-        if (power.ID.equals(StrengthPower.POWER_ID) && target != owner && target instanceof AbstractMonster && power.amount > 0) {
-            flash();
-            AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(owner, owner, new StrengthPower(owner, power.amount), power.amount));
-        }
-    }
-
-    @Override
     public AbstractPower makeCopy() {
         return new ScaleTiltPower(owner);
     }

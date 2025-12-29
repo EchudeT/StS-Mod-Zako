@@ -12,7 +12,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class MirrorBarrier extends AbstractDynamicCard {
 
     // 镜像结界 - Mirror Barrier
-    // 受伤时敌人受到等量伤害。 (升级后：1费)
+    // 受伤时敌人受到双倍伤害。 (升级后：1费)
 
     public static final String ID = BalanceMod.makeID(MirrorBarrier.class.getSimpleName());
     public static final String IMG = makeCardPath("MirrorBarrier.png");

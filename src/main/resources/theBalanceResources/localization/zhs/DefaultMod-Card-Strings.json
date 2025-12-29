@@ -170,11 +170,11 @@
   },
   "theBalance:Frenzy": {
     "NAME": "嚣张气焰",
-    "DESCRIPTION": "获得 !M! 力量， !theBalance:SM! 敏捷。"
+    "DESCRIPTION": "获得 !M! 力量， 失去 !theBalance:SM! 敏捷。"
   },
   "theBalance:TurtleUp": {
     "NAME": "抱头蹲防",
-    "DESCRIPTION": "获得 !M! 敏捷， !theBalance:SM! 力量。"
+    "DESCRIPTION": "获得 !M! 敏捷， 失去 !theBalance:SM! 力量。"
   },
   "theBalance:Fluctuation": {
     "NAME": "情绪过热",
@@ -194,7 +194,7 @@
   },
   "theBalance:RiskHedge": {
     "NAME": "大叔打款",
-    "DESCRIPTION": "消耗金币。 NL 每 !M! 金币获 !theBalance:SM! 层 多层护甲 。赛后不返还。"
+    "DESCRIPTION": "消耗 !M! X金币。 NL 每 !M! 金币获 !theBalance:SM! 层 多层护甲 。赛后不返还。"
   },
   "theBalance:ResonanceShield": {
     "NAME": "安慰奖",
@@ -210,7 +210,7 @@
   },
   "theBalance:InformationAsymmetry": {
     "NAME": "快点看我！",
-    "DESCRIPTION": "抽 !M! 张牌。 NL 下回合少抽 2 张。"
+    "DESCRIPTION": "抽 !M! 张牌。 NL 下回合少抽 1 张。"
   },
   "theBalance:Liquidation": {
     "NAME": "翻旧账",
@@ -254,11 +254,11 @@
   },
   "theBalance:SuperpositionState": {
     "NAME": "连续残影",
-    "DESCRIPTION": "获得 0 点格挡 !M! 次。"
+    "DESCRIPTION": "获得 1 点格挡 !M! 次。"
   },
   "theBalance:Lending": {
     "NAME": "投资大叔",
-    "DESCRIPTION": "虚无 。 -30 金币。战胜后获 !theBalance:SM! 金币。 NL 全体敌人获得 3 力量。"
+    "DESCRIPTION": "虚无 。 失去30 金币。战胜后获 !theBalance:SM! 金币。 NL 全体敌人获得 3 力量。"
   },
   "theBalance:MirrorSoul": {
     "NAME": "我就学你",
@@ -301,7 +301,7 @@
     "DESCRIPTION": "每当你抽到 状态/诅咒牌 ，抽 !M! 张牌。"
   },
   "theBalance:SymmetricalAesthetics": {
-    "NAME": "陪我倒霉",
+    "NAME": "一起倒霉",
     "DESCRIPTION": "你与敌人同步获得所有 debuff 。"
   },
   "theBalance:HedgeFund": {
@@ -310,11 +310,11 @@
   },
   "theBalance:StableManagement": {
     "NAME": "乖乖女模式",
-    "DESCRIPTION": "不再获得力量。 NL 每回合开始获得 !M! 点敏捷。"
+    "DESCRIPTION": "每当获得力量，失去获得的力量。 NL 每回合开始获得 !M! 点敏捷。"
   },
   "theBalance:CompoundInterest": {
     "NAME": "金钱诱惑",
-    "DESCRIPTION": "每 150 金币在回合始提供 1 力量。 NL 每有 1 力，结束扣 !M! 金币。"
+    "DESCRIPTION": "每当你失去金币时（消费或被盗），获得等同于失去量 !M! % 的 #y格挡 。"
   },
   "theBalance:MacroRegulation": {
     "NAME": "全听我的",
@@ -322,11 +322,11 @@
   },
   "theBalance:CapitalAccumulation": {
     "NAME": "拜金少女",
-    "DESCRIPTION": "战后额外获 !M! 金币。 NL 每有 100 金币，卡牌负面数值 +1 。"
+    "DESCRIPTION": "战后额外获 !M! 金币。 NL 每有 100 金币，少获得 5 金币。"
   },
   "theBalance:MirrorBarrier": {
     "NAME": "反弹反弹！",
-    "DESCRIPTION": "受伤时敌人受到等量伤害。"
+    "DESCRIPTION": "受伤时敌人受到双倍伤害。"
   },
   "theBalance:BurnBoats": {
     "NAME": "彻底学坏",

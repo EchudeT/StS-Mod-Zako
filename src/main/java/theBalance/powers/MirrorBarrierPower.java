@@ -44,7 +44,7 @@ public class MirrorBarrierPower extends AbstractPower implements CloneablePowerI
         if (damageAmount > 0 && info.type == DamageInfo.DamageType.NORMAL && info.owner != null && info.owner != this.owner) {
             flash();
             AbstractDungeon.actionManager.addToTop(
-                new DamageAction(info.owner, new DamageInfo(this.owner, damageAmount, DamageInfo.DamageType.THORNS),
+                new DamageAction(info.owner, new DamageInfo(this.owner, damageAmount * 2, DamageInfo.DamageType.THORNS),
                     com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect.FIRE));
         }
         return damageAmount;

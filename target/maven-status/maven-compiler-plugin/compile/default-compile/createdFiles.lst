@@ -37,6 +37,7 @@ theBalance\skins\CharacterSkin.class
 theBalance\cards\ImbalancedBooks.class
 theBalance\cards\AbsoluteNeutrality.class
 theBalance\relics\DoodlePaper.class
+theBalance\patches\testPatch.class
 theBalance\powers\NetWorthTrackingPower.class
 theBalance\powers\DamageTakenLastTurnPower.class
 theBalance\powers\CalibratedWeightPower.class
@@ -44,7 +45,6 @@ theBalance\cards\CardTemplate.class
 theBalance\patches\DamageTrackerPatch$PlayerDamageTracker.class
 theBalance\cards\Transfer.class
 theBalance\patches\DamageTrackerPatch.class
-theBalance\relics\PlaceholderRelic.class
 theBalance\cards\BasicStrike.class
 theBalance\cards\AbstractDynamicCard.class
 theBalance\powers\HighInterestStoragePower.class
@@ -58,13 +58,15 @@ theBalance\cards\LifeLeverage.class
 theBalance\cards\HighInterestLoan.class
 theBalance\relics\AutoCalculator.class
 theBalance\patches\DefaultInsertPatch$Locator.class
+theBalance\cards\BadDebtRecovery$PickFromDiscardAction.class
 theBalance\powers\BalancePivotPower.class
 theBalance\powers\MacroRegulationPower.class
 theBalance\powers\BurnBoatsPower.class
-theBalance\relics\DefaultClickableRelic.class
 theBalance\cards\EnrageMarket.class
+theBalance\patches\InfiniteExpansionPatch.class
 theBalance\relics\EmpathyDoll.class
 theBalance\relics\BandAid.class
+theBalance\patches\InfiniteExpansionIntentPatch.class
 theBalance\powers\InfiniteOverdraftPower.class
 theBalance\powers\EmpoweredPower.class
 theBalance\cards\CapitalBlackHole.class
@@ -91,7 +93,6 @@ theBalance\cards\AssetReorganization.class
 theBalance\cards\SymmetricalAesthetics.class
 theBalance\cards\Exemption.class
 theBalance\cards\LastStrike.class
-theBalance\relics\PlaceholderRelic2.class
 theBalance\powers\CeasefirePower.class
 theBalance\powers\TemporaryPreservationDelayedPower.class
 theBalance\cards\MoneyOffensive.class
@@ -107,6 +108,7 @@ theBalance\relics\TauntMask.class
 theBalance\powers\LendingPower.class
 theBalance\powers\InfiniteExpansionPower.class
 theBalance\cards\TemporaryPreservation.class
+theBalance\patches\SymmetricalAestheticsPatch$SymmetricalApplyPowerAction.class
 theBalance\cards\AssetSwap.class
 theBalance\cards\ChainReaction.class
 theBalance\cards\Blade.class
@@ -125,6 +127,7 @@ theBalance\relics\CalibratedWeight.class
 theBalance\relics\CalibratedScale.class
 theBalance\powers\SemipermeablePower.class
 theBalance\cards\TurtleUp.class
+theBalance\patches\SymmetricalAestheticsPatch.class
 theBalance\actions\ChooseFromDrawPileAction.class
 theBalance\relics\DoubleSidedCoin.class
 theBalance\cards\InsuranceContract.class
@@ -144,7 +147,6 @@ theBalance\cards\RiskActuary.class
 theBalance\powers\ScaleTiltPower.class
 theBalance\orbs\DefaultOrb.class
 theBalance\powers\ZeroSumGamePower.class
-theBalance\relics\BottledPlaceholderRelic.class
 theBalance\cards\Quagmire.class
 theBalance\powers\DamageTakenThisTurnPower.class
 theBalance\cards\InformationAsymmetry.class
@@ -168,8 +170,8 @@ theBalance\relics\BlackCard.class
 theBalance\cards\HighInterestStorage.class
 theBalance\cards\MirrorShield.class
 theBalance\cards\Collection.class
-theBalance\patches\ApplyPowerPatch.class
 theBalance\powers\CapitalAccumulationPower.class
+theBalance\patches\ScaleTiltPatch.class
 theBalance\powers\ExposedPower.class
 theBalance\powers\CalibratedScalePower.class
 theBalance\powers\ExemptionPower.class

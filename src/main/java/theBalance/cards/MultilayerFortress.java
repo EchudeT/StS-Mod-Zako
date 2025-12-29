@@ -34,7 +34,7 @@ public class MultilayerFortress extends AbstractDynamicCard {
     public MultilayerFortress() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
-        baseDefaultSecondMagicNumber = defaultSecondMagicNumber = MAGIC2;
+        defaultBaseSecondMagicNumber = baseDefaultSecondMagicNumber = defaultSecondMagicNumber = MAGIC2;
         initializeDescription();
     }
 

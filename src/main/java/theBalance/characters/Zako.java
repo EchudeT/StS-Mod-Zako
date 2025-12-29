@@ -20,11 +20,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theBalance.BalanceMod;
 import theBalance.cards.BalancingAct;
+import theBalance.cards.Kickback;
 import theBalance.cards.ParityDefend;
 import theBalance.cards.ParityStrike;
-import theBalance.relics.DefaultClickableRelic;
-import theBalance.relics.PlaceholderRelic;
-import theBalance.relics.PlaceholderRelic2;
+import theBalance.relics.TatteredWallet;
 import theBalance.skins.CharacterSkin;
 import theBalance.skins.SkinManager;
 
@@ -148,6 +147,8 @@ public class Zako extends CustomPlayer {
 
         // =============== /TEXT BUBBLE LOCATION/ =================
 
+        this.masterMaxOrbs = 0;
+
     }
 
     // =============== /CHARACTER CLASS END/ =================
@@ -167,14 +168,15 @@ public class Zako extends CustomPlayer {
 
         logger.info("Begin loading starter Deck Strings");
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 4; i++) {
             retVal.add(ParityStrike.ID);
         }
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 4; i++) {
             retVal.add(ParityDefend.ID);
         }
 
+        retVal.add(Kickback.ID);
         retVal.add(BalancingAct.ID);
 
         return retVal;
@@ -184,15 +186,11 @@ public class Zako extends CustomPlayer {
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
 
-        retVal.add(PlaceholderRelic.ID);
-        retVal.add(PlaceholderRelic2.ID);
-        retVal.add(DefaultClickableRelic.ID);
+        retVal.add(TatteredWallet.ID);
 
         // Mark relics as seen - makes it visible in the compendium immediately
         // If you don't have this it won't be visible in the compendium until you see them in game
-        UnlockTracker.markRelicAsSeen(PlaceholderRelic.ID);
-        UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
-        UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
+        UnlockTracker.markRelicAsSeen(TatteredWallet.ID);
 
         return retVal;
     }

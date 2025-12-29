@@ -30,7 +30,7 @@ public class SuperpositionState extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < magicNumber; i++) {
-            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, 0));
+            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, 1));
         }
     }
 

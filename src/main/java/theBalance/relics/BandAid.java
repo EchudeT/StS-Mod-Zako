@@ -12,13 +12,13 @@ import static theBalance.BalanceMod.makeRelicOutlinePath;
 import static theBalance.BalanceMod.makeRelicPath;
 
 // 创可贴 - Band-Aid
-// 每当你因自己的卡牌效果失去生命时，获得 4 点格挡
+// 每当你因自己的卡牌效果失去生命时，获得 6 点格挡
 public class BandAid extends CustomRelic {
     public static final String ID = BalanceMod.makeID("BandAid");
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
 
-    private static final int BLOCK_AMOUNT = 4;
+    private static final int BLOCK_AMOUNT = 6;
 
     public BandAid() {
         super(ID, IMG, OUTLINE, RelicTier.COMMON, LandingSound.FLAT);

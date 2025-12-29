@@ -5,8 +5,8 @@
     <!--The author name(s) as they appear in MTS and any other comments are in your ModTheSpire.json-->
     <groupId>defaultmod</groupId>
     <artifactId>DefaultMod</artifactId> <!--Keep a note of this one: this is the ID used in the "auto add cards" method-->
-    <name>Default Mod</name>
-    <version>0.0.1</version>
+    <name>狡诈的杂鱼</name>
+    <version>0.6.1</version>
     <description>GuGuGu. 还在路上.</description>
 
     <properties>
