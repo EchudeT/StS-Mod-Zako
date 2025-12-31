@@ -20,7 +20,6 @@ public class ScaleTiltPatch {
 
     @SpirePrefixPatch
     public static void Prefix(ApplyPowerAction __instance) {
-        // 1. 仅在动作开始时检测一次 (性能优化)
         float duration = ReflectionHacks.getPrivate(__instance, AbstractGameAction.class, "duration");
         float startingDuration = ReflectionHacks.getPrivate(__instance, ApplyPowerAction.class, "startingDuration");
 
@@ -28,18 +27,16 @@ public class ScaleTiltPatch {
             return;
         }
 
-        // 2. 检查玩家是否拥有 [天平倾斜] 能力
         if (AbstractDungeon.player == null || !AbstractDungeon.player.hasPower(ScaleTiltPower.POWER_ID)) {
             return;
         }
 
-        // 3. 获取动作参数
         AbstractCreature target = __instance.target;
         AbstractPower powerToApply = ReflectionHacks.getPrivate(__instance, ApplyPowerAction.class, "powerToApply");
 
         if (target == null || powerToApply == null) return;
 
-        // 4. 核心逻辑判断
+        // 核心逻辑判断
         // 条件A: 目标必须是怪物 (防止玩家获得力量时触发递归，或者误伤队友)
         // 条件B: 施加的能力必须是力量
         // 条件C: 力量数值必须 > 0 (如果是失去力量，我们通常不跟着失去)
@@ -47,14 +44,10 @@ public class ScaleTiltPatch {
                 StrengthPower.POWER_ID.equals(powerToApply.ID) &&
                 powerToApply.amount > 0) {
 
-            // 给玩家施加等量力量
             int amountToGain = powerToApply.amount;
 
-            // 特效：让玩家身上的天平倾斜图标闪烁
             AbstractDungeon.player.getPower(ScaleTiltPower.POWER_ID).flash();
 
-            // 执行施加力量
-            // 注意：这里目标是玩家，所以不会再次触发 target instanceof AbstractMonster 的判断，不会死循环
             AbstractDungeon.actionManager.addToBottom(
                     new ApplyPowerAction(
                             AbstractDungeon.player,

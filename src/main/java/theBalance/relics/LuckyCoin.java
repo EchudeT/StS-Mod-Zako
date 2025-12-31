@@ -14,7 +14,7 @@ import static theBalance.BalanceMod.makeRelicPath;
 // 每次战斗获胜后多获得 10-15 金币
 public class LuckyCoin extends CustomRelic {
     public static final String ID = BalanceMod.makeID("LuckyCoin");
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("LuckyCoin.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
 
     private static final int MIN_GOLD = 10;

@@ -14,18 +14,18 @@ import static theBalance.BalanceMod.makeCardPath;
 public class Blade extends AbstractDynamicCard {
 
     // 利刃 - Blade
-    // 造成 2 点伤害 4(6) 次。
+    // 造成 3 点伤害 4(6) 次。
 
     public static final String ID = BalanceMod.makeID(Blade.class.getSimpleName());
     public static final String IMG = makeCardPath("Blade.png");
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 2;
+    private static final int DAMAGE = 3;
     private static final int MAGIC = 4;  // 攻击次数
     private static final int UPGRADE_PLUS_MAGIC = 2;
 

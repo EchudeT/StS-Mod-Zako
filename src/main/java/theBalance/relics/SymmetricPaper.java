@@ -17,7 +17,7 @@ import static theBalance.BalanceMod.makeRelicPath;
 // 回合开始时，如果你的力量与敏捷相等，获得 6 点格挡
 public class SymmetricPaper extends CustomRelic {
     public static final String ID = BalanceMod.makeID("SymmetricPaper");
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("SymmetricPaper.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
 
     private static final int BLOCK_AMOUNT = 6;

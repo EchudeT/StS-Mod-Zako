@@ -14,7 +14,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class DuskPact extends AbstractDynamicCard {
 
     // 黄昏协定 - Dusk Pact
-    // 双方减 1(2) 点力量。获得 2 层 3(5) 点格挡。
+    // 双方减 1(2) 点力量。获得 2 层 4(6) 点格挡。
 
     public static final String ID = BalanceMod.makeID(DuskPact.class.getSimpleName());
     public static final String IMG = makeCardPath("DuskPact.png");
@@ -27,7 +27,7 @@ public class DuskPact extends AbstractDynamicCard {
     private static final int COST = 1;
     private static final int MAGIC = 1;  // 减少的力量
     private static final int UPGRADE_PLUS_MAGIC = 1;
-    private static final int MAGIC2 = 3;  // 格挡值
+    private static final int MAGIC2 = 4;  // 格挡值
     private static final int UPGRADE_PLUS_BLOCK = 2;
 
     public DuskPact() {

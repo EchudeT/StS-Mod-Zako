@@ -16,7 +16,7 @@ import static theBalance.BalanceMod.makeRelicPath;
 // 每当你洗牌时，获得等同于当前战斗津贴 50% 的格挡
 public class AutoCalculator extends CustomRelic {
     public static final String ID = BalanceMod.makeID("AutoCalculator");
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("AutoCalculator.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
 
     public AutoCalculator() {

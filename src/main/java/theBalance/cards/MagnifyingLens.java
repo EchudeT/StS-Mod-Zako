@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import theBalance.BalanceMod;
 import theBalance.characters.Zako;
+import theBalance.powers.MagnifyingLensDelayedPower;
 
 import static theBalance.BalanceMod.makeCardPath;
 
@@ -20,9 +21,9 @@ public class MagnifyingLens extends AbstractDynamicCard {
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
-    private static final int MAGIC = 4;
-    private static final int UPGRADE_PLUS_MAGIC = 2;
-    private static final int MAGIC2 = 8;
+    private static final int MAGIC = 2;
+    private static final int UPGRADE_PLUS_MAGIC = 1;
+    private static final int MAGIC2 = 5;
 
     public MagnifyingLens() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -38,7 +39,7 @@ public class MagnifyingLens extends AbstractDynamicCard {
 
         if (m != null) {
             AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(m, p, new StrengthPower(m, defaultSecondMagicNumber), defaultSecondMagicNumber));
+                new ApplyPowerAction(m, p, new MagnifyingLensDelayedPower(m, defaultSecondMagicNumber), defaultSecondMagicNumber));
         }
     }
 

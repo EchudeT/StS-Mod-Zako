@@ -12,7 +12,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class StableManagement extends AbstractDynamicCard {
 
     // 稳健经营 - Stable Management
-    // 不再获得力量。每回合开始获得 2(3) 点敏捷。
+    // 不再获得力量。每回合开始获得 1(2) 点敏捷。
 
     public static final String ID = BalanceMod.makeID(StableManagement.class.getSimpleName());
     public static final String IMG = makeCardPath("StableManagement.png");
@@ -23,12 +23,13 @@ public class StableManagement extends AbstractDynamicCard {
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
-    private static final int MAGIC = 2;
+    private static final int MAGIC = 1;
     private static final int UPGRADE_PLUS_MAGIC = 1;
 
     public StableManagement() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
+        this.exhaust = true;
     }
 
     @Override

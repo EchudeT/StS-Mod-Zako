@@ -24,7 +24,7 @@ import static theBalance.BalanceMod.makeRelicPath;
 // 获得 [E]。每进入商店，自动购买最便宜的那张卡（如果不缺钱）。
 public class DoubleSidedCoin extends CustomRelic {
     public static final String ID = BalanceMod.makeID("DoubleSidedCoin");
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("DoubleSidedCoin.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
 
     private boolean shopTriggered = false;
@@ -53,20 +53,18 @@ public class DoubleSidedCoin extends CustomRelic {
     public void update() {
         super.update();
 
-        // 检查：在商店房间 + 尚未触发 + 商店界面已初始化
+        if (!CardCrawlGame.isInARun() || AbstractDungeon.currMapNode == null || AbstractDungeon.getCurrRoom() == null) {
+            return;
+        }
+
         if (AbstractDungeon.getCurrRoom() instanceof ShopRoom && !shopTriggered) {
-
-            // 为了安全起见，稍作延迟确保商店初始化完毕（通常进入房间即初始化）
-            // 这里直接操作，因为ShopRoom的onPlayerEntry会初始化ShopScreen
-
-            forceBuyCheapestCard();
-            shopTriggered = true; // 标记为已触发，防止无限买
+            shopTriggered = forceBuyCheapestCard(); // 标记为已触发，防止无限买
         }
     }
 
-    private void forceBuyCheapestCard() {
+    private boolean forceBuyCheapestCard() {
         ShopScreen shop = AbstractDungeon.shopScreen;
-        if (shop == null) return;
+        if (shop == null) return false;
 
         // 1. 获取商店里的卡牌 (使用反射，因为 cards 列表是 private 的)
         ArrayList<AbstractCard> coloredCards = ReflectionHacks.getPrivate(shop, ShopScreen.class, "coloredCards");
@@ -77,7 +75,7 @@ public class DoubleSidedCoin extends CustomRelic {
         if (coloredCards != null) allShopCards.addAll(coloredCards);
         if (colorlessCards != null) allShopCards.addAll(colorlessCards);
 
-        if (allShopCards.isEmpty()) return;
+        if (allShopCards.isEmpty()) return false;
 
         // 2. 寻找最便宜的卡
         AbstractCard cheapestCard = null;
@@ -137,6 +135,7 @@ public class DoubleSidedCoin extends CustomRelic {
                 ));
             }
         }
+        return true;
     }
 
     @Override

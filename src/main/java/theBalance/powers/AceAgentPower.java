@@ -27,15 +27,19 @@ public class AceAgentPower extends AbstractPower {
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    private static final int MAX_BLOCK_PER_TRIGGER = 15;
+//    private static final int MAX_BLOCK_PER_TRIGGER = 15;
+    private int max_block_per_trigger = 15;
+    private float rate = 0.5F;
 
-    public AceAgentPower(AbstractCreature owner) {
+    public AceAgentPower(AbstractCreature owner, int block, float rate) {
         name = NAME;
         ID = POWER_ID;
         this.owner = owner;
         this.amount = -1;
         type = PowerType.BUFF;
         isTurnBased = false;
+        this.max_block_per_trigger = block;
+        this.rate = rate;
 
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
@@ -47,7 +51,7 @@ public class AceAgentPower extends AbstractPower {
     public void onEnemyGainBlock(AbstractMonster monster, int blockGained) {
         if (blockGained > 0 && AbstractDungeon.player.hasRelic(AceAgent.ID)) {
             AbstractDungeon.player.getRelic(AceAgent.ID).flash();
-            int blockToGain = Math.min(blockGained, MAX_BLOCK_PER_TRIGGER);
+            int blockToGain = Math.min((int)(blockGained * rate), this.max_block_per_trigger);
             AbstractDungeon.actionManager.addToBottom(
                 new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, blockToGain));
             AbstractDungeon.actionManager.addToBottom(

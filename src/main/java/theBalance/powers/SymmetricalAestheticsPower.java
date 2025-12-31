@@ -23,13 +23,13 @@ public class SymmetricalAestheticsPower extends AbstractPower implements Cloneab
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power.png"));
 
-    public SymmetricalAestheticsPower(final AbstractCreature owner) {
+    public SymmetricalAestheticsPower(final AbstractCreature owner, int stack) {
         name = NAME;
         ID = POWER_ID;
         this.owner = owner;
-        this.amount = -1; // -1 表示无层数，单纯标记
+        this.amount = stack; // -1 表示无层数，单纯标记
         type = PowerType.BUFF;
-        isTurnBased = false;
+        isTurnBased = true;
 
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
@@ -44,6 +44,6 @@ public class SymmetricalAestheticsPower extends AbstractPower implements Cloneab
 
     @Override
     public AbstractPower makeCopy() {
-        return new SymmetricalAestheticsPower(owner);
+        return new SymmetricalAestheticsPower(owner, amount);
     }
 }

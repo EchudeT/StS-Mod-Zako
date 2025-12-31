@@ -50,7 +50,7 @@ public class Quagmire extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            this.rawDescription += " NL 抽1张牌。";
+            this.originalRawDescription += " NL 抽1张牌。";
             initializeDescription();
         }
     }

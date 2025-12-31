@@ -26,8 +26,8 @@ public class InsuranceContract extends AbstractDynamicCard {
     private static final int COST = 1;
     private static final int BLOCK = 7;
     private static final int UPGRADE_PLUS_BLOCK = 3;
-    private static final int MAGIC = 10;  // 战斗津贴
-    private static final int UPGRADE_PLUS_MAGIC = 10;
+    private static final int MAGIC = 8;
+    private static final int UPGRADE_PLUS_MAGIC = 4;
 
     public InsuranceContract() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -40,9 +40,8 @@ public class InsuranceContract extends AbstractDynamicCard {
         AbstractDungeon.actionManager.addToBottom(
             new GainBlockAction(p, p, block));
 
-        // TODO: 需要在格挡被打破时触发，当前简化为直接给津贴
         AbstractDungeon.actionManager.addToBottom(
-            new ApplyPowerAction(p, p, new theBalance.powers.CombatGoldPower(p, magicNumber), magicNumber));
+            new ApplyPowerAction(p, p, new theBalance.powers.InsurancePower(p, magicNumber), magicNumber));
     }
 
     @Override

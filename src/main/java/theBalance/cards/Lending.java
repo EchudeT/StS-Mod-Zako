@@ -30,7 +30,7 @@ public class Lending extends AbstractDynamicCard {
     public Lending() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
-        baseDefaultSecondMagicNumber = defaultSecondMagicNumber = MAGIC2;
+        defaultBaseSecondMagicNumber = baseDefaultSecondMagicNumber = defaultSecondMagicNumber = MAGIC2;
         this.isEthereal = true;
         initializeDescription();
     }

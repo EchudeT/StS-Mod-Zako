@@ -38,6 +38,8 @@ public class ScaleTilt extends AbstractDynamicCard {
                 new ApplyPowerAction(m, p, new StrengthPower(m, magicNumber), magicNumber));
         }
         // 每当敌获力量,你获等量
+        theBalance.relics.Semipermeable.trigger(com.megacrit.cardcrawl.powers.StrengthPower.POWER_ID);
+
         AbstractDungeon.actionManager.addToBottom(
             new ApplyPowerAction(p, p, new theBalance.powers.ScaleTiltPower(p), -1));
     }

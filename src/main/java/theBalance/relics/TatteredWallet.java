@@ -13,13 +13,13 @@ import static theBalance.BalanceMod.makeRelicOutlinePath;
 import static theBalance.BalanceMod.makeRelicPath;
 
 // 破烂的钱包 - Tattered Wallet
-// 战斗开始时，获得 15 点战斗津贴
+// 战斗开始时，获得 30 点战斗津贴
 public class TatteredWallet extends CustomRelic {
     public static final String ID = BalanceMod.makeID("TatteredWallet");
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("TatteredWallet.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
 
-    private static final int COMBAT_GOLD_AMOUNT = 15;
+    private static final int COMBAT_GOLD_AMOUNT = 30;
 
     public TatteredWallet() {
         super(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.FLAT);

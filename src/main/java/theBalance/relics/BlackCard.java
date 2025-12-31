@@ -16,7 +16,7 @@ import static theBalance.BalanceMod.makeRelicPath;
 // 替换初始遗物。每回合开始获得 [E]。每打出一张非攻击牌，失去 5 金币（不足则扣 2 血）
 public class BlackCard extends CustomRelic {
     public static final String ID = BalanceMod.makeID("BlackCard");
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("BlackCard.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
 
     private static final int GOLD_COST = 5;

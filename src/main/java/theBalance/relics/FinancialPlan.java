@@ -14,7 +14,7 @@ import static theBalance.BalanceMod.makeRelicPath;
 // 战斗结束时，剩余战斗津贴的 20% 转化为永久金币
 public class FinancialPlan extends CustomRelic {
     public static final String ID = BalanceMod.makeID("FinancialPlan");
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("FinancialPlan.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
 
     private static final float CONVERSION_RATE = 0.2f; // 20%

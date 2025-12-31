@@ -15,6 +15,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
@@ -28,6 +29,7 @@ import org.apache.logging.log4j.Logger;
 import theBalance.cards.*;
 import theBalance.characters.Zako;
 import theBalance.events.IdentityCrisisEvent;
+import theBalance.events.TheForkEvent;
 import theBalance.potions.PlaceholderPotion;
 import theBalance.util.IDCheckDontTouchPls;
 import theBalance.util.TextureLoader;
@@ -102,7 +104,7 @@ public class BalanceMod implements
 
     // Colors (RGB)
     // Character Color
-    public static final Color DEFAULT_GRAY = CardHelper.getColor(64.0f, 70.0f, 70.0f);
+    public static final Color DEFAULT_GRAY = CardHelper.getColor(255.0f, 140.0f, 0.0f);
 
     // Potion Colors in RGB
     public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
@@ -134,7 +136,7 @@ public class BalanceMod implements
     private static final String THE_DEFAULT_PORTRAIT = "theBalanceResources/images/charSelect/CharacterPortraitBG1.png";
     private static final String THE_DEFAULT_PORTRAIT2 = "theBalanceResources/images/charSelect/CharacterPortraitBG2.png";
     private static final String THE_DEFAULT_PORTRAIT3 = "theBalanceResources/images/charSelect/CharacterPortraitBG2.png";
-    public static final String[] THE_DEFAULT_STATIC_CHARACTER = {"theBalanceResources/images/char/main.png", "theBalanceResources/images/char/main2.png", "theBalanceResources/images/char/main3.png"};
+    public static final String[] THE_DEFAULT_STATIC_CHARACTER = {"theBalanceResources/images/char/main1a.png", "theBalanceResources/images/char/main2.png", "theBalanceResources/images/char/main3.png"};
 
     public static final String THE_DEFAULT_SHOULDER_1 = "theBalanceResources/images/char/defaultCharacter/shoulder.png";
     public static final String THE_DEFAULT_SHOULDER_2 = "theBalanceResources/images/char/defaultCharacter/shoulder2.png";
@@ -442,6 +444,15 @@ public class BalanceMod implements
         // Add the event
         BaseMod.addEvent(eventParams);
 
+        AddEventParams forkEventParams = new AddEventParams.Builder(TheForkEvent.ID, TheForkEvent.class)
+                .dungeonID(com.megacrit.cardcrawl.dungeons.Exordium.ID) // 设定为仅在第一层 (Act 1) 出现
+                .playerClass(Zako.Enums.THE_DEFAULT) // ★注意：这里请替换为你Mod中实际的角色枚举，比如 Zako.Enums.THE_DEFAULT
+                .bonusCondition(() -> AbstractDungeon.floorNum <= 7) // (可选) 如果你希望它只在前几层出现，可以加上这个条件
+                .create();
+
+// 注册事件
+        BaseMod.addEvent(forkEventParams);
+
         // =============== /EVENTS/ =================
         logger.info("Done loading badge Image and mod options");
     }
@@ -505,6 +516,11 @@ public class BalanceMod implements
         BaseMod.addRelicToCustomPool(new theBalance.relics.CheapCopier(), Zako.Enums.COLOR_GRAY);
         BaseMod.addRelicToCustomPool(new theBalance.relics.EmpathyDoll(), Zako.Enums.COLOR_GRAY);
         BaseMod.addRelicToCustomPool(new theBalance.relics.AceAgent(), Zako.Enums.COLOR_GRAY);
+
+        // Special
+        BaseMod.addRelicToCustomPool(new theBalance.relics.BlackHeart(), Zako.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new theBalance.relics.BlankCard(), Zako.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new theBalance.relics.SymbioticCrystal(), Zako.Enums.COLOR_GRAY);
 
         // Mark relics as seen - makes it visible in the compendium immediately
         // If you don't have this it won't be visible in the compendium until you see them in game

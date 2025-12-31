@@ -14,7 +14,7 @@ import static theBalance.BalanceMod.makeRelicPath;
 // 每场战斗中，第一张被消耗的"镜像"系列牌改为放入弃牌堆
 public class CheapCopier extends CustomRelic {
     public static final String ID = BalanceMod.makeID("CheapCopier");
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("CheapCopier.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
 
     private boolean usedThisCombat = false;

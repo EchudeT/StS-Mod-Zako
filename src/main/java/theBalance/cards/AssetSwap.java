@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
+import com.megacrit.cardcrawl.powers.WeakPower;
 import theBalance.BalanceMod;
 import theBalance.characters.Zako;
 
@@ -17,7 +18,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class AssetSwap extends AbstractDynamicCard {
 
     // 资产置换 - Asset Swap
-    // 造成 9(12) 点伤害。交换你与敌人的易伤层数。
+    // 造成 9(12) 点伤害。交换你与敌人的易伤和虚弱层数。
 
     public static final String ID = BalanceMod.makeID(AssetSwap.class.getSimpleName());
     public static final String IMG = makeCardPath("AssetSwap.png");
@@ -42,35 +43,24 @@ public class AssetSwap extends AbstractDynamicCard {
             new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
                 AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 
-        // 获取双方的易伤层数
-        int playerVuln = 0;
-        int enemyVuln = 0;
+        // 获取双方数据
+        int pWeak = 0, pVuln = 0, mWeak = 0, mVuln = 0;
+        if (p.hasPower(WeakPower.POWER_ID)) pWeak = p.getPower(WeakPower.POWER_ID).amount;
+        if (p.hasPower(VulnerablePower.POWER_ID)) pVuln = p.getPower(VulnerablePower.POWER_ID).amount;
+        if (m.hasPower(WeakPower.POWER_ID)) mWeak = m.getPower(WeakPower.POWER_ID).amount;
+        if (m.hasPower(VulnerablePower.POWER_ID)) mVuln = m.getPower(VulnerablePower.POWER_ID).amount;
 
-        if (p.hasPower("Vulnerable")) {
-            playerVuln = p.getPower("Vulnerable").amount;
-        }
-        if (m.hasPower("Vulnerable")) {
-            enemyVuln = m.getPower("Vulnerable").amount;
-        }
+        // 移除所有旧状态
+        if (pWeak > 0) addToBot(new RemoveSpecificPowerAction(p, p, WeakPower.POWER_ID));
+        if (pVuln > 0) addToBot(new RemoveSpecificPowerAction(p, p, VulnerablePower.POWER_ID));
+        if (mWeak > 0) addToBot(new RemoveSpecificPowerAction(m, p, WeakPower.POWER_ID));
+        if (mVuln > 0) addToBot(new RemoveSpecificPowerAction(m, p, VulnerablePower.POWER_ID));
 
-        // 交换易伤
-        if (p.hasPower("Vulnerable")) {
-            AbstractDungeon.actionManager.addToBottom(
-                new RemoveSpecificPowerAction(p, p, "Vulnerable"));
-        }
-        if (m.hasPower("Vulnerable")) {
-            AbstractDungeon.actionManager.addToBottom(
-                new RemoveSpecificPowerAction(m, p, "Vulnerable"));
-        }
-
-        if (enemyVuln > 0) {
-            AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(p, p, new VulnerablePower(p, enemyVuln, false), enemyVuln));
-        }
-        if (playerVuln > 0) {
-            AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(m, p, new VulnerablePower(m, playerVuln, false), playerVuln));
-        }
+        // 交叉施加 (玩家获得怪物的层数，怪物获得玩家的层数)
+        if (mWeak > 0) addToBot(new ApplyPowerAction(p, p, new WeakPower(p, mWeak, false), mWeak));
+        if (mVuln > 0) addToBot(new ApplyPowerAction(p, p, new VulnerablePower(p, mVuln, false), mVuln));
+        if (pWeak > 0) addToBot(new ApplyPowerAction(m, p, new WeakPower(m, pWeak, false), pWeak));
+        if (pVuln > 0) addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, pVuln, false), pVuln));
     }
 
     @Override

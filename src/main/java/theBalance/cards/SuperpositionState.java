@@ -24,13 +24,16 @@ public class SuperpositionState extends AbstractDynamicCard {
 
     public SuperpositionState() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        this.baseBlock = 1;
         baseMagicNumber = magicNumber = MAGIC;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < magicNumber; i++) {
-            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, 1));
+            AbstractDungeon.actionManager.addToBottom(
+                    new GainBlockAction(p, p, this.block)
+            );
         }
     }
 

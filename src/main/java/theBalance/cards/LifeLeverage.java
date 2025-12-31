@@ -45,6 +45,7 @@ public class LifeLeverage extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_BLOCK);
+            upgradeBaseCost(1);
             initializeDescription();
         }
     }

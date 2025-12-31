@@ -16,7 +16,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class HighInterestLoan extends AbstractDynamicCard {
 
     // 高利贷 - High Interest Loan
-    // 造成 5(8) 点伤害。下回合敌人获得 1 点力量。
+    // 造成 7(10) 点伤害。下回合敌人获得 1 点力量。
 
     public static final String ID = BalanceMod.makeID(HighInterestLoan.class.getSimpleName());
     public static final String IMG = makeCardPath("HighInterestLoan.png");

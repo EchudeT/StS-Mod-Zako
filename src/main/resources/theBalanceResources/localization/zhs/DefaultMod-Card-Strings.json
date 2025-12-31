@@ -86,7 +86,7 @@
   },
   "theBalance:AssetSwap": {
     "NAME": "优劣逆转",
-    "DESCRIPTION": "造成 !D! 点伤害。 NL 交换你与敌人的 易伤 层数。"
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 交换你与敌人的 易伤 与 虚弱 层数。"
   },
   "theBalance:LeverageStrike": {
     "NAME": "逞能连击",
@@ -114,7 +114,7 @@
   },
   "theBalance:CapitalBlackHole": {
     "NAME": "虚荣心爆棚",
-    "DESCRIPTION": "消耗所有战斗津贴。 NL 每 !M! 点津贴对全体敌人造成 !theBalance:SM! 点伤害。"
+    "DESCRIPTION": "消耗所有 战斗津贴 。 NL 每 !M! 点 津贴 对全体敌人造成 !theBalance:SM! 点伤害。"
   },
   "theBalance:InfiniteExpansion": {
     "NAME": "小鬼的傲慢",
@@ -122,7 +122,7 @@
   },
   "theBalance:AbsoluteNeutrality": {
     "NAME": "一起变杂鱼吧~",
-    "DESCRIPTION": "消耗 。若敌血量比你高，将其生命降至与你相同（伤害上限 !M! ）。"
+    "DESCRIPTION": "消耗 。若敌血量比你高，将其生命百分比降至与你相同（伤害上限 !M! ）。"
   },
   "theBalance:DevilsOption": {
     "NAME": "撒娇借款",
@@ -234,7 +234,7 @@
   },
   "theBalance:PostWarReparations": {
     "NAME": "求饶礼包",
-    "DESCRIPTION": "消耗 。获得 !M! 点 再生 。 NL 全体敌人获得 !theBalance:SM! 点力量。"
+    "DESCRIPTION": "消耗 。获得 !M! 点 不会衰减的再生 。 NL 全体敌人获得 !theBalance:SM! 点激怒。"
   },
   "theBalance:MultilayerFortress": {
     "NAME": "重金保镖",
@@ -262,7 +262,7 @@
   },
   "theBalance:MirrorSoul": {
     "NAME": "我就学你",
-    "DESCRIPTION": "消耗 。移除负面效果。 NL 复制指定敌人Buff给自己。"
+    "DESCRIPTION": "消耗 。移除负面效果。 NL 复制指定敌人buff给自己。"
   },
   "theBalance:Ceasefire": {
     "NAME": "都不许动！",
@@ -302,7 +302,7 @@
   },
   "theBalance:SymmetricalAesthetics": {
     "NAME": "一起倒霉",
-    "DESCRIPTION": "你与敌人同步获得所有 debuff 。"
+    "DESCRIPTION": "获得三层 对称 。 NL 你与敌人同步获得所有 debuff。"
   },
   "theBalance:HedgeFund": {
     "NAME": "痛过才懂",
@@ -310,11 +310,11 @@
   },
   "theBalance:StableManagement": {
     "NAME": "乖乖女模式",
-    "DESCRIPTION": "每当获得力量，失去获得的力量。 NL 每回合开始获得 !M! 点敏捷。"
+    "DESCRIPTION": "消耗。 每当获得力量，力量转化为敏捷。 NL 每回合开始获得 !M! 点敏捷。"
   },
   "theBalance:CompoundInterest": {
     "NAME": "金钱诱惑",
-    "DESCRIPTION": "每当你失去金币时（消费或被盗），获得等同于失去量 !M! % 的 #y格挡 。"
+    "DESCRIPTION": "每当你失去金币时（消费或被盗），获得等同于失去量 !M! % 的 格挡 。"
   },
   "theBalance:MacroRegulation": {
     "NAME": "全听我的",
@@ -330,10 +330,14 @@
   },
   "theBalance:BurnBoats": {
     "NAME": "彻底学坏",
-    "DESCRIPTION": "无法格挡。 NL 伤害提升 !M! %。"
+    "DESCRIPTION": "无法获得 格挡 。获得的 格挡 将转化为对随机敌人的伤害。 NL 伤害提升 !M! %。"
   },
   "theBalance:DexToStrConvert": {
     "NAME": "自尊崩坏",
     "DESCRIPTION": "消耗 。消耗所有 !M! 点 *敏捷 。 NL 每消耗 1 点，获得 !M! 点 *力量 。"
+  },
+  "theBalance:PriceOfHubris": {
+    "NAME": "傲慢之价",
+    "DESCRIPTION": "消耗 。 NL 获得 1 层 实体 。 NL 获得等同于你当前金币 !M! % 的 力量 。 NL 失去 50% 的金币。"
   }
 }

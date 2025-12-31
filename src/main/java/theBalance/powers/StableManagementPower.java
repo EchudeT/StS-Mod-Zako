@@ -50,12 +50,20 @@ public class StableManagementPower extends AbstractPower implements CloneablePow
 
     @Override
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        // 当玩家获得力量时，立即减去等量的力量
-        if (target == this.owner && power.ID.equals(StrengthPower.POWER_ID) && power.amount > 0) {
+        // 核心逻辑：监听力量获取
+        // 1. 目标是玩家
+        // 2. 获得的是力量 (StrengthPower)
+        // 3. 数值大于0 (避免死循环，因为我们下面要扣除力量，那是负数)
+        if (target == this.owner && StrengthPower.POWER_ID.equals(power.ID) && power.amount > 0) {
             flash();
-            // 减去刚获得的力量
-            AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(owner, owner, new StrengthPower(owner, -power.amount), -power.amount));
+
+            // 1. 抵消获得的力量 (施加等量的负力量)
+            addToBot(new ApplyPowerAction(owner, owner,
+                    new StrengthPower(owner, -power.amount), -power.amount));
+
+            // 2. 获得等量的敏捷 (转化逻辑)
+            addToBot(new ApplyPowerAction(owner, owner,
+                    new DexterityPower(owner, power.amount), power.amount));
         }
     }
 

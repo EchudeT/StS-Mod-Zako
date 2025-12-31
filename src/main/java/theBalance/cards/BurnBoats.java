@@ -22,7 +22,7 @@ public class BurnBoats extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
-    private static final int COST = 3;
+    private static final int COST = 2;
     private static final int MAGIC = 75;
     private static final int UPGRADE_PLUS_MAGIC = 25;
 

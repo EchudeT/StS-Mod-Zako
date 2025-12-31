@@ -19,10 +19,7 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theBalance.BalanceMod;
-import theBalance.cards.BalancingAct;
-import theBalance.cards.Kickback;
-import theBalance.cards.ParityDefend;
-import theBalance.cards.ParityStrike;
+import theBalance.cards.*;
 import theBalance.relics.TatteredWallet;
 import theBalance.skins.CharacterSkin;
 import theBalance.skins.SkinManager;
@@ -61,8 +58,8 @@ public class Zako extends CustomPlayer {
     // =============== BASE STATS =================
 
     public static final int ENERGY_PER_TURN = 3;
-    public static final int STARTING_HP = 50;
-    public static final int MAX_HP = 50;
+    public static final int STARTING_HP = 70;
+    public static final int MAX_HP = 70;
     public static final int STARTING_GOLD = 99;
     public static final int CARD_DRAW = 5;
     public static final int ORB_SLOTS = 3;
@@ -169,14 +166,14 @@ public class Zako extends CustomPlayer {
         logger.info("Begin loading starter Deck Strings");
 
         for (int i = 0; i < 4; i++) {
-            retVal.add(ParityStrike.ID);
+            retVal.add(BasicStrike.ID);
         }
 
         for (int i = 0; i < 4; i++) {
             retVal.add(ParityDefend.ID);
         }
 
-        retVal.add(Kickback.ID);
+        retVal.add(GoldShatter.ID);
         retVal.add(BalancingAct.ID);
 
         return retVal;

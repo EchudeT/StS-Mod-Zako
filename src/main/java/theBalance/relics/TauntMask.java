@@ -17,7 +17,7 @@ import static theBalance.BalanceMod.makeRelicPath;
 // 回合结束时，如果敌人的力量高于你，下回合获得 [E]
 public class TauntMask extends CustomRelic {
     public static final String ID = BalanceMod.makeID("TauntMask");
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("TauntMask.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
 
     private boolean giveEnergyNextTurn = false;

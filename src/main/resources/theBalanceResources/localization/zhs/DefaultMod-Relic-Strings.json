@@ -3,7 +3,7 @@
     "NAME": "杂鱼的钱包",
     "FLAVOR": "破破烂烂的钱包，装着爸妈给的零花钱。",
     "DESCRIPTIONS": [
-      "战斗开始时，获得 #b15 点 #y战斗津贴 。"
+      "战斗开始时，获得 #b30 点 #y战斗津贴 。"
     ]
   },
   "theBalance:BandAid": {
@@ -24,7 +24,7 @@
     "NAME": "乱动脑筋",
     "FLAVOR": "算不来就用计算器！",
     "DESCRIPTIONS": [
-      "每当你洗牌时，获得等同于当前 #y战斗津贴 #b50% 的格挡。"
+      "每当你洗牌时，获得等同于当前 战斗津贴 #b50% 的格挡。"
     ]
   },
   "theBalance:HushMoney": {
@@ -38,7 +38,7 @@
     "NAME": "理财计划书",
     "FLAVOR": "存起来才是真正的钱！",
     "DESCRIPTIONS": [
-      "战斗结束时，剩余 #y战斗津贴 的 #b20% 转化为永久金币。"
+      "战斗结束时，剩余 战斗津贴 的 #b20% 转化为永久金币。"
     ]
   },
   "theBalance:BlackCard": {
@@ -66,7 +66,7 @@
     "NAME": "校准砝码",
     "FLAVOR": "失去的会以另一种方式补偿回来。",
     "DESCRIPTIONS": [
-      "每当你失去 #y力量 ，获得 #b3 点 #y格挡 ；每当你失去 #y敏捷 ，对随机敌人造成 #b5 点伤害。"
+      "每当你失去 #y力量 ，获得 #b3 点格挡 ；每当你失去 #y敏捷 ，对随机敌人造成 #b5 点伤害。"
     ]
   },
   "theBalance:TauntMask": {
@@ -78,16 +78,16 @@
   },
   "theBalance:CheatingProof": {
     "NAME": "耍赖证明",
-    "FLAVOR": "我就是要耍赖！",
+    "FLAVOR": "只要我不承认，那就不是犯规！",
     "DESCRIPTIONS": [
-      "每回合你打出的第一张带负面效果的牌，其负面部分不再生效。"
+      "在你的回合开始时，获得 #b1 层 #y人工制品 。 NL 在你的回合结束时，失去 #b1 层 #y人工制品 。"
     ]
   },
   "theBalance:MobiusLoop": {
     "NAME": "莫比乌斯环",
-    "FLAVOR": "完美平衡的无限循环。",
+    "FLAVOR": "多余的部分……都会消失在循环的尽头。",
     "DESCRIPTIONS": [
-      "#y力量 与 #y敏捷 相等时，所有卡牌数值（伤害/格挡）提升 #b25% 。"
+      "获得 [E] 。 NL 在你的回合结束时，将你的 #y力量 和 #y敏捷 中较高的一项 降低 至与较低的一项相等。"
     ]
   },
   "theBalance:DoubleSidedCoin": {
@@ -99,9 +99,9 @@
   },
   "theBalance:HandMirror": {
     "NAME": "手持小镜子",
-    "FLAVOR": "照着镜子学大叔的样子。",
+    "FLAVOR": "照照镜子吧，你那凶神恶煞的样子全都被我看透了！",
     "DESCRIPTIONS": [
-      "战斗开始时，选择一名敌人。该敌人每有 #b2 点 #y力量 ，你获得 #b1 点 #y敏捷 。"
+      "回合开始时，获得等同于敌人最高 #y力量 值 的 #y临时敏捷 。"
     ]
   },
   "theBalance:ObservationNotes": {
@@ -115,7 +115,7 @@
     "NAME": "涂鸦画纸",
     "FLAVOR": "不好的东西大家一起分担。",
     "DESCRIPTIONS": [
-      "你被施加 #y负面状态 时， #b50% 概率将该状态也施加给全体敌人。"
+      "你每回合第一次获得 #y负面状态 时，将该状态施加给全体敌人"
     ]
   },
   "theBalance:Semipermeable": {
@@ -143,7 +143,28 @@
     "NAME": "杂鱼代理人",
     "FLAVOR": "让别人帮你挡刀！",
     "DESCRIPTIONS": [
-      "每当敌人获得 #y格挡 ，你同步获得等量 #y格挡 （单次上限 #b15 ）。"
+      "每当敌人获得 #y格挡 ，你同步获得其一半 #y格挡 。"
+    ]
+  },
+  "theBalance:BlackHeart": {
+    "NAME": "黑色的心",
+    "FLAVOR": "愤怒就要一起分享才有趣呀~",
+    "DESCRIPTIONS": [
+      "每回合开始时，敌我双方各获得 #b1 点 #y力量 。"
+    ]
+  },
+  "theBalance:BlankCard": {
+    "NAME": "老爹的“空白”副卡",
+    "FLAVOR": "只要刷这张卡，什么都能买到哦！",
+    "DESCRIPTIONS": [
+      "你拥有 #b无限 能量。 NL 打出的牌改为消耗 #y金币 （ #b6 倍耗能）。金币不足则扣除生命值。 NL 无法从战斗奖励获得金币。"
+    ]
+  },
+  "theBalance:SymbioticCrystal": {
+    "NAME": "共生红水晶",
+    "FLAVOR": "把它含在嘴里，你就能尝到别人的生命是什么味道了……",
+    "DESCRIPTIONS": [
+      "敌我双方获得 20% #y吸血 。 NL 获得的 #y格挡 减少 #b50% ， 敌人获得的格挡 增加 #b50%。 NL 你的生命上限无法再提升。"
     ]
   }
 }

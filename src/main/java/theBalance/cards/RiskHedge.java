@@ -34,17 +34,16 @@ public class RiskHedge extends AbstractDynamicCard {
     public RiskHedge() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
-        baseDefaultSecondMagicNumber = defaultSecondMagicNumber = MAGIC2;
+        defaultBaseSecondMagicNumber = baseDefaultSecondMagicNumber = defaultSecondMagicNumber = MAGIC2;
         initializeDescription();
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         int effect = this.energyOnUse;
-        int goldRequired = effect * 10;
 
         // 优先消耗战斗津贴，不足时消耗金币
-        int goldNeeded = goldRequired;
+        int goldNeeded = effect * 10;
         int fromCombatGold = 0;
         int fromRegularGold = 0;
 

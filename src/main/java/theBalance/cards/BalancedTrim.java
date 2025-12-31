@@ -1,8 +1,10 @@
 package theBalance.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -36,22 +38,18 @@ public class BalancedTrim extends AbstractDynamicCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(
-            new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn,
+        AbstractDungeon.actionManager.addToTop(
+            new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
                 AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
 
-        // 计算平均格挡
-        // 简化：只与目标敌人交换格挡
         if (m != null) {
             int playerBlock = p.currentBlock;
             int enemyBlock = m.currentBlock;
             int avgBlock = (playerBlock + enemyBlock) / 2;
 
-            // 重置格挡
             p.loseBlock();
             m.loseBlock();
 
-            // 设置平均格挡
             if (avgBlock > 0) {
                 AbstractDungeon.actionManager.addToBottom(
                     new GainBlockAction(p, p, avgBlock));

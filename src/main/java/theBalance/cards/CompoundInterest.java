@@ -12,7 +12,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class CompoundInterest extends AbstractDynamicCard {
 
     // 复利加持 - Compound Interest
-    // 每 150 金币在回合始提供 1 力量。每有 1 力，结束扣 20(10) 金币。
+    // 每当你失去金币时（消费或被盗），获得等同于失去量 !M! % 的 #y格挡 。
 
     public static final String ID = BalanceMod.makeID(CompoundInterest.class.getSimpleName());
     public static final String IMG = makeCardPath("CompoundInterest.png");

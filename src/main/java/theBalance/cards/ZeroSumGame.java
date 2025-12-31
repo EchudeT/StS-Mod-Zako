@@ -35,8 +35,8 @@ public class ZeroSumGame extends AbstractDynamicCard {
                 new ApplyPowerAction(m, p, new StrengthPower(m, -magicNumber), -magicNumber));
             AbstractDungeon.actionManager.addToBottom(
                 new ApplyPowerAction(p, p, new StrengthPower(p, magicNumber), magicNumber));
+            theBalance.relics.Semipermeable.trigger(com.megacrit.cardcrawl.powers.StrengthPower.POWER_ID);
 
-            // 回合结束归还
             AbstractDungeon.actionManager.addToBottom(
                 new ApplyPowerAction(p, p, new theBalance.powers.ZeroSumGamePower(p, m, magicNumber), magicNumber));
         }

@@ -28,7 +28,7 @@ public class Doomsday extends AbstractDynamicCard {
     private static final int COST = 3;
     private static final int DAMAGE = 20;
     private static final int UPGRADE_PLUS_DMG = 10;
-    private static final int MAGIC = 2;  // 攻击次数
+    private static final int MAGIC = 2;
 
     public Doomsday() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);

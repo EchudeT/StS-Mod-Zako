@@ -12,7 +12,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class SymmetricalAesthetics extends AbstractDynamicCard {
 
     // 对称美学 - Symmetrical Aesthetics
-    // 你与敌人同步获得所有 Debuff。 (升级后：0费)
+    // 获得三层 对称 。 NL 你与敌人同步获得所有 debuff。 (升级后：0费)
 
     public static final String ID = BalanceMod.makeID(SymmetricalAesthetics.class.getSimpleName());
     public static final String IMG = makeCardPath("SymmetricalAesthetics.png");
@@ -32,7 +32,7 @@ public class SymmetricalAesthetics extends AbstractDynamicCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         // 你与敌人同步获得所有Debuff
         AbstractDungeon.actionManager.addToBottom(
-            new ApplyPowerAction(p, p, new theBalance.powers.SymmetricalAestheticsPower(p), -1));
+            new ApplyPowerAction(p, p, new theBalance.powers.SymmetricalAestheticsPower(p, 3), 3));
     }
 
     @Override

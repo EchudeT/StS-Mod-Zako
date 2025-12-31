@@ -12,7 +12,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class CapitalAccumulation extends AbstractDynamicCard {
 
     // 资本积累 - Capital Accumulation
-    // 战后额外获 25 金币。每有 100 金币，少获得 5 金币。
+    // 战后额外获 30 金币。每有 100 金币，少获得 5 金币。
 
     public static final String ID = BalanceMod.makeID(CapitalAccumulation.class.getSimpleName());
     public static final String IMG = makeCardPath("CapitalAccumulation.png");
@@ -23,7 +23,7 @@ public class CapitalAccumulation extends AbstractDynamicCard {
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
-    private static final int MAGIC = 25;
+    private static final int MAGIC = 30;
 
     public CapitalAccumulation() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -40,6 +40,7 @@ public class CapitalAccumulation extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
+            upgradeBaseCost(0);
             initializeDescription();
         }
     }

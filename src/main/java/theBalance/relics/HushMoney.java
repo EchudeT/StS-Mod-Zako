@@ -16,7 +16,7 @@ import static theBalance.BalanceMod.makeRelicPath;
 // 受伤获得金币
 public class HushMoney extends CustomRelic {
     public static final String ID = BalanceMod.makeID("HushMoney");
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png")); // 记得换个哭脸的图标
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("HushMoney.png")); // 记得换个哭脸的图标
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
 
     private static final int GOLD_PERCENTAGE = 100; // 100% 转化率，如果觉得太强可以降到 50%

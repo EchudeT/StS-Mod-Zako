@@ -1,208 +1,228 @@
 {
   "theBalance:CommonPower": {
-    "NAME": "Placeholder Power",
-    "DESCRIPTIONS": ["You applied #b", " keyword.", " keywords."]
+    "NAME": "杂鱼之力",
+    "DESCRIPTIONS": ["施加了 #b", " 个关键字。", " 个关键字。"]
   },
   "theBalance:RarePower": {
-    "NAME": "Placeholder Power",
-    "DESCRIPTIONS": ["At the start of your turn, TOUCH #b", " enemy.", " enemies."]
+    "NAME": "稀有杂鱼",
+    "DESCRIPTIONS": ["回合开始时，戳 #b", " 下敌人。", " 下敌人。"]
   },
   "theBalance:MirrorBarrierPower": {
-    "NAME": "镜像结界",
+    "NAME": "反弹反弹！",
     "DESCRIPTIONS": ["受伤时敌人受到等量伤害。"]
   },
   "theBalance:MacroRegulationPower": {
-    "NAME": "宏观调控",
-    "DESCRIPTIONS": ["你的力量和敏捷永远取两者的平均值。"]
+    "NAME": "全听我的",
+    "DESCRIPTIONS": [
+      "无法获得 #y格挡 。获得的 #y格挡 将转化为对随机敌人的伤害。 NL 造成的伤害提升 #b",
+      " %。"
+    ]
   },
   "theBalance:BurnBoatsPower": {
-    "NAME": "破釜沉舟",
+    "NAME": "彻底学坏",
     "DESCRIPTIONS": ["无法格挡。伤害提升 #b", " %。"]
   },
   "theBalance:RiskActuaryPower": {
-    "NAME": "风险精算",
+    "NAME": "抖M体质",
     "DESCRIPTIONS": ["每当你获得一个负面状态，获得 #b", " 点格挡。"]
   },
   "theBalance:HighInterestStoragePower": {
-    "NAME": "高息存储",
+    "NAME": "压岁钱利息",
     "DESCRIPTIONS": ["结余能量转为下回合的 [E] 和 #b", " 点战斗津贴。"]
   },
   "theBalance:BadDebtDeductionPower": {
-    "NAME": "坏账抵扣",
+    "NAME": "祸不单行",
     "DESCRIPTIONS": ["每当你抽到状态/诅咒牌，抽 #b", " 张牌。"]
   },
   "theBalance:EnergyRecyclingPower": {
-    "NAME": "能量回收",
+    "NAME": "废料再利用",
     "DESCRIPTIONS": ["每当打出消耗牌，随机将一张 对等打击 加入手牌，0费。"]
   },
   "theBalance:HedgeFundPower": {
-    "NAME": "对冲基金",
+    "NAME": "痛过才懂",
     "DESCRIPTIONS": ["若本回合失去了生命，下回合获得 [E] 。"]
   },
   "theBalance:StableManagementPower": {
-    "NAME": "稳健经营",
-    "DESCRIPTIONS": ["不再获得力量。每回合开始获得 #b", " 点敏捷。"]
+    "NAME": "乖乖女模式",
+    "DESCRIPTIONS": [
+      "每当你获得 #y力量 时，将其转化为等量的 #y敏捷 。 NL 每回合开始时，获得 #b",
+      " 点 #y敏捷 。"
+    ]
   },
   "theBalance:CompoundInterestPower": {
-    "NAME": "复利加持",
+    "NAME": "金钱诱惑",
     "DESCRIPTIONS": [
       "每当你失去金币或消耗 #y战斗津贴 时，获得等同于消耗量 #b",
       "% 的 #y格挡 。"
     ]
   },
   "theBalance:CapitalAccumulationPower": {
-    "NAME": "资本积累",
+    "NAME": "拜金少女",
     "DESCRIPTIONS": ["战后额外获 #b", " 金币。每有 100 金币，卡牌负面数值 +1。"]
   },
   "theBalance:CombatGoldPower": {
-    "NAME": "战斗津贴",
+    "NAME": "零花钱",
     "DESCRIPTIONS": ["拥有 #b", " 点战斗津贴，消耗金币的卡牌优先使用战斗津贴。"]
   },
   "theBalance:CeasefirePower": {
-    "NAME": "全面停火",
+    "NAME": "都不许动！",
     "DESCRIPTIONS": ["本回合全场伤害变为 0 。"]
   },
   "theBalance:ExemptionPower": {
-    "NAME": "豁免",
+    "NAME": "耍赖皮",
     "DESCRIPTIONS": ["本回合下一张牌的负面效果不再生效。"]
   },
   "theBalance:InfiniteOverdraftPower": {
-    "NAME": "无限透支",
+    "NAME": "不管明天",
     "DESCRIPTIONS": ["本回合费用为 0 。", "下回合跳过。"]
   },
   "theBalance:InformationAsymmetryPower": {
-    "NAME": "资讯不对称",
+    "NAME": "不给你看",
     "DESCRIPTIONS": ["下回合少抽 #b", " 张牌。"]
   },
   "theBalance:LendingPower": {
-    "NAME": "放贷",
+    "NAME": "投资大叔",
     "DESCRIPTIONS": ["战胜后获得 #b", " 金币。"]
   },
   "theBalance:LiquidAssetsPower": {
-    "NAME": "流动资产",
+    "NAME": "挥霍式防守",
     "DESCRIPTIONS": ["格挡不再消失。每当触发格挡，失去等量战斗津贴。"]
   },
   "theBalance:RiskMortgagePower": {
-    "NAME": "风险抵押",
+    "NAME": "透支体能",
     "DESCRIPTIONS": ["下回合失去 #b", " 点能量。"]
   },
   "theBalance:ScaleTiltPower": {
-    "NAME": "天平倾斜",
+    "NAME": "不许比我强",
     "DESCRIPTIONS": ["每当敌人获得力量，你获得等量力量。"]
   },
   "theBalance:SymmetricalAestheticsPower": {
-    "NAME": "对称美学",
+    "NAME": "一起倒霉",
     "DESCRIPTIONS": ["你与敌人同步获得所有 Debuff 。"]
   },
   "theBalance:TemporaryImmunityPower": {
-    "NAME": "暂时性免疫",
+    "NAME": "抓不到我",
     "DESCRIPTIONS": ["下回合失去 #b", " %当前生命。"]
   },
   "theBalance:TransferPower": {
-    "NAME": "传递",
+    "NAME": "期待明天",
     "DESCRIPTIONS": ["下回合多 #b", " 点能量和力量，且多抽 1 张牌。"]
   },
   "theBalance:ZeroSumGamePower": {
-    "NAME": "零和博弈",
+    "NAME": "气死你",
     "DESCRIPTIONS": ["回合结束归还 #b", " 点力量给敌人。"]
   },
   "theBalance:TimeArbitragePower": {
-    "NAME": "时空套利",
+    "NAME": "无赖连合",
     "DESCRIPTIONS": [
       "杂鱼~ 敌人还能动弹吗？接下来的 #b", " 回合敌人都无法行动。",
       "糟糕啦... 接下来 #b", " 回合你的能量将固定为 #b0 。"
     ]
   },
   "theBalance:CountercurrentPower": {
-    "NAME": "逆流",
+    "NAME": "反向洗脑",
     "DESCRIPTIONS": ["没有负面效果需要转换。", "已转换 #b", " 个负面效果，回合结束时敌人将获得双倍。"]
   },
   "theBalance:NetWorthTrackingPower": {
-    "NAME": "净值追踪",
+    "NAME": "成长记录",
     "DESCRIPTIONS": ["本回合已获得 #b", " 次正面buff。"]
   },
   "theBalance:DamageTakenThisTurnPower": {
-    "NAME": "受伤追踪",
+    "NAME": "好疼！",
     "DESCRIPTIONS": ["本回合受到过伤害。", "本回合未受到伤害。"]
   },
   "theBalance:DamageTakenLastTurnPower": {
-    "NAME": "上回合受伤追踪",
+    "NAME": "刚才好疼！",
     "DESCRIPTIONS": ["上回合受到过伤害。", "上回合未受到伤害。"]
   },
   "theBalance:PhaseShiftDelayedPower": {
-    "NAME": "相位转移延迟",
+    "NAME": "略略略~",
     "DESCRIPTIONS": ["下回合给敌人缓冲。"]
   },
   "theBalance:InfiniteExpansionPower": {
-    "NAME": "无限膨胀",
+    "NAME": "小鬼的傲慢",
     "DESCRIPTIONS": ["伤害已翻倍 #b", " 次。", "伤害尚未翻倍。"]
   },
   "theBalance:BalancePivotPower": {
-    "NAME": "天平支点",
+    "NAME": "强制平等",
     "DESCRIPTIONS": ["本回合力量和敏捷为 0 。回合结束恢复。"]
   },
   "theBalance:HedgePower": {
-    "NAME": "对冲",
+    "NAME": "躲在身后",
     "DESCRIPTIONS": ["若受到攻击伤害，敌人获得 #b", " 点力量。"]
   },
   "theBalance:TemporaryPreservationDelayedPower": {
-    "NAME": "临时保全延迟",
+    "NAME": "假装求饶",
     "DESCRIPTIONS": ["下回合敌人获得 #b", " 点力量。"]
   },
   "theBalance:EnrageMarketPower": {
-    "NAME": "激怒市场",
+    "NAME": "激怒大叔",
     "DESCRIPTIONS": ["每当敌人通过激怒获得力量，你获得 #b", " 点力量。"]
   },
   "theBalance:RegenerationPower": {
-    "NAME": "再生",
+    "NAME": "精力充沛",
     "DESCRIPTIONS": ["回合开始时恢复 #b", " 点生命。"]
   },
   "theBalance:ResilientPower": {
-    "NAME": "抗性",
+    "NAME": "脸皮厚",
     "DESCRIPTIONS": ["受到的伤害减少 25% 。"]
   },
   "theBalance:EmpoweredPower": {
-    "NAME": "强化",
+    "NAME": "好强！",
     "DESCRIPTIONS": ["造成的伤害增加 40% 。"]
   },
   "theBalance:SolidPower": {
-    "NAME": "坚固",
+    "NAME": "硬硬的",
     "DESCRIPTIONS": ["获得的格挡增加 33% 。"]
   },
   "theBalance:ExposedPower": {
-    "NAME": "破绽",
+    "NAME": "弱点暴露",
     "DESCRIPTIONS": ["受到攻击时额外受到 #b", " 点伤害。"]
   },
   "theBalance:DefensiveStancePower": {
-    "NAME": "防御姿态",
+    "NAME": "抱头蹲防",
     "DESCRIPTIONS": ["每次攻击后获得 #b", " 点格挡。"]
   },
   "theBalance:EmpathyDollPower": {
-    "NAME": "共感娃娃",
+    "NAME": "感同身受",
     "DESCRIPTIONS": ["当你拥有负面状态时，你对敌人施加的负面状态层数 +1 。"]
   },
   "theBalance:CalibratedWeightPower": {
-    "NAME": "校准砝码",
+    "NAME": "吃亏是福？",
     "DESCRIPTIONS": ["每当你失去力量，获 3 点格挡；每当你失去敏捷，对随机敌人造成 5 点伤害。"]
   },
   "theBalance:ObservationNotesPower": {
-    "NAME": "观察笔记",
+    "NAME": "偷看日记",
     "DESCRIPTIONS": ["每当你对敌人施加负面状态，下一次攻击伤害提升 3 点。"]
   },
   "theBalance:DoodlePaperPower": {
-    "NAME": "涂鸦画纸",
+    "NAME": "乱涂乱画",
     "DESCRIPTIONS": ["你被施加负面状态时， 50% 概率将该状态也施加给全体敌人。"]
   },
   "theBalance:SemipermeablePower": {
-    "NAME": "半透膜",
+    "NAME": "只进不出",
     "DESCRIPTIONS": ["每当你偷取属性时，额外获得 2 点对应的临时属性。"]
   },
   "theBalance:CalibratedScalePower": {
-    "NAME": "校准天平",
+    "NAME": "强迫症",
     "DESCRIPTIONS": ["每回合中，第一次力量与敏捷相等时（不为0），获得 [E] 。"]
   },
   "theBalance:AceAgentPower": {
     "NAME": "杂鱼代理人",
-    "DESCRIPTIONS": ["每当敌人获得格挡，你同步获得等量格挡（单次上限 15 ）。"]
+    "DESCRIPTIONS": ["每当敌人获得格挡，你同步获得50%格挡。"]
+  },
+  "theBalance:InsurancePower": {
+    "NAME": "碰瓷预备",
+    "DESCRIPTIONS": [
+      "本回合若受到未被格挡的攻击伤害，获得 #b",
+      " 点 #y战斗津贴 。"
+    ]
+  },
+  "theBalance:MagnifyingLensDelayedPower": {
+    "NAME": "弱点聚焦",
+    "DESCRIPTIONS": [
+      "下回合开始时，获得 #b",
+      " 点 #y力量 。"
+    ]
   }
 }
