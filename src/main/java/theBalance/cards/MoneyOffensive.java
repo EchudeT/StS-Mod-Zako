@@ -16,7 +16,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class MoneyOffensive extends AbstractDynamicCard {
 
     // 金钱攻势 - Money Offensive
-    // 消耗。消耗 10 金币。造成 15(20) 点伤害。
+    // 消耗。消耗 15 金币。造成 14(18) 点伤害。
 
     public static final String ID = BalanceMod.makeID(MoneyOffensive.class.getSimpleName());
     public static final String IMG = makeCardPath("MoneyOffensive.png");
@@ -27,15 +27,15 @@ public class MoneyOffensive extends AbstractDynamicCard {
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 15;
-    private static final int UPGRADE_PLUS_DMG = 5;
-    private static final int MAGIC = 10;  // 消耗的金币
+    private static final int DAMAGE = 14;
+    private static final int UPGRADE_PLUS_DMG = 4;
+    private static final int MAGIC = 15;  // 消耗的金币
 
     public MoneyOffensive() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-        this.exhaust = true;
+//        this.exhaust = true;
     }
 
     @Override

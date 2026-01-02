@@ -18,8 +18,8 @@ public class TimeArbitragePower extends AbstractPower implements CloneablePowerI
     public static final String POWER_ID = BalanceMod.makeID("TimeArbitragePower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power.png"));
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("ZakoPower84.png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("ZakoPower32.png"));
 
     public TimeArbitragePower(final AbstractCreature owner, int amount) {
         this.name = powerStrings.NAME;

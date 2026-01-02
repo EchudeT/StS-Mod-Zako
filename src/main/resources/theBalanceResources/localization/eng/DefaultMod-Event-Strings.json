@@ -17,5 +17,184 @@
       "[Leave]",
       "Select card to remove."
     ]
+  },
+  "theBalance:TheForkEvent": {
+    "NAME": "The Fork",
+    "DESCRIPTIONS": [
+      "Deep in the shadows of the Spire, you encounter another version of yourself. NL Her eyes are cloudy, her clothes disheveled, and her smile twisted—a #r\"Darkened Zako\". NL She sits atop a pile of corpses, toying with three objects emitting ominous auras.",
+      "Seeing you approach, she licks blood from the corner of her mouth. NL \"Pick one~ NL No matter how much you struggle, you'll end up broken like me eventually, heehee~\" NL Warning: Choosing a Relic enables Hard Mode.",
+      "\"Anger is only fun when shared~ The stronger you are, the more satisfying it is to bully others, right?\" NL You accept the pitch-black heart, and your heartbeats instantly overlap.",
+      "\"That's right... forget about the future. Immediate pleasure is all that matters. Overdraft everything!\" NL You grasp the worn-out card, feeling a terrifyingly empty rush of pleasure.",
+      "\"Good girl... does it hurt? Then go bite their throats, suck them dry, and the pain will go away...\" NL You place the metallic-tasting crystal in your mouth, and the world turns blood-red in your eyes.",
+      "\"Tch... boring. Acting like a good girl? You'll regret not taking these goodies...\" NL She mocks you with a sneer and snatches some of your pocket money before vanishing.",
+      "\"Ahahahaha! Wonderful! Wonderful! NL That's right, everyone is a small fry! Let's all break together!\" NL Her laughter is shrill and piercing. All the curses and power flood into your body at once... NL You sense a terrifying shadow deep within the Spire. NL What is that? NL NL (Amidst the chaos, a peculiar card floats towards you)",
+      "You accept the dangerous contract, feeling power burning within.",
+      "You ignore the card, deciding to keep only the relics."
+    ],
+    "OPTIONS": [
+      "[Accept Rage] Obtain: ",
+      "[Accept Indulgence] Obtain: ",
+      "[Accept Depravity] Obtain: ",
+      "[Refuse] Lose ",
+      " Gold.",
+      "[Refuse] Leave.",
+      "[Leave]",
+      "[Continue]",
+      " and 3 copies of ",
+      " , Lose #r20 Max HP",
+      "[I Want It All] Obtain all Relics and Curses. Lose all Gold.",
+      "[Take] Obtain ",
+      "[Skip] Not needed. (Very Hard)"
+    ]
+  },
+  "theBalance:MysteriousPatronEvent": {
+    "NAME": "Mysterious Patron",
+    "DESCRIPTIONS": [
+      "You are walking down a corridor when a tall figure, dressed elegantly but with a blurred face, blocks your path. He seems interested in a \"kid running around the Spire\" like you. NL \"Oh my, this place is dangerous. Does a cute child like you need some... extra funding?\" NL He shakes a heavy purse in his hand, his eyes filled with the composure of an adult.",
+      "\"Uuu~ Mister, you're the best~ Give me some pocket money, please~\" NL You skillfully put on a pitiful act. Although you got the money, you feel your dignity shattering into pieces.",
+      "\"Hah? You were looking at me with *that* look just now, weren't you? Believe it or not, I'll scream 'Pervert!' and call every monster in the Spire!\" NL You stomp on his leather shoe. To shut you up, he's forced to hand over a family heirloom, but the ordeal tires you out.",
+      "\"Small fry old man, stay away from me! I can smell the poverty from here!\" NL You walk away without looking back, leaving him stunned."
+    ],
+    "OPTIONS": [
+      "[Act Cute] Gain #g",
+      " Gold. Receive #rCoquettish #rLoan and #rShame.",
+      "[Blackmail] Lose #r",
+      " HP. Obtain a random #gRare #gRelic.",
+      "[Disdain] Leave.",
+      "[Leave]"
+    ]
+  },
+  "theBalance:UnluckyMerchantEvent": {
+    "NAME": "Unlucky Peddler",
+    "DESCRIPTIONS": [
+      "You corner a shivering Goblin peddler pushing a cart in a back alley. NL Seeing the nasty grin on your face, he is so scared he almost drops his goods. NL \"B-Big Boss... spare me! This is a small business...\"",
+      "\"Wah! Don't hit me!\" NL The Goblin screams, throws a coin pouch at you, and scrambles away. NL You count it... hey, not bad!",
+      "\"Th-this is the best thing I have... please take it!\" NL He tremblingly hands you a treasure before pushing his cart away at high speed.",
+      "\"I really have no money! Only this potion!\" NL Since there's no profit to be made, you magnanimously let him go.",
+      "\"Tch, pauper.\" NL You kick his cart out of boredom and turn to leave."
+    ],
+    "OPTIONS": [
+      "[Extort Money] Gain #g",
+      " Gold. Receive #rShame.",
+      "[Rob Goods] Lose #r",
+      " HP. Obtain a random #gUncommon #gRelic.",
+      "[Protection Fee] Obtain 2 random #gPotions.",
+      "[Spare] Leave."
+    ]
+  },
+  "theBalance:MirrorOfVanityEvent": {
+    "NAME": "Mirror of Vanity",
+    "DESCRIPTIONS": [
+      "You discover a gorgeous mirror. The reflection of you looks... more perfect? NL The 'you' in the mirror wears prettier clothes, walks with a haughtier stride, and has eyes even more arrogant than yours. NL \"So beautiful... this is the *real* me!\" You can't help but be intoxicated.",
+      "You pose in front of the mirror for a while, feeling full of power!",
+      "\"If only there were two of me... double the cuteness, double the power!\" NL The mirror responds to your wish, and an illusion steps out from the glass.",
+      "You try to touch the mirror, but it shatters with a *snap*! Shards pierce your body, but they make you sharper.",
+      "\"Hmph, my beauty cannot be copied.\" You flip your hair and leave."
+    ],
+    "OPTIONS": [
+      "[Narcissism] #gUpgrade 2 cards in your deck.",
+      "[Double Cuteness] #gDuplicate a card in your deck.",
+      "[Smash Mirror] Lose #r6 HP. #rRemove a card from your deck.",
+      "[Leave] Leave."
+    ]
+  },
+  "theBalance:GraffitiPrankEvent": {
+    "NAME": "Graffiti Trap",
+    "DESCRIPTIONS": [
+      "You find an obvious trap trigger on the ground. A normal person might go around it, but you... NL You pull out a red magic crayon. NL \"Hehe, if I just change the wiring a bit and draw a bait here...\"",
+      "You focus on your prank but fail to watch your step. *Click!* The trap catches you instead! You scribble wildly in pain, and the card is altered by strange magic.",
+      "\"Perfect!\" You modify the trap into an automatic launcher. You put your most useless card on it as a test subject, and it flies back as a brand new card!",
+      "You find it boring, draw a \"Dummy\" arrow pointing at it, and leave."
+    ],
+    "OPTIONS": [
+      "[Fail] Lose #r8 HP. #gTransform 2 cards in your deck.",
+      "[Success] #gTransform 1 card in your deck.",
+      "[Leave] Leave."
+    ]
+  },
+  "theBalance:StrictTutorEvent": {
+    "NAME": "Strict Tutor",
+    "DESCRIPTIONS": [
+      "Just as you try to slack off in a corner, a ghostly old hag with thick glasses appears before you, holding a ruler gleaming with cold light. NL \"You again! Always running wild with no manners!\" NL She adjusts her glasses, her stern gaze sending a chill down your spine. NL \"Sit down! Study time! Don't move!\"",
+      "\"Who wants to listen to that old-fashioned stuff! Nyeh-nyeh!\" NL While she turns to write in the air, you make a face and escape through the window. NL \"Halt!\" *Smack!* The ruler flies with precision and hits your butt. Ouch! But freedom is priceless!",
+      "\"Fine, fine, I'll write...\" NL You pretend to listen attentively while frantically checking a cheat sheet under the desk. NL You finish the assignment quickly, laughing internally at how gullible the teacher is. Wait... did you just copy \"Defend\" as \"Attack\"?",
+      "You fight back sleepiness and reluctantly listen to an hour of nagging. NL \"Hmph, barely passing.\" The ghost dissipates. NL Although annoyed, you have to admit that the technique she taught seems somewhat useful.",
+      "You run away rubbing your butt."
+    ],
+    "OPTIONS": [
+      "[Skip Class] Lose #r",
+      " HP. #rRemove a card from your deck.",
+      "[Cheat] Randomly #gUpgrade 3 Attacks. Receive #rDoubt.",
+      "[Listen Obediently] #gUpgrade a card in your deck.",
+      "[Leave] Leave."
+    ]
+  },
+  "theBalance:FanMeetingEvent": {
+    "NAME": "Fan Meeting",
+    "DESCRIPTIONS": [
+      "You stumble into a strange ritual site. A group of weirdos in bird masks are squawking around a fire. NL Seeing you enter, they suddenly go silent. NL \"Wah! That arrogant aura! That look that treats us like trash!\" NL \"It's the Divine Child! The Divine Child has descended! CAW! CAW!\" NL They surround you, their eyes filled with fanatical worship.",
+      "\"Want a handshake? Line up and pay first!\" NL You skillfully start your \"business\". The bird people scramble to stuff their coin pouches into your hands, afraid of being scolded if they're too slow. NL What an easy bunch to understand.",
+      "\"This lady is tired. Do something about it.\" You sit down, putting on a queenly air. NL The bird people immediately bring out strange ointments to treat you. Despite the ear-piercing squawks, the effect is surprisingly good.",
+      "\"Since you are so sincere, I'll grant you a souvenir.\" NL You carve your name onto two daggers they hand you. NL You accidentally cut your hand in the process, dripping blood on the daggers. The bird people look even more excited. NL \"Divine Blood! Daggers blessed with Divine Blood!\""
+    ],
+    "OPTIONS": [
+      "[Charge Entry Fee] Gain #g",
+      " Gold.",
+      "[Enjoy Service] Heal #g",
+      " HP.",
+      "[Sign Autograph] Lose #r",
+      " HP. Obtain 2 #gRitual #gDaggers.",
+      "[Leave] Leave."
+    ]
+  },
+  "theBalance:PlaygroundEvent": {
+    "NAME": "Dream Playground",
+    "DESCRIPTIONS": [
+      "The air in the Spire becomes heavy, and your eyelids grow heavier... In a trance, the cold stone walls around you vanish. NL Replaced by an abandoned playground deep in your memories. The sky is foggy, and the smell of rust fills the air. NL \"Tch, dreaming of such a childish place...\" Despite your tough words, you walk towards it as if possessed.",
+      "You jump on the swing, swinging high as if to fly out of this suffocating world. NL Suddenly, the chain snaps! Intense weightlessness wakes you up instantly—you fell off a rock at the campsite. Ouch! But in your hand, you're tightly gripping a stone that feels like you grabbed it in the dream.",
+      "You vent crazily on the worn-out sandbag, punching out all your dissatisfaction with the Old Man, the Spire, and everything! NL \"Ow ow ow!\" You wake up with a start, finding yourself punching the rough stone wall. Your knuckles are bleeding, but in the rubble at the corner, you find a strangely shaped weapon.",
+      "\"Phew... what a crappy dream.\" NL You shake your head violently to wake up and pat your cheeks. This is still the cold Spire. No sky, no playground."
+    ],
+    "OPTIONS": [
+      "[Swing] Lose #r",
+      " Max HP. Obtain #gOddly #gSmooth #gStone (+1 Dex).",
+      "[Punch Bag] Lose #r",
+      " Max HP. Obtain #gVajra (+1 Str).",
+      "[Wake Up] Leave.",
+      " Max HP. Gain #y100 Gold."
+    ]
+  },
+  "theBalance:FoundWalletEvent": {
+    "NAME": "Found Wallet",
+    "DESCRIPTIONS": [
+      "You spot a bulging wallet next to a puddle on the ground. NL Opening it, you see it's full of gold! But the wallet emits an uncomfortable aura, as if its original owner is still watching it.",
+      "\"Finders keepers! Who cares about curses!\" NL You stuff the money into your pocket. Your conscience stings for a second, but it's quickly drowned out by the clinking of coins.",
+      "\"Tch, I don't need this kind of dirty money.\" NL You kick the wallet into the gutter. Although you didn't get the money, you feel you did something cool, and your mood improves.",
+      "You ignore it and move on."
+    ],
+    "OPTIONS": [
+      "[Embezzle] Gain #g",
+      " Gold. Receive #rShame.",
+      "[Kick Away] Lose #r",
+      " Gold. #gRemove a card from your deck.",
+      "[Locked] Requires #r",
+      " Gold.",
+      "[Leave] Leave."
+    ]
+  },
+  "theBalance:CandyShopEvent": {
+    "NAME": "Strange Candy Shop",
+    "DESCRIPTIONS": [
+      "You find an unattended candy stall in a corner. NL The candies here are unnaturally bright and smell temptingly sweet (with a hint of chemicals). NL There's a sign next to it: \"Trick or Treat if you don't pay!\"",
+      "You grab a handful of red spicy candies and stuff them into your mouth. So spicy! You feel something burning inside your body!",
+      "You buy a pack of blue popping candy. It tastes weird, and you feel light-headed after eating it.",
+      "\"It's all food coloring and additives!\" NL You say so, but you can't help but take a look before leaving."
+    ],
+    "OPTIONS": [
+      "[Eat Spicy Candy] Lose #r%d HP. Gain #g%d Max HP.",
+      "[Buy Soda Candy] Lose #r%d Gold. Obtain #g2 Random Potions.",
+      "[Leave] Leave.",
+      "[Locked] Requires #r%d Gold."
+    ]
   }
 }

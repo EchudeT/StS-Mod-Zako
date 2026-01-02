@@ -14,7 +14,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class InventoryClearance extends AbstractDynamicCard {
 
     // 库存清理 - Inventory Clearance
-    // 弃所有手牌。每弃一张抽 1 张牌并获 2(3) 点战斗津贴。
+    // 弃所有手牌。每弃一张抽 1 张牌并获 4(6) 点战斗津贴。
 
     public static final String ID = BalanceMod.makeID(InventoryClearance.class.getSimpleName());
     public static final String IMG = makeCardPath("InventoryClearance.png");
@@ -25,8 +25,8 @@ public class InventoryClearance extends AbstractDynamicCard {
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
-    private static final int MAGIC = 2;  // 每张牌获得的津贴
-    private static final int UPGRADE_PLUS_MAGIC = 1;
+    private static final int MAGIC = 4;  // 每张牌获得的津贴
+    private static final int UPGRADE_PLUS_MAGIC = 2;
 
     public InventoryClearance() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);

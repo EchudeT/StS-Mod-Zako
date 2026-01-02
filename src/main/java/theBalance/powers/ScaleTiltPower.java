@@ -24,8 +24,8 @@ public class ScaleTiltPower extends AbstractPower implements CloneablePowerInter
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power.png"));
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("AttackPower84.png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("AttackPower32.png"));
 
     public ScaleTiltPower(final AbstractCreature owner) {
         name = NAME;

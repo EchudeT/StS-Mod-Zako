@@ -16,7 +16,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class ChainReaction extends AbstractDynamicCard {
 
     // 连锁反应 - Chain Reaction
-    // 造成全体 2(3) 点伤害 3 次。获得 3 层易伤。
+    // 造成全体 3(4) 点伤害 3 次。获得 1 层易伤。
 
     public static final String ID = BalanceMod.makeID(ChainReaction.class.getSimpleName());
     public static final String IMG = makeCardPath("ChainReaction.png");
@@ -27,10 +27,10 @@ public class ChainReaction extends AbstractDynamicCard {
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 2;
+    private static final int DAMAGE = 4;
     private static final int UPGRADE_PLUS_DMG = 1;
     private static final int MAGIC = 3;  // 攻击次数
-    private static final int MAGIC2 = 3;  // 易伤层数
+    private static final int MAGIC2 = 1;  // 易伤层数
 
     public ChainReaction() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);

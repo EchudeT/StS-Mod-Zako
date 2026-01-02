@@ -24,7 +24,8 @@ public class SkinSelectionUI {
     public static final Logger logger = LogManager.getLogger(SkinSelectionUI.class.getName());
 
     private static final float BUTTON_SIZE = 40.0f * Settings.scale;
-    private static final float BUTTON_Y_OFFSET = -40f * Settings.scale; // 调整到更下方，避免与其他按钮重叠
+    private static final float BUTTON_X_OFFSET = 240f * Settings.scale; // 调整到更下方，避免与其他按钮重叠
+    private static final float BUTTON_Y_OFFSET = 100f * Settings.scale; // 调整到更下方，避免与其他按钮重叠
     private static final float BUTTON_SPACING = 50.0f * Settings.scale;
 
     private static final Color BUTTON_COLOR = new Color(1.0f, 1.0f, 1.0f, 0.8f);
@@ -72,7 +73,7 @@ public class SkinSelectionUI {
         }
 
         // 计算按钮位置（在角色选项下方）
-        float centerX = characterOption.c.hb.cX;
+        float centerX = characterOption.c.hb.cX + BUTTON_X_OFFSET;
         float centerY = characterOption.c.hb.cY + BUTTON_Y_OFFSET;
 
         leftButtonX = centerX - BUTTON_SPACING;

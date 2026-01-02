@@ -1,42 +1,227 @@
 {
-"theBalance:CommonPower": {
-        "NAME": "Placeholder Power",
-        "DESCRIPTIONS": ["You applied #b", " keyword.", " keywords."]
-},
-"theBalance:RarePower": {
-        "NAME": "Placeholder Power",
-        "DESCRIPTIONS": ["At the start of your turn, TOUCH #b", " enemy." , " enemies."]
-},
-"theBalance:MirrorBarrierPower": {
-        "NAME": "Mirror Barrier",
-        "DESCRIPTIONS": ["When damaged, the attacker takes equal damage."]
-},
-"theBalance:EmpathyDollPower": {
-        "NAME": "Empathy Doll",
-        "DESCRIPTIONS": ["When you have debuffs, debuffs you apply to enemies have +1 stacks."]
-},
-"theBalance:CalibratedWeightPower": {
-        "NAME": "Calibrated Weight",
-        "DESCRIPTIONS": ["Whenever you lose Strength, gain 3 Block. Whenever you lose Dexterity, deal 5 damage to a random enemy."]
-},
-"theBalance:ObservationNotesPower": {
-        "NAME": "Observation Notes",
-        "DESCRIPTIONS": ["Whenever you apply a debuff to an enemy, your next attack deals 3 more damage."]
-},
-"theBalance:DoodlePaperPower": {
-        "NAME": "Doodle Paper",
-        "DESCRIPTIONS": ["When you receive a debuff, 50% chance to spread it to all enemies."]
-},
-"theBalance:SemipermeablePower": {
-        "NAME": "Semipermeable",
-        "DESCRIPTIONS": ["Whenever you steal attributes, gain 2 additional temporary attributes."]
-},
-"theBalance:CalibratedScalePower": {
-        "NAME": "Calibrated Scale",
-        "DESCRIPTIONS": ["Once per turn, when your Strength equals your Dexterity (not 0), gain [E]."]
-},
-"theBalance:AceAgentPower": {
-        "NAME": "Ace Agent",
-        "DESCRIPTIONS": ["Whenever an enemy gains Block, you gain equal Block (max 15 per trigger)."]
-}
+        "theBalance:CommonPower": {
+                "NAME": "Zako Power",
+                "DESCRIPTIONS": ["Applied #b", " keywords.", " keywords."]
+        },
+        "theBalance:RarePower": {
+                "NAME": "Rare Zako",
+                "DESCRIPTIONS": ["At the start of your turn, poke the enemy #b", " times.", " times."]
+        },
+        "theBalance:MirrorBarrierPower": {
+                "NAME": "Reflect Reflect!",
+                "DESCRIPTIONS": ["When attacked, the attacker takes equal damage."]
+        },
+        "theBalance:MacroRegulationPower": {
+                "NAME": "Listen To Me",
+                "DESCRIPTIONS": [
+                        "At the end of your turn, your Strength and Dexterity are set to the average of the two (Rounded up)."
+                ]
+        },
+        "theBalance:BurnBoatsPower": {
+                "NAME": "Gone Bad",
+                "DESCRIPTIONS": ["You can no longer gain Block. Block gained is converted into damage to a random enemy. Damage increased by #b", " %."]
+        },
+        "theBalance:RiskActuaryPower": {
+                "NAME": "Masochistic Body",
+                "DESCRIPTIONS": ["Whenever you gain a negative status, gain #b", " Block."]
+        },
+        "theBalance:HighInterestStoragePower": {
+                "NAME": "New Year Money Interest",
+                "DESCRIPTIONS": ["Unused Energy is converted into next turn's [E] and #b", " *Pocket *Money."]
+        },
+        "theBalance:BadDebtDeductionPower": {
+                "NAME": "Misfortunes Never Come Alone",
+                "DESCRIPTIONS": ["Whenever you draw a Status or Curse card, draw #b", " cards."]
+        },
+        "theBalance:EnergyRecyclingPower": {
+                "NAME": "Waste Recycling",
+                "DESCRIPTIONS": ["Whenever you play an Exhaust card, add a random Small Fry Strike into your hand. It costs 0."]
+        },
+        "theBalance:HedgeFundPower": {
+                "NAME": "Learned from Pain",
+                "DESCRIPTIONS": ["If you lost HP this turn, gain [E] next turn."]
+        },
+        "theBalance:StableManagementPower": {
+                "NAME": "Good Girl Mode",
+                "DESCRIPTIONS": [
+                        "Whenever you gain #yStrength, convert it into an equal amount of #yDexterity. NL At the start of each turn, gain #b",
+                        " #yDexterity."
+                ]
+        },
+        "theBalance:CompoundInterestPower": {
+                "NAME": "Money Temptation",
+                "DESCRIPTIONS": [
+                        "Whenever you lose Gold or spend #yPocket #yMoney, gain #yBlock equal to #b",
+                        "% of the amount lost."
+                ]
+        },
+        "theBalance:CapitalAccumulationPower": {
+                "NAME": "Gold Digger",
+                "DESCRIPTIONS": ["Gain #b", " additional Gold after combat. For every 100 Gold you have, gain 5 less Gold."]
+        },
+        "theBalance:CombatGoldPower": {
+                "NAME": "Pocket Money",
+                "DESCRIPTIONS": ["You have #b", " Pocket Money. Cards that spend Gold will prioritize Pocket Money."]
+        },
+        "theBalance:CeasefirePower": {
+                "NAME": "Nobody Move!",
+                "DESCRIPTIONS": ["All damage from all sources becomes 0 this turn."]
+        },
+        "theBalance:ExemptionPower": {
+                "NAME": "Shameless Act",
+                "DESCRIPTIONS": ["The negative effects of the next card played this turn will not trigger."]
+        },
+        "theBalance:InfiniteOverdraftPower": {
+                "NAME": "Screw Tomorrow",
+                "DESCRIPTIONS": ["Cards cost 0 this turn.", "Skip your next turn."]
+        },
+        "theBalance:InformationAsymmetryPower": {
+                "NAME": "Won't Show You",
+                "DESCRIPTIONS": ["Draw #b", " fewer cards next turn."]
+        },
+        "theBalance:LendingPower": {
+                "NAME": "Invest in Old Man",
+                "DESCRIPTIONS": ["Gain #b", " Gold upon winning combat."]
+        },
+        "theBalance:RiskMortgagePower": {
+                "NAME": "Overdraft Stamina",
+                "DESCRIPTIONS": ["Lose #b", " Energy next turn."]
+        },
+        "theBalance:ScaleTiltPower": {
+                "NAME": "No Stronger Than Me",
+                "DESCRIPTIONS": ["Whenever the enemy gains Strength, you gain an equal amount."]
+        },
+        "theBalance:SymmetricalAestheticsPower": {
+                "NAME": "Bad Luck Together",
+                "DESCRIPTIONS": ["Whenever you receive a Debuff, apply it to the enemy as well."]
+        },
+        "theBalance:TemporaryImmunityPower": {
+                "NAME": "Can't Catch Me",
+                "DESCRIPTIONS": ["Next turn, lose #b", " % of your current HP."]
+        },
+        "theBalance:TransferPower": {
+                "NAME": "Expect Tomorrow",
+                "DESCRIPTIONS": ["Next turn, gain #b", " Energy and Strength, and draw 1 additional card."]
+        },
+        "theBalance:ZeroSumGamePower": {
+                "NAME": "Piss You Off",
+                "DESCRIPTIONS": ["Return #b", " Strength to the enemy at the end of the turn."]
+        },
+        "theBalance:TimeArbitragePower": {
+                "NAME": "Shameless Union",
+                "DESCRIPTIONS": [
+                        "Zako~ Can the enemy even move? The enemy will skip their next #b", " turns.",
+                        "Uh oh... Your Energy will be set to #b0 for the next #b", " turns."
+                ]
+        },
+        "theBalance:CountercurrentPower": {
+                "NAME": "Reverse Brainwash",
+                "DESCRIPTIONS": ["No negative effects to convert.", "Converted #b", " negative effects. The enemy will receive double the amount at the end of the turn."]
+        },
+        "theBalance:NetWorthTrackingPower": {
+                "NAME": "Growth Record",
+                "DESCRIPTIONS": ["Gained positive Buffs #b", " times this turn."]
+        },
+        "theBalance:DamageTakenThisTurnPower": {
+                "NAME": "Ouch!",
+                "DESCRIPTIONS": ["Took damage this turn.", "Haven't taken damage this turn."]
+        },
+        "theBalance:DamageTakenLastTurnPower": {
+                "NAME": "That Hurt!",
+                "DESCRIPTIONS": ["Took damage last turn.", "Didn't take damage last turn."]
+        },
+        "theBalance:PhaseShiftDelayedPower": {
+                "NAME": "Nyeh-Nyeh~",
+                "DESCRIPTIONS": ["Give the enemy Buffer next turn."]
+        },
+        "theBalance:InfiniteExpansionPower": {
+                "NAME": "Brat's Arrogance",
+                "DESCRIPTIONS": ["Damage doubled #b", " times.", "Damage hasn't doubled yet."]
+        },
+        "theBalance:BalancePivotPower": {
+                "NAME": "Forced Equality",
+                "DESCRIPTIONS": ["Strength and Dexterity set to 0 this turn. Restored at end of turn."]
+        },
+        "theBalance:HedgePower": {
+                "NAME": "Hide Behind",
+                "DESCRIPTIONS": ["If Block is broken, the enemy gains #b", " Strength."]
+        },
+        "theBalance:TemporaryPreservationDelayedPower": {
+                "NAME": "Fake Begging",
+                "DESCRIPTIONS": ["Next turn, the enemy gains #b", " Strength."]
+        },
+        "theBalance:EnrageMarketPower": {
+                "NAME": "Provoke Old Man",
+                "DESCRIPTIONS": ["Whenever the enemy gains Strength from Enrage, you gain #b", " Strength."]
+        },
+        "theBalance:RegenerationPower": {
+                "NAME": "Energetic",
+                "DESCRIPTIONS": ["At the start of your turn, heal #b", " HP."]
+        },
+        "theBalance:ResilientPower": {
+                "NAME": "Thick Skinned",
+                "DESCRIPTIONS": ["Damage taken reduced by 25%."]
+        },
+        "theBalance:EmpoweredPower": {
+                "NAME": "So Strong!",
+                "DESCRIPTIONS": ["Damage dealt increased by 40%."]
+        },
+        "theBalance:SolidPower": {
+                "NAME": "Rock Hard",
+                "DESCRIPTIONS": ["Block gained increased by 33%."]
+        },
+        "theBalance:ExposedPower": {
+                "NAME": "Exposed Weakness",
+                "DESCRIPTIONS": ["Take #b", " additional damage when attacked."]
+        },
+        "theBalance:DefensiveStancePower": {
+                "NAME": "Crouch Guard",
+                "DESCRIPTIONS": ["Gain #b", " Block after each attack."]
+        },
+        "theBalance:EmpathyDollPower": {
+                "NAME": "Empathy",
+                "DESCRIPTIONS": ["When you have a Debuff, apply +1 stack of Debuffs to enemies."]
+        },
+        "theBalance:CalibratedWeightPower": {
+                "NAME": "Loss is Gain?",
+                "DESCRIPTIONS": ["Whenever you lose Strength, gain 3 Block; whenever you lose Dexterity, deal 5 damage to a random enemy."]
+        },
+        "theBalance:ObservationNotesPower": {
+                "NAME": "Peeking Diary",
+                "DESCRIPTIONS": ["Whenever you apply a Debuff to an enemy, your next attack deals 3 additional damage."]
+        },
+        "theBalance:DoodlePaperPower": {
+                "NAME": "Scribbling",
+                "DESCRIPTIONS": ["The first time you gain a #yDebuff each turn, apply it to ALL enemies."]
+        },
+        "theBalance:SemipermeablePower": {
+                "NAME": "One Way Only",
+                "DESCRIPTIONS": ["Whenever you steal stats, gain 2 additional temporary stats of the same type."]
+        },
+        "theBalance:CalibratedScalePower": {
+                "NAME": "OCD",
+                "DESCRIPTIONS": ["Once per turn, when Strength equals Dexterity (and is not 0), gain [E]."]
+        },
+        "theBalance:AceAgentPower": {
+                "NAME": "Zako Agent",
+                "DESCRIPTIONS": ["Whenever an enemy gains Block, you also gain 50% of that amount."]
+        },
+        "theBalance:InsurancePower": {
+                "NAME": "Insurance Fraud Prep",
+                "DESCRIPTIONS": [
+                        "This turn, if you take unblocked attack damage, gain #b",
+                        " #yPocket #yMoney."
+                ]
+        },
+        "theBalance:MagnifyingLensDelayedPower": {
+                "NAME": "Weakness Focus",
+                "DESCRIPTIONS": [
+                        "At the start of your next turn, gain #b",
+                        " #yStrength."
+                ]
+        },
+        "theBalance:HighInterestLoanPower": {
+                "NAME": "Capital of Arrogance",
+                "DESCRIPTIONS": ["Whenever you spend #yPocket #yMoney, draw #b", " cards."]
+        }
 }

@@ -3,7 +3,9 @@ package theBalance.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.watcher.PressEndTurnButtonAction;
+import com.megacrit.cardcrawl.cards.AbstractCard; // 需要引入卡牌类
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -15,17 +17,15 @@ import theBalance.util.TextureLoader;
 import static theBalance.BalanceMod.makePowerPath;
 
 // 无限透支 - Infinite Overdraft
-// 本回合费用为0，下回合跳过
+// 本回合手牌费用为0，下回合跳过
 public class InfiniteOverdraftPower extends AbstractPower implements CloneablePowerInterface {
     public static final String POWER_ID = BalanceMod.makeID("InfiniteOverdraftPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power.png"));
-
-    private boolean skipNextTurn = false;
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("SpecialPower84.png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("SpecialPower32.png"));
 
     public InfiniteOverdraftPower(final AbstractCreature owner) {
         name = NAME;
@@ -41,27 +41,30 @@ public class InfiniteOverdraftPower extends AbstractPower implements CloneablePo
         updateDescription();
     }
 
+    // 1. 能力生效瞬间：让当前手里的所有牌变成0费
     @Override
-    public void updateDescription() {
-        if (skipNextTurn) {
-            description = DESCRIPTIONS[1];  // "下回合跳过"
-        } else {
-            description = DESCRIPTIONS[0];  // "本回合费用为0"
+    public void onInitialApplication() {
+        for (AbstractCard c : AbstractDungeon.player.hand.group) {
+            c.setCostForTurn(0);
         }
     }
 
+    // 2. 抽牌监听：本回合后续抽到的牌也变成0费
     @Override
-    public void onEnergyRecharge() {
-        if (!skipNextTurn) {
-            // 第一回合：给予大量能量使所有牌0费
-            AbstractDungeon.player.gainEnergy(99);
-            skipNextTurn = true;
-            updateDescription();
-        } else {
-            // 第二回合：跳过（不给能量）
-            AbstractDungeon.actionManager.addToBottom(
-                new com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
-        }
+    public void onCardDraw(AbstractCard card) {
+        card.setCostForTurn(0);
+    }
+
+    // 3. 下回合开始时：强制结束回合（副作用）
+    @Override
+    public void atStartOfTurn() {
+        AbstractDungeon.actionManager.addToBottom(new PressEndTurnButtonAction());
+        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+    }
+
+    @Override
+    public void updateDescription() {
+        description = DESCRIPTIONS[0];
     }
 
     @Override

@@ -18,11 +18,10 @@
     "DESCRIPTION": "Make sure the first element in the NAMES is the same as your PROPER_NAME. The rest is to match keywords like the single word keyword."
   },
   {
-    "PROPER_NAME": "补贴",
+    "PROPER_NAME": "零花钱",
     "NAMES": [
-      "补贴",
-      "战斗补贴"
+      "零花钱"
     ],
-    "DESCRIPTION": "一种特殊的货币。在消耗 #y金币 时，会优先消耗 #y战斗补贴 。"
+    "DESCRIPTION": "一种特殊的货币。在消耗 #y金币 时，会优先消耗 #y零花钱 。"
   }
 ]

@@ -13,13 +13,19 @@ import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.Prefs;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterOption;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
 import com.megacrit.cardcrawl.screens.mainMenu.MainMenuScreen;
@@ -28,9 +34,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theBalance.cards.*;
 import theBalance.characters.Zako;
-import theBalance.events.IdentityCrisisEvent;
-import theBalance.events.TheForkEvent;
+import theBalance.events.*;
+import theBalance.patches.BuffTrackerField;
 import theBalance.potions.PlaceholderPotion;
+import theBalance.powers.ScaleTiltPower;
+import theBalance.relics.DoodlePaper;
 import theBalance.util.IDCheckDontTouchPls;
 import theBalance.util.TextureLoader;
 import theBalance.variables.DefaultCustomVariable;
@@ -45,6 +53,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
 import static com.megacrit.cardcrawl.core.Settings.language;
+import static theBalance.relics.DoodlePaper.createPowerCopy;
 
 //TODO: DON'T MASS RENAME/REFACTOR
 //TODO: DON'T MASS RENAME/REFACTOR
@@ -84,7 +93,8 @@ public class BalanceMod implements
         EditCharactersSubscriber,
         PostInitializeSubscriber,
         PostRenderSubscriber,
-        PostUpdateSubscriber {
+        PostUpdateSubscriber,
+        PostPowerApplySubscriber {
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(BalanceMod.class.getName());
@@ -96,8 +106,8 @@ public class BalanceMod implements
     public static boolean enablePlaceholder = true; // The boolean we'll be setting on/off (true/false)
 
     //This is for the in-game mod settings panel.
-    private static final String MODNAME = "雌小鬼";
-    private static final String AUTHOR = "EchudeT"; // And pretty soon - You!
+    private static final String MODNAME = "TheZako";
+    private static final String AUTHOR = "echudet"; // And pretty soon - You!
     private static final String DESCRIPTION = "区区尖塔，不过是本小姐的个人提款机罢了。杂鱼，看好了。";
 
     // =============== INPUT TEXTURE LOCATION =================
@@ -134,8 +144,8 @@ public class BalanceMod implements
     // Character assets
     private static final String THE_DEFAULT_BUTTON = "theBalanceResources/images/charSelect/DefaultCharacterButton.png";
     private static final String THE_DEFAULT_PORTRAIT = "theBalanceResources/images/charSelect/CharacterPortraitBG1.png";
-    private static final String THE_DEFAULT_PORTRAIT2 = "theBalanceResources/images/charSelect/CharacterPortraitBG2.png";
-    private static final String THE_DEFAULT_PORTRAIT3 = "theBalanceResources/images/charSelect/CharacterPortraitBG2.png";
+    private static final String THE_DEFAULT_PORTRAIT2 = "theBalanceResources/images/charSelect/CharacterPortraitBG2.jpeg";
+    private static final String THE_DEFAULT_PORTRAIT3 = "theBalanceResources/images/charSelect/CharacterPortraitBG2.jpeg";
     public static final String[] THE_DEFAULT_STATIC_CHARACTER = {"theBalanceResources/images/char/main1a.png", "theBalanceResources/images/char/main2.png", "theBalanceResources/images/char/main3.png"};
 
     public static final String THE_DEFAULT_SHOULDER_1 = "theBalanceResources/images/char/defaultCharacter/shoulder.png";
@@ -149,11 +159,6 @@ public class BalanceMod implements
     public static final String THE_DEFAULT_SKELETON_ATLAS = "theBalanceResources/images/char/defaultCharacter/skeleton.atlas";
     public static final String THE_DEFAULT_SKELETON_JSON = "theBalanceResources/images/char/defaultCharacter/skeleton.json";
 
-    static {
-        System.out.println("==================================================");
-        System.out.println(">>> BalanceMod 已被 JVM 加载 <<<");
-        System.out.println("==================================================");
-    }
     // =============== MAKE IMAGE PATHS =================
 
     public static String makeCardPath(String resourcePath) {
@@ -246,9 +251,8 @@ public class BalanceMod implements
         }
         logger.info("Done adding mod settings");
 
-        logger.info("Initializing skin system");
-        initializeSkins();
-        logger.info("Done initializing skin system");
+
+
     }
 
     // =============== SKIN SYSTEM =================
@@ -257,11 +261,20 @@ public class BalanceMod implements
         // Initialize the skin manager
         SkinManager.initialize();
 
+        String name0, name1;
+        if (language == Settings.GameLanguage.ZHS) {
+            name0 = "杂鱼酱";
+            name1 = "黑化杂鱼酱";
+        } else {
+            name0 = "The Zako";
+            name1 = "The Zako (Dark)";
+        }
+
         // Register default skin
         CharacterSkin defaultSkin = new CharacterSkin(
                 0,
             "default",
-            "杂鱼酱",
+                name0,
             "雌小鬼的默认外观",
             THE_DEFAULT_SHOULDER_1,
             THE_DEFAULT_SHOULDER_2,
@@ -273,11 +286,10 @@ public class BalanceMod implements
         );
         SkinManager.registerSkin(defaultSkin, true);
 
-        // Register alternate skin 1 - 用户可以填写自己的资源路径
         CharacterSkin alternateSkin1 = new CharacterSkin(
                 1,
             "alternate1",
-            "黑化杂鱼酱",
+                name1,
             "雌小鬼黑化了",
             THE_DEFAULT_SHOULDER_1,
             THE_DEFAULT_SHOULDER_2,
@@ -436,25 +448,82 @@ public class BalanceMod implements
 
         // Create a new event builder
         // Since this is a builder these method calls (outside of create()) can be skipped/added as necessary
-        AddEventParams eventParams = new AddEventParams.Builder(IdentityCrisisEvent.ID, IdentityCrisisEvent.class) // for this specific event
-            .dungeonID(TheCity.ID) // The dungeon (act) this event will appear in
-            .playerClass(Zako.Enums.THE_DEFAULT) // Character specific event
-            .create();
+//        AddEventParams eventParams = new AddEventParams.Builder(IdentityCrisisEvent.ID, IdentityCrisisEvent.class) // for this specific event
+//            .dungeonID(TheCity.ID) // The dungeon (act) this event will appear in
+//            .playerClass(Zako.Enums.THE_DEFAULT) // Character specific event
+//            .create();
+//
+//        // Add the event
+//        BaseMod.addEvent(eventParams);
 
-        // Add the event
-        BaseMod.addEvent(eventParams);
+//        AddEventParams forkEventParams = new AddEventParams.Builder(TheForkEvent.ID, TheForkEvent.class)
+//                // .dungeonID(com.megacrit.cardcrawl.dungeons.Exordium.ID) // 设定为仅在第一层 (Act 1) 出现
+//                .playerClass(Zako.Enums.THE_DEFAULT) // ★注意：这里请替换为你Mod中实际的角色枚举，比如 Zako.Enums.THE_DEFAULT
+//                // .bonusCondition(() -> AbstractDungeon.floorNum <= 7) // (可选) 如果你希望它只在前几层出现，可以加上这个条件
+//                .create();
+//
+//        BaseMod.addEvent(forkEventParams);
 
-        AddEventParams forkEventParams = new AddEventParams.Builder(TheForkEvent.ID, TheForkEvent.class)
-                .dungeonID(com.megacrit.cardcrawl.dungeons.Exordium.ID) // 设定为仅在第一层 (Act 1) 出现
-                .playerClass(Zako.Enums.THE_DEFAULT) // ★注意：这里请替换为你Mod中实际的角色枚举，比如 Zako.Enums.THE_DEFAULT
-                .bonusCondition(() -> AbstractDungeon.floorNum <= 7) // (可选) 如果你希望它只在前几层出现，可以加上这个条件
+        AddEventParams UnluckyMerchantEventParams = new AddEventParams.Builder(UnluckyMerchantEvent.ID, UnluckyMerchantEvent.class)
+                // .dungeonID(com.megacrit.cardcrawl.dungeons.Exordium.ID)
+                .playerClass(Zako.Enums.THE_DEFAULT)
                 .create();
 
-// 注册事件
-        BaseMod.addEvent(forkEventParams);
+        BaseMod.addEvent(UnluckyMerchantEventParams);
+
+        AddEventParams MirrorOfVanityEventParams = new AddEventParams.Builder(MirrorOfVanityEvent.ID, MirrorOfVanityEvent.class)
+                // .dungeonID(com.megacrit.cardcrawl.dungeons.Exordium.ID)
+                .playerClass(Zako.Enums.THE_DEFAULT)
+                .create();
+
+        BaseMod.addEvent(MirrorOfVanityEventParams);
+
+        AddEventParams GraffitiPrankEventParams = new AddEventParams.Builder(GraffitiPrankEvent.ID, GraffitiPrankEvent.class)
+                // .dungeonID(com.megacrit.cardcrawl.dungeons.Exordium.ID)
+                .playerClass(Zako.Enums.THE_DEFAULT)
+                .create();
+
+        BaseMod.addEvent(GraffitiPrankEventParams);
+
+        AddEventParams StrictTutorEventParams = new AddEventParams.Builder(StrictTutorEvent.ID, StrictTutorEvent.class)
+                // .dungeonID(com.megacrit.cardcrawl.dungeons.Exordium.ID)
+                .playerClass(Zako.Enums.THE_DEFAULT)
+                .create();
+
+        BaseMod.addEvent(StrictTutorEventParams);
+
+        AddEventParams FanMeetingEventParams = new AddEventParams.Builder(FanMeetingEvent.ID, FanMeetingEvent.class)
+                // .dungeonID(com.megacrit.cardcrawl.dungeons.Exordium.ID)
+                .playerClass(Zako.Enums.THE_DEFAULT)
+                .create();
+
+        BaseMod.addEvent(FanMeetingEventParams);
+
+        AddEventParams PlaygroundEventParams = new AddEventParams.Builder(PlaygroundEvent.ID, PlaygroundEvent.class)
+                // .dungeonID(com.megacrit.cardcrawl.dungeons.Exordium.ID)
+                .playerClass(Zako.Enums.THE_DEFAULT)
+                .create();
+
+        BaseMod.addEvent(PlaygroundEventParams);
+
+        AddEventParams FoundWalletEventParams = new AddEventParams.Builder(FoundWalletEvent.ID, FoundWalletEvent.class)
+                // .dungeonID(com.megacrit.cardcrawl.dungeons.Exordium.ID)
+                .playerClass(Zako.Enums.THE_DEFAULT)
+                .create();
+
+        BaseMod.addEvent(FoundWalletEventParams);
+
+        AddEventParams CandyShopEventParams = new AddEventParams.Builder(CandyShopEvent.ID, CandyShopEvent.class)
+                // .dungeonID(com.megacrit.cardcrawl.dungeons.Exordium.ID)
+                .playerClass(Zako.Enums.THE_DEFAULT)
+                .create();
+
+        BaseMod.addEvent(CandyShopEventParams);
 
         // =============== /EVENTS/ =================
         logger.info("Done loading badge Image and mod options");
+
+        unlockAscensionForDev();
     }
     
     // =============== / POST-INITIALIZE/ =================
@@ -467,7 +536,7 @@ public class BalanceMod implements
         // Class Specific Potion. If you want your potion to not be class-specific,
         // just remove the player class at the end (in this case the "TheDefaultEnum.THE_DEFAULT".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
-        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, Zako.Enums.THE_DEFAULT);
+//        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, Zako.Enums.THE_DEFAULT);
         
         logger.info("Done editing potions");
     }
@@ -559,7 +628,7 @@ public class BalanceMod implements
 
         //TODO: Rename the "DefaultMod" with the modid in your ModTheSpire.json file
         //TODO: The artifact mentioned in ModTheSpire.json is the artifactId in pom.xml you should've edited earlier
-        new AutoAdd("DefaultMod") // ${project.artifactId}
+        new AutoAdd("ZakoMod") // ${project.artifactId}
             .packageFilter(AbstractDefaultCard.class) // filters to any class in the same package as AbstractDefaultCard, nested packages included
             .setDefaultSeen(true)
             .cards();
@@ -617,6 +686,10 @@ public class BalanceMod implements
                 getModID() + "Resources/localization/" + lang + "/DefaultMod-Orb-Strings.json");
         
         logger.info("Done edittting strings");
+
+        logger.info("Initializing skin system");
+        initializeSkins();
+        logger.info("Done initializing skin system");
     }
     
     // ================ /LOAD THE TEXT/ ===================
@@ -722,4 +795,84 @@ public class BalanceMod implements
     }
 
     // =============== /SKIN SELECTION UI IN CHARACTER SELECT/ =================
+
+    private void unlockAscensionForDev() {
+        System.out.println("TheBalance: 正在强制解锁进阶等级...");
+
+        if (CardCrawlGame.characterManager.getCharacter(Zako.Enums.THE_DEFAULT) != null) {
+            Prefs p = CardCrawlGame.characterManager.getCharacter(Zako.Enums.THE_DEFAULT).getPrefs();
+
+            if (p.getInteger("ASCENSION_LEVEL", 0) < 20) {
+                p.putInteger("ASCENSION_LEVEL", 20);
+                p.putInteger("LAST_ASCENSION_LEVEL", 20);
+                p.flush();
+            }
+        }
+    }
+
+
+    @Override
+    public void receivePostPowerApplySubscriber(AbstractPower power, AbstractCreature target, AbstractCreature source) {
+
+        // -------------------------------------------------------------
+        // 逻辑 A: Buff 计数器 (原本的 BuffTrackerPatch)
+        // -------------------------------------------------------------
+        if (target.isPlayer && power.type == AbstractPower.PowerType.BUFF) {
+            int count = BuffTrackerField.buffCount.get(target);
+            BuffTrackerField.buffCount.set(target, count + 1);
+
+            // 如果需要手牌实时刷新数值，可以在这里加 updateHandLogic()
+        }
+
+        // -------------------------------------------------------------
+        // 逻辑 B: 涂鸦纸遗物 (原本的 DoodlePaperPatch)
+        // -------------------------------------------------------------
+        if (target.isPlayer && power.type == AbstractPower.PowerType.DEBUFF) {
+            if (AbstractDungeon.player.hasRelic(DoodlePaper.ID)) {
+                DoodlePaper relic = (DoodlePaper) AbstractDungeon.player.getRelic(DoodlePaper.ID);
+
+                // 检查是否本回合已触发
+                if (!relic.triggeredThisTurn) {
+                    relic.flash();
+                    relic.triggeredThisTurn = true;
+                    relic.grayscale = true;
+
+                    // 遍历敌人并反弹
+                    for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
+                        if (!m.isDeadOrEscaped()) {
+                            AbstractPower debuffCopy = createPowerCopy(power, m);
+                            if (debuffCopy != null) {
+                                AbstractDungeon.actionManager.addToBottom(
+                                        new ApplyPowerAction(m, AbstractDungeon.player, debuffCopy, debuffCopy.amount)
+                                );
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // -------------------------------------------------------------
+        // 逻辑 C: 倾斜天平能力 (原本的 ScaleTiltPatch)
+        // -------------------------------------------------------------
+        // 触发条件：目标是怪物 + 获得的是力量 + 力量数值 > 0
+        if (!target.isPlayer && StrengthPower.POWER_ID.equals(power.ID) && power.amount > 0) {
+
+            // 玩家必须拥有该能力
+            if (AbstractDungeon.player.hasPower(ScaleTiltPower.POWER_ID)) {
+                AbstractPower scalePower = AbstractDungeon.player.getPower(ScaleTiltPower.POWER_ID);
+                scalePower.flash();
+
+                // 玩家获得等量力量
+                AbstractDungeon.actionManager.addToBottom(
+                        new ApplyPowerAction(
+                                AbstractDungeon.player,
+                                AbstractDungeon.player,
+                                new StrengthPower(AbstractDungeon.player, power.amount),
+                                power.amount
+                        )
+                );
+            }
+        }
+    }
 }

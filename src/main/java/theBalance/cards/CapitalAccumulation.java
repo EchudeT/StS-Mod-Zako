@@ -12,7 +12,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class CapitalAccumulation extends AbstractDynamicCard {
 
     // 资本积累 - Capital Accumulation
-    // 战后额外获 30 金币。每有 100 金币，少获得 5 金币。
+    // 消耗。 战后额外获 30 金币。每有 100 金币，少获得 5 金币。
 
     public static final String ID = BalanceMod.makeID(CapitalAccumulation.class.getSimpleName());
     public static final String IMG = makeCardPath("CapitalAccumulation.png");
@@ -28,6 +28,7 @@ public class CapitalAccumulation extends AbstractDynamicCard {
     public CapitalAccumulation() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
+        this.exhaust = true;
     }
 
     @Override

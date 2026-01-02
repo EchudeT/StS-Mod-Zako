@@ -12,7 +12,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class BurnBoats extends AbstractDynamicCard {
 
     // 破釜沉舟 - Burn Boats
-    // 无法格挡。伤害提升 75%(100%)。
+    // 格挡变为攻击。伤害提升 75%(100%)。
 
     public static final String ID = BalanceMod.makeID(BurnBoats.class.getSimpleName());
     public static final String IMG = makeCardPath("BurnBoats.png");
@@ -23,7 +23,7 @@ public class BurnBoats extends AbstractDynamicCard {
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = 2;
-    private static final int MAGIC = 75;
+    private static final int MAGIC = 100;
     private static final int UPGRADE_PLUS_MAGIC = 25;
 
     public BurnBoats() {
@@ -41,7 +41,8 @@ public class BurnBoats extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_MAGIC);
+//            upgradeMagicNumber(UPGRADE_PLUS_MAGIC);
+            upgradeBaseCost(1);
             initializeDescription();
         }
     }

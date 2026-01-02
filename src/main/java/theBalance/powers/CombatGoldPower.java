@@ -21,8 +21,8 @@ public class CombatGoldPower extends AbstractPower implements CloneablePowerInte
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power.png"));
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("GoldPower84.png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("GoldPower32.png"));
 
     public CombatGoldPower(final AbstractCreature owner, final int amount) {
         name = NAME;
@@ -54,11 +54,15 @@ public class CombatGoldPower extends AbstractPower implements CloneablePowerInte
 
     @Override
     public void reducePower(int reduceAmount) {
-        this.fontScale = 8.0F;
-        this.amount -= reduceAmount;
-        if (this.amount <= 0) {
-            this.amount = 0;
+        super.reducePower(reduceAmount);
+        // 检查是否有“嚣张的本钱” (HighInterestLoanPower)
+        if (this.owner.hasPower(HighInterestLoanPower.POWER_ID)) {
+            AbstractPower loanPower = this.owner.getPower(HighInterestLoanPower.POWER_ID);
+            if (loanPower instanceof HighInterestLoanPower) {
+                ((HighInterestLoanPower) loanPower).onConsumeGold();
+            }
         }
+        updateDescription();
     }
 
     @Override

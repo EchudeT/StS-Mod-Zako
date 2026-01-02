@@ -2,7 +2,6 @@ package theBalance.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -30,8 +29,8 @@ public class CapitalBlackHole extends AbstractDynamicCard {
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = 2;
-    private static final int MAGIC = 5;
-    private static final int MAGIC2 = 3;
+    private static final int MAGIC = 5;  // 阈值：每5点
+    private static final int MAGIC2 = 3; // 伤害：3点
     private static final int UPGRADE_PLUS_DAMAGE = 2;
 
     public CapitalBlackHole() {
@@ -44,23 +43,37 @@ public class CapitalBlackHole extends AbstractDynamicCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (!p.hasPower(CombatGoldPower.POWER_ID))return;
-        int totalCombatGold = p.getPower(CombatGoldPower.POWER_ID).amount;
-        int damagePerUnit = defaultSecondMagicNumber;
-        int totalDamage = totalCombatGold / magicNumber * damagePerUnit;
+        if (!p.hasPower(CombatGoldPower.POWER_ID)) return;
 
+        int totalCombatGold = p.getPower(CombatGoldPower.POWER_ID).amount;
+
+        // 1. 计算攻击段数 (例如 20 津贴 / 5 = 4 段)
+        int hitCount = totalCombatGold / magicNumber;
+
+        // 2. 获取单段伤害数值 (3 或 5)
+        int damagePerHit = defaultSecondMagicNumber;
+
+        // 消耗所有津贴
         if (totalCombatGold > 0) {
             AbstractDungeon.actionManager.addToBottom(
                     new ReducePowerAction(p, p, CombatGoldPower.POWER_ID, totalCombatGold));
         }
 
-        if (totalDamage > 0) {
-            int[] damageArray = new int[AbstractDungeon.getCurrRoom().monsters.monsters.size()];
-            Arrays.fill(damageArray, totalDamage);
+        // 3. 循环造成伤害
+        if (hitCount > 0) {
+            // 构建伤害数组：数组中每个元素都是单段伤害值 (damagePerHit)
+            int[] damageMatrix = new int[AbstractDungeon.getCurrRoom().monsters.monsters.size()];
+            Arrays.fill(damageMatrix, damagePerHit);
 
-            AbstractDungeon.actionManager.addToBottom(
-                new DamageAllEnemiesAction(p, damageArray, DamageInfo.DamageType.THORNS,
-                    AbstractGameAction.AttackEffect.FIRE));
+            for (int i = 0; i < hitCount; i++) {
+                // 每次循环加入一个对全体造成伤害的动作
+                // 为了视觉效果不至于太单调，你可以让攻击特效在 FIRE 和 SLASH 之间切换，或者统一用 FIRE
+                // 你目前使用的是 THORNS（荆棘伤害）。这种伤害通常不享受力量（Strength）加成，也不会触发像“造成未被格挡的伤害时”这样的遗物效果。
+                // 如果希望这几段伤害能享受力量加成（例如：力量+2，每段伤害从3变成5），需要将 DamageType.THORNS 改为 DamageType.NORMAL。多段伤害配合力量流是非常强力的机制。
+                AbstractDungeon.actionManager.addToBottom(
+                        new DamageAllEnemiesAction(p, damageMatrix, DamageInfo.DamageType.NORMAL,
+                                AbstractGameAction.AttackEffect.FIRE));
+            }
         }
     }
 

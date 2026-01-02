@@ -22,7 +22,7 @@ public class Ceasefire extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
-    private static final int COST = 3;
+    private static final int COST = 2;
 
     public Ceasefire() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -48,7 +48,7 @@ public class Ceasefire extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(2);
+            upgradeBaseCost(1);
             initializeDescription();
         }
     }

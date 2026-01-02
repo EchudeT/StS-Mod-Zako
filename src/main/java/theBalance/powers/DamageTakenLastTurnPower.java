@@ -21,8 +21,8 @@ public class DamageTakenLastTurnPower extends AbstractPower implements Cloneable
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power.png"));
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("AttackPower84.png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("AttackPower32.png"));
 
     private int damageTakenThisTurn = 0;  // 本回合受伤状态
     private int damageTakenLastTurn = 0;  // 上回合受伤状态

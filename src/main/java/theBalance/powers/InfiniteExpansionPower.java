@@ -22,8 +22,8 @@ public class InfiniteExpansionPower extends AbstractPower implements CloneablePo
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power.png"));
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("ZakoPower84.png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("ZakoPower32.png"));
 
     public InfiniteExpansionPower(final AbstractCreature owner, int amount) {
         name = NAME;

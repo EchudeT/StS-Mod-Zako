@@ -12,7 +12,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class BalancingAct extends AbstractDynamicCard {
 
     // 配平 - Balancing Act
-    // 获得 5 点格挡。若上回合失去过生命，改为获得 10(14) 点格挡。
+    // 获得 5(8) 点格挡。若上回合失去过生命，改为获得 10(14) 点格挡。
 
     public static final String ID = BalanceMod.makeID(BalancingAct.class.getSimpleName());
     public static final String IMG = makeCardPath("BalancingAct.png");
@@ -26,6 +26,7 @@ public class BalancingAct extends AbstractDynamicCard {
     private static final int BLOCK = 5;
     private static final int MAGIC = 10;  // 受伤后的格挡值
     private static final int UPGRADE_PLUS_MAGIC = 4;
+    private static final int UPGRADE_PLUS_BLOCK = 3;
 
     public BalancingAct() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -51,6 +52,7 @@ public class BalancingAct extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_MAGIC);
+            upgradeBlock(UPGRADE_PLUS_BLOCK);
             initializeDescription();
         }
     }

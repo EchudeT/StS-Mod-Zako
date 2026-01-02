@@ -16,7 +16,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class LastStrike extends AbstractDynamicCard {
 
     // 最后一击 - Last Strike
-    // 消耗。造成 28(38) 点伤害。失去 2 点力量。
+    // 消耗。造成 32(38) 点伤害。失去 2 点力量。
 
     public static final String ID = BalanceMod.makeID(LastStrike.class.getSimpleName());
     public static final String IMG = makeCardPath("LastStrike.png");
@@ -27,8 +27,8 @@ public class LastStrike extends AbstractDynamicCard {
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = 2;
-    private static final int DAMAGE = 28;
-    private static final int UPGRADE_PLUS_DMG = 10;
+    private static final int DAMAGE = 32;
+    private static final int UPGRADE_PLUS_DMG = 6;
     private static final int MAGIC = 2;  // 失去的力量
 
     public LastStrike() {

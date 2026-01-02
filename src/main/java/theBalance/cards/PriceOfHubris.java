@@ -20,7 +20,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class PriceOfHubris extends AbstractDynamicCard {
 
     // 傲慢之价 - Price of Hubris
-    // 获得 1 层实体。获得当前金币 10%(20%) 的力量。失去 50% 金币。 消耗。
+    // 获得 1 层实体。获得当前金币 10%(15%) 的力量。失去 50% 金币。 消耗。
 
     public static final String ID = BalanceMod.makeID(PriceOfHubris.class.getSimpleName());
     public static final String IMG = makeCardPath("PriceOfHubris.png");
@@ -33,7 +33,7 @@ public class PriceOfHubris extends AbstractDynamicCard {
 
     private static final int COST = 0;
     private static final int INTANGIBLE_AMT = 1;
-    private static final int GOLD_PERCENT_TO_STR = 10; // 10% 金币转力量
+    private static final int GOLD_PERCENT_TO_STR = 5; // 10% 金币转力量
     private static final int GOLD_LOSS_PERCENT = 50; // 失去 50% 金币
 
     public PriceOfHubris() {
@@ -136,11 +136,7 @@ public class PriceOfHubris extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            // 升级后也许只失去 30% 金币？或者变成保留？
-            // 考虑到这是特殊牌，可以设计为：不消耗 -> 但这太强了
-            // 或者：实体变为 2 层？
-            // 这里设计为：获得金币 15% 的力量
-            upgradeMagicNumber(10);
+            upgradeMagicNumber(3);
             initializeDescription();
         }
     }

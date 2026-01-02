@@ -32,9 +32,9 @@ public class TemporaryImmunity extends AbstractDynamicCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
             new ApplyPowerAction(p, p, new IntangiblePlayerPower(p, magicNumber), magicNumber));
-        // 下回合失去15%当前生命
+        // 下回合失去最大生命的15%生命
         AbstractDungeon.actionManager.addToBottom(
-            new ApplyPowerAction(p, p, new theBalance.powers.TemporaryImmunityPower(p), -1));
+            new ApplyPowerAction(p, p, new theBalance.powers.TemporaryImmunityPower(p, 15), 15));
     }
 
     @Override

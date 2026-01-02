@@ -12,7 +12,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class StableManagement extends AbstractDynamicCard {
 
     // 稳健经营 - Stable Management
-    // 不再获得力量。每回合开始获得 1(2) 点敏捷。
+    // 力量变为敏捷。每回合开始获得 1(2) 点敏捷。
 
     public static final String ID = BalanceMod.makeID(StableManagement.class.getSimpleName());
     public static final String IMG = makeCardPath("StableManagement.png");

@@ -30,7 +30,7 @@ public class Transfer extends AbstractDynamicCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        // 本回合-1能量和力
+        // 本回合-1力量
         AbstractDungeon.actionManager.addToBottom(
             new ApplyPowerAction(p, p, new StrengthPower(p, -1), -1));
         p.loseEnergy(1);

@@ -11,6 +11,7 @@ import theBalance.relics.CalibratedScale;
 
 public class CalibratedScalePatch {
 
+
     // 辅助方法：检查并触发遗物
     private static void checkRelic() {
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(CalibratedScale.ID)) {

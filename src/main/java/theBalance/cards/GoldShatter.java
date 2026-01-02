@@ -16,7 +16,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class GoldShatter extends AbstractDynamicCard {
 
     // 碎金击 - Gold Shatter
-    // 消耗 5 金币。造成 12(16) 点伤害。
+    // 消耗 5 金币。造成 8(12) 点伤害。
 
     public static final String ID = BalanceMod.makeID(GoldShatter.class.getSimpleName());
     public static final String IMG = makeCardPath("GoldShatter.png");
@@ -27,7 +27,7 @@ public class GoldShatter extends AbstractDynamicCard {
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 12;
+    private static final int DAMAGE = 8;
     private static final int UPGRADE_PLUS_DMG = 4;
     private static final int MAGIC = 5;  // 消耗的金币数
 

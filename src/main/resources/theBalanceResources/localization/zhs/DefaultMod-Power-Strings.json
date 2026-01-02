@@ -14,13 +14,12 @@
   "theBalance:MacroRegulationPower": {
     "NAME": "全听我的",
     "DESCRIPTIONS": [
-      "无法获得 #y格挡 。获得的 #y格挡 将转化为对随机敌人的伤害。 NL 造成的伤害提升 #b",
-      " %。"
+      "当你的回合结束时，你的力量和敏捷会取两者的平均值。(向上取整)"
     ]
   },
   "theBalance:BurnBoatsPower": {
     "NAME": "彻底学坏",
-    "DESCRIPTIONS": ["无法格挡。伤害提升 #b", " %。"]
+    "DESCRIPTIONS": ["无法获得 格挡 。获得的 格挡 将转化为对随机敌人的伤害。伤害提升 #b", " %。"]
   },
   "theBalance:RiskActuaryPower": {
     "NAME": "抖M体质",
@@ -28,7 +27,7 @@
   },
   "theBalance:HighInterestStoragePower": {
     "NAME": "压岁钱利息",
-    "DESCRIPTIONS": ["结余能量转为下回合的 [E] 和 #b", " 点战斗津贴。"]
+    "DESCRIPTIONS": ["结余能量转为下回合的 [E] 和 #b", " 点零花钱。"]
   },
   "theBalance:BadDebtDeductionPower": {
     "NAME": "祸不单行",
@@ -36,7 +35,7 @@
   },
   "theBalance:EnergyRecyclingPower": {
     "NAME": "废料再利用",
-    "DESCRIPTIONS": ["每当打出消耗牌，随机将一张 对等打击 加入手牌，0费。"]
+    "DESCRIPTIONS": ["每当打出消耗牌，随机将一张 杂鱼打击 加入手牌，0费。"]
   },
   "theBalance:HedgeFundPower": {
     "NAME": "痛过才懂",
@@ -52,17 +51,17 @@
   "theBalance:CompoundInterestPower": {
     "NAME": "金钱诱惑",
     "DESCRIPTIONS": [
-      "每当你失去金币或消耗 #y战斗津贴 时，获得等同于消耗量 #b",
+      "每当你失去金币或消耗 #y零花钱 时，获得等同于消耗量 #b",
       "% 的 #y格挡 。"
     ]
   },
   "theBalance:CapitalAccumulationPower": {
     "NAME": "拜金少女",
-    "DESCRIPTIONS": ["战后额外获 #b", " 金币。每有 100 金币，卡牌负面数值 +1。"]
+    "DESCRIPTIONS": ["战后额外获 #b", " 金币。每有 100 金币，减少5枚获得的金币。"]
   },
   "theBalance:CombatGoldPower": {
     "NAME": "零花钱",
-    "DESCRIPTIONS": ["拥有 #b", " 点战斗津贴，消耗金币的卡牌优先使用战斗津贴。"]
+    "DESCRIPTIONS": ["拥有 #b", " 点零花钱，消耗金币的卡牌优先使用零花钱。"]
   },
   "theBalance:CeasefirePower": {
     "NAME": "都不许动！",
@@ -84,10 +83,6 @@
     "NAME": "投资大叔",
     "DESCRIPTIONS": ["战胜后获得 #b", " 金币。"]
   },
-  "theBalance:LiquidAssetsPower": {
-    "NAME": "挥霍式防守",
-    "DESCRIPTIONS": ["格挡不再消失。每当触发格挡，失去等量战斗津贴。"]
-  },
   "theBalance:RiskMortgagePower": {
     "NAME": "透支体能",
     "DESCRIPTIONS": ["下回合失去 #b", " 点能量。"]
@@ -98,11 +93,11 @@
   },
   "theBalance:SymmetricalAestheticsPower": {
     "NAME": "一起倒霉",
-    "DESCRIPTIONS": ["你与敌人同步获得所有 Debuff 。"]
+    "DESCRIPTIONS": ["你与敌人同步获得所有 debuff 。"]
   },
   "theBalance:TemporaryImmunityPower": {
     "NAME": "抓不到我",
-    "DESCRIPTIONS": ["下回合失去 #b", " %当前生命。"]
+    "DESCRIPTIONS": ["下回合失去 最大生命 #b", " %的当前生命。"]
   },
   "theBalance:TransferPower": {
     "NAME": "期待明天",
@@ -149,7 +144,7 @@
   },
   "theBalance:HedgePower": {
     "NAME": "躲在身后",
-    "DESCRIPTIONS": ["若受到攻击伤害，敌人获得 #b", " 点力量。"]
+    "DESCRIPTIONS": ["若被破防，敌人获得 #b", " 点力量。"]
   },
   "theBalance:TemporaryPreservationDelayedPower": {
     "NAME": "假装求饶",
@@ -197,7 +192,7 @@
   },
   "theBalance:DoodlePaperPower": {
     "NAME": "乱涂乱画",
-    "DESCRIPTIONS": ["你被施加负面状态时， 50% 概率将该状态也施加给全体敌人。"]
+    "DESCRIPTIONS": ["你每回合第一次获得 #y负面状态 时，将该状态施加给全体敌人"]
   },
   "theBalance:SemipermeablePower": {
     "NAME": "只进不出",
@@ -215,7 +210,7 @@
     "NAME": "碰瓷预备",
     "DESCRIPTIONS": [
       "本回合若受到未被格挡的攻击伤害，获得 #b",
-      " 点 #y战斗津贴 。"
+      " 点 #y零花钱 。"
     ]
   },
   "theBalance:MagnifyingLensDelayedPower": {
@@ -224,5 +219,9 @@
       "下回合开始时，获得 #b",
       " 点 #y力量 。"
     ]
+  },
+  "theBalance:HighInterestLoanPower": {
+    "NAME": "嚣张的本钱",
+    "DESCRIPTIONS": ["每当你消耗 #y零花钱 时，抽 #b", " 张牌。"]
   }
 }

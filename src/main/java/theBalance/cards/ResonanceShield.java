@@ -44,6 +44,7 @@ public class ResonanceShield extends AbstractDynamicCard {
             upgradeName();
             upgradeBlock(UPGRADE_PLUS_BLOCK);
             upgradeMagicNumber(UPGRADE_PLUS_MAGIC);
+            upgradeBaseCost(1);
             initializeDescription();
         }
     }

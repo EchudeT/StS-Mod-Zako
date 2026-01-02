@@ -13,7 +13,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class InfiniteOverdraft extends AbstractDynamicCard {
 
     // 无限透支 - Infinite Overdraft
-    // 消耗。本回合费用为 0。下回合跳过。 (升级：抽2牌)
+    // 消耗。本回合费用为 0。下回合跳过玩家。 (升级：抽2牌)
 
     public static final String ID = BalanceMod.makeID(InfiniteOverdraft.class.getSimpleName());
     public static final String IMG = makeCardPath("InfiniteOverdraft.png");

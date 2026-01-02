@@ -12,7 +12,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class RiskActuary extends AbstractDynamicCard {
 
     // 风险精算 - Risk Actuary
-    // 每当你获得一个负面状态，获得 3(5) 点格挡。
+    // 每当你获得一个负面状态，获得 5(8) 点格挡。
 
     public static final String ID = BalanceMod.makeID(RiskActuary.class.getSimpleName());
     public static final String IMG = makeCardPath("RiskActuary.png");
@@ -23,8 +23,8 @@ public class RiskActuary extends AbstractDynamicCard {
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
-    private static final int MAGIC = 3;
-    private static final int UPGRADE_PLUS_MAGIC = 2;
+    private static final int MAGIC = 5;
+    private static final int UPGRADE_PLUS_MAGIC = 3;
 
     public RiskActuary() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);

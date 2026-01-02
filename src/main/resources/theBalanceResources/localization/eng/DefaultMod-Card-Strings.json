@@ -1,53 +1,344 @@
 {
-  "theBalance:DefaultCommonAttack": {
-    "NAME": "Strike",
-    "DESCRIPTION": "Deal !D! damage. NL [#0000ff]This[] [#ff0000]Is[] [#ffff00]How[] [#88888]color[] [#ff00ff]works.[]"
+  "theBalance:ParityStrike": {
+    "NAME": "Loser's Retaliation",
+    "DESCRIPTION": "Deal !D! damage. NL If you lost HP last turn, deal !M! additional damage."
   },
-  "theBalance:DefaultCommonSkill": {
-    "NAME": "Defend",
-    "DESCRIPTION": "Gain !B! Block. NL thedefault:Multiword_Keyword."
+  "theBalance:ParityDefend": {
+    "NAME": "Stubbornness",
+    "DESCRIPTION": "Gain !B! Block."
   },
-  "theBalance:DefaultCommonPower": {
-    "NAME": "Hold Place",
-    "DESCRIPTION": "Gain !M! thedefault:Keyword.",
-    "UPGRADE_DESCRIPTION": "Gain !M! thedefault:Keywords."
-  },
-  "theBalance:DefaultUncommonAttack": {
-    "NAME": "Big slap",
+  "theBalance:BasicStrike": {
+    "NAME": "Small Fry Strike",
     "DESCRIPTION": "Deal !D! damage."
   },
-  "theBalance:DefaultUncommonSkill": {
-    "NAME": "A Better Defend",
-    "DESCRIPTION": "Gain !B! Plated Armor. Affected by Dexterity."
+  "theBalance:BalancingAct": {
+    "NAME": "Sore Loser",
+    "DESCRIPTION": "Gain !B! Block. NL If you lost HP last turn, gain !M! Block instead."
   },
-  "theBalance:DefaultUncommonPower": {
-    "NAME": "Weirdness",
-    "DESCRIPTION": "Gain X thedefault:Keywords.",
-    "UPGRADE_DESCRIPTION": "Gain X +1 thedefault:Keywords."
+  "theBalance:HighInterestLoan": {
+    "NAME": "Capital of Arrogance",
+    "DESCRIPTION": "Whenever you lose *Pocket *Money, draw !M! cards."
   },
-  "theBalance:DefaultRareAttack": {
-    "NAME": "TOUCH",
-    "DESCRIPTION": "Deal !D! damage."
+  "theBalance:ImbalancedBooks": {
+    "NAME": "Bully the Strong",
+    "DESCRIPTION": "Deal !D! damage. NL If the enemy has more Strength than you, double the damage."
   },
-  "theBalance:DefaultRareSkill": {
-    "NAME": "For Each Loop x2",
-    "DESCRIPTION": "Apply !M! Vulnerable to all enemies, 2 times.",
-    "UPGRADE_DESCRIPTION": "Apply !M! Vulnerable to all enemies, 3 times."
+  "theBalance:RiskyInvestment": {
+    "NAME": "Testing the Waters",
+    "DESCRIPTION": "Deal !D! damage. NL Draw 1 card. If it is not an Attack, lose !M! HP."
   },
-  "theBalance:DefaultRarePower": {
-    "NAME": "In-Progress Form",
-    "DESCRIPTION": "At the start of your turn, play a TOUCH."
+  "theBalance:Kickback": {
+    "NAME": "Demand Allowance",
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! *Pocket *Money."
   },
-  "theBalance:DefaultAttackWithVariable": {
-    "NAME": "Special Strike",
-    "DESCRIPTION": "Deal !D! damage [E] times. NL (Deal !theBalance:ENERGY_DAMAGE! damage total.)"
+  "theBalance:EquivalentStrike": {
+    "NAME": "Overexertion",
+    "DESCRIPTION": "Deal !D! damage. NL Add a *Wound into your discard pile."
   },
-  "theBalance:DefaultSecondMagicNumberSkill": {
-    "NAME": "Cool 2 Number Card",
-    "DESCRIPTION": "Apply !M! Vulnerable and !theBalance:SecondMagic! poison to an enemy."
+  "theBalance:ChainReaction": {
+    "NAME": "Chain Slaps",
+    "DESCRIPTION": "Deal !D! damage !M! times. NL Gain !theBalance:SM! Vulnerable."
   },
-  "theBalance:OrbSkill": {
-    "NAME": "Get Orb",
-    "DESCRIPTION": "Channel 1 Default Orb."
+  "theBalance:GoldShatter": {
+    "NAME": "Pay Up!",
+    "DESCRIPTION": "Lose !M! Gold. NL Deal !D! damage."
+  },
+  "theBalance:Collection": {
+    "NAME": "Kick 'em While Down",
+    "DESCRIPTION": "Deal !D! damage. NL If the target has a Debuff, draw !M! cards."
+  },
+  "theBalance:BadDebtRecovery": {
+    "NAME": "Refuse to Pay",
+    "DESCRIPTION": "Choose 1 card from your discard pile or draw pile and add it to your hand. NL Add a *Void into your draw pile.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Choose 1 card from your discard pile or draw pile and add it to your hand. NL Add a *Void into your draw pile."
+  },
+  "theBalance:BadDebtLoss": {
+    "NAME": "Self-Destruct Shame",
+    "DESCRIPTION": "Deal !D! damage. NL Add !M! *Void into your draw pile."
+  },
+  "theBalance:SpreadDamage": {
+    "NAME": "Share the Pain",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL You lose !M! HP."
+  },
+  "theBalance:Blade": {
+    "NAME": "Nail Scratch",
+    "DESCRIPTION": "Deal !D! damage !M! times."
+  },
+  "theBalance:MoneyOffensive": {
+    "NAME": "Pay-to-Win",
+    "DESCRIPTION": "Lose !M! Gold. NL Deal !D! damage."
+  },
+  "theBalance:LastStrike": {
+    "NAME": "Bluff",
+    "DESCRIPTION": "Exhaust. Deal !D! damage. NL Lose !M! Strength."
+  },
+  "theBalance:MirrorProjection": {
+    "NAME": "Mirror: Idiot Reflect",
+    "DESCRIPTION": "Deal damage equal to !M!% of the enemy's intended damage."
+  },
+  "theBalance:BankruptcyRush": {
+    "NAME": "Mental Breakdown",
+    "DESCRIPTION": "Lose !M! Gold. NL Deal !D! damage. NL If Gold is insufficient, lose !theBalance:SM! HP instead."
+  },
+  "theBalance:DebtHarvest": {
+    "NAME": "Masochistic Grudge",
+    "DESCRIPTION": "Deal !D! damage. NL Repeat for each Debuff on you."
+  },
+  "theBalance:AssetSwap": {
+    "NAME": "Status Reversal",
+    "DESCRIPTION": "Deal !D! damage. NL Swap your Vulnerable and Weak stacks with the enemy."
+  },
+  "theBalance:LeverageStrike": {
+    "NAME": "Show-off Combo",
+    "DESCRIPTION": "Deal !D! damage X times. NL Gain X Weak."
+  },
+  "theBalance:NetWorthThrust": {
+    "NAME": "Growth Record",
+    "DESCRIPTION": "Deal !D! damage. NL Repeat for each positive Buff gained this turn."
+  },
+  "theBalance:BalancePivot": {
+    "NAME": "Forced Equality",
+    "DESCRIPTION": "Exhaust. Deal !D! damage. NL Set the enemy's Strength and Dexterity to 0 for this turn."
+  },
+  "theBalance:BalancedTrim": {
+    "NAME": "Height Correction",
+    "DESCRIPTION": "Deal !D! damage to an enemy. NL Reset both sides' Block to the average of the two."
+  },
+  "theBalance:Doomsday": {
+    "NAME": "World Destruction!",
+    "DESCRIPTION": "Deal !D! damage to ALL characters (including you) !M! times."
+  },
+  "theBalance:ZeroSumJudgment": {
+    "NAME": "Yours is Mine",
+    "DESCRIPTION": "Deal !D! damage. NL Steal all Strength from the enemy. Return it at the end of the turn."
+  },
+  "theBalance:CapitalBlackHole": {
+    "NAME": "Vanity Explosion",
+    "DESCRIPTION": "Lose all *Pocket *Money. NL Deal !theBalance:SM! damage to ALL enemies for every !M! *Pocket *Money lost."
+  },
+  "theBalance:InfiniteExpansion": {
+    "NAME": "Brat's Arrogance",
+    "DESCRIPTION": "Retain. Deal !D! damage. NL Damage doubles each turn retained. Damage taken increased by 100%. Multiplier resets upon taking damage."
+  },
+  "theBalance:AbsoluteNeutrality": {
+    "NAME": "Let's All Be Scrubs~",
+    "DESCRIPTION": "Exhaust. If the enemy's HP percentage is higher than yours, reduce it to match yours (Max damage !M!)."
+  },
+  "theBalance:DevilsOption": {
+    "NAME": "Coquettish Loan",
+    "DESCRIPTION": "Gain !M! Gold. NL Place 2 *Dazed into your discard pile."
+  },
+  "theBalance:Hedge": {
+    "NAME": "Hide Behind",
+    "DESCRIPTION": "Gain !B! Block. NL If your Block is broken this turn, the enemy gains !M! Strength."
+  },
+  "theBalance:RiskMortgage": {
+    "NAME": "Overdraft Stamina",
+    "DESCRIPTION": "Gain !B! Block. NL Lose 1 Energy next turn."
+  },
+  "theBalance:InsuranceContract": {
+    "NAME": "Fraud Compensation",
+    "DESCRIPTION": "Gain !B! Block. NL If your Block is broken, gain !M! *Pocket *Money."
+  },
+  "theBalance:InventoryClearance": {
+    "NAME": "Littering",
+    "DESCRIPTION": "Discard your hand. NL For each card discarded, draw 1 card and gain !M! *Pocket *Money."
+  },
+  "theBalance:QuickFinancing": {
+    "NAME": "Call for Backup",
+    "DESCRIPTION": "Innate. Gain [E]. NL Add a *Slimed into your draw pile."
+  },
+  "theBalance:EnergyConservation": {
+    "NAME": "Slacking Off",
+    "DESCRIPTION": "Discard 1 card, draw !M! cards."
+  },
+  "theBalance:WealthEqualization": {
+    "NAME": "We Are All Scrubs",
+    "DESCRIPTION": "Set Strength of both sides to the average value. (Rounded down)"
+  },
+  "theBalance:TemporaryPreservation": {
+    "NAME": "Fake Begging",
+    "DESCRIPTION": "Gain !B! Block. NL Next turn, the enemy gains !M! Strength."
+  },
+  "theBalance:DuskPact": {
+    "NAME": "Truce Treaty",
+    "DESCRIPTION": "Both sides lose !M! Strength. NL Gain 2 stacks of !theBalance:SM! Plated Armor."
+  },
+  "theBalance:TimeArbitrage": {
+    "NAME": "Shameless Union",
+    "DESCRIPTION": "Depleted. Enemy skips their next 2 turns. Afterwards, your Energy becomes 0 for 2 turns."
+  },
+  "theBalance:Frenzy": {
+    "NAME": "Arrogance",
+    "DESCRIPTION": "Gain !M! Strength. Lose !theBalance:SM! Dexterity."
+  },
+  "theBalance:TurtleUp": {
+    "NAME": "Crouch Guard",
+    "DESCRIPTION": "Gain !M! Dexterity. Lose !theBalance:SM! Strength."
+  },
+  "theBalance:Fluctuation": {
+    "NAME": "Overheated",
+    "DESCRIPTION": "Exhaust. Double all status stacks on the field."
+  },
+  "theBalance:MirrorShield": {
+    "NAME": "Mirror: Reflect Armor",
+    "DESCRIPTION": "Exhaust. Both sides gain !M! Buffer and !theBalance:SM! Thorns."
+  },
+  "theBalance:PhaseShift": {
+    "NAME": "Nyeh-Nyeh~",
+    "DESCRIPTION": "Exhaust. Gain !M! Buffer. NL Next turn, the enemy gains 1 Buffer."
+  },
+  "theBalance:Countercurrent": {
+    "NAME": "Reverse Brainwash",
+    "DESCRIPTION": "Convert your negative stats into positive ones. NL Next turn, the enemy gains double that amount."
+  },
+  "theBalance:RiskHedge": {
+    "NAME": "Patron's Funding",
+    "DESCRIPTION": "Lose !M! X Gold. NL Gain !theBalance:SM! Plated Armor for every !M! Gold lost."
+  },
+  "theBalance:ResonanceShield": {
+    "NAME": "Consolation Prize",
+    "DESCRIPTION": "Gain !B! Block. NL The enemy gains !M! Block."
+  },
+  "theBalance:LiquidAssets": {
+    "NAME": "Spendthrift Defense",
+    "DESCRIPTION": "Gain !B! Block. NL Lose !M! *Pocket *Money: Gain !B! Block again.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Lose !M! *Pocket *Money: Gain !B! Block again."
+  },
+  "theBalance:TemporaryImmunity": {
+    "NAME": "Can't Catch Me",
+    "DESCRIPTION": "Gain !M! Intangible. NL Next turn, lose HP equal to 15% of your Max HP."
+  },
+  "theBalance:InformationAsymmetry": {
+    "NAME": "Look At Me!",
+    "DESCRIPTION": "Draw !M! cards. NL Draw 1 less card next turn."
+  },
+  "theBalance:Liquidation": {
+    "NAME": "Digging Up Dirt",
+    "DESCRIPTION": "Exhaust. Remove all effects from yourself. NL For each effect removed, draw 1 card and gain [E]."
+  },
+  "theBalance:EquivalentExchange": {
+    "NAME": "Mystery Box",
+    "DESCRIPTION": "Exhaust. Transform a card in your hand into a random Rare card of the same color. It costs 0."
+  },
+  "theBalance:Exemption": {
+    "NAME": "Shameless Act",
+    "DESCRIPTION": "Exhaust. NL Gain !M! Artifact. NL Draw 1 card."
+  },
+  "theBalance:Transfer": {
+    "NAME": "Expect Tomorrow",
+    "DESCRIPTION": "Lose 1 Strength this turn. NL Next turn, gain !M! Energy, !M! Strength, and draw !M! additional cards."
+  },
+  "theBalance:ZeroSumGame": {
+    "NAME": "Piss You Off",
+    "DESCRIPTION": "Steal !M! Strength from the enemy. NL Return it at the end of the turn."
+  },
+  "theBalance:PostWarReparations": {
+    "NAME": "Mercy Gift Pack",
+    "DESCRIPTION": "Exhaust. Gain !M! Regen (Does not decay). NL All enemies gain !theBalance:SM! Enrage."
+  },
+  "theBalance:MultilayerFortress": {
+    "NAME": "Paid Bodyguard",
+    "DESCRIPTION": "Lose X*!M! Gold. NL Gain X*!theBalance:SM! Plated Armor."
+  },
+  "theBalance:EnrageMarket": {
+    "NAME": "Provoke Old Man",
+    "DESCRIPTION": "All enemies gain Enrage. NL Whenever an enemy gains Strength from Enrage, you gain !M! Strength."
+  },
+  "theBalance:Quagmire": {
+    "NAME": "Throw a Fit",
+    "DESCRIPTION": "Exhaust. Apply !M! Weak to both sides."
+  },
+  "theBalance:MagnifyingLens": {
+    "NAME": "Center of Attention",
+    "DESCRIPTION": "Gain !M! Strength. NL Next turn, the enemy gains !theBalance:SM! Strength."
+  },
+  "theBalance:SuperpositionState": {
+    "NAME": "Afterimage",
+    "DESCRIPTION": "Gain !B! Block !M! times."
+  },
+  "theBalance:Lending": {
+    "NAME": "Invest in Old Man",
+    "DESCRIPTION": "Ethereal. Lose 30 Gold. Upon winning combat, gain !theBalance:SM! Gold. NL All enemies gain 3 Strength."
+  },
+  "theBalance:MirrorSoul": {
+    "NAME": "Mirror: Copycat",
+    "DESCRIPTION": "Exhaust. Remove negative effects. NL Copy a specific enemy Buff to yourself."
+  },
+  "theBalance:Ceasefire": {
+    "NAME": "Nobody Move!",
+    "DESCRIPTION": "Exhaust. Damage from all sources becomes 0 this turn."
+  },
+  "theBalance:LifeLeverage": {
+    "NAME": "Desperate Pity",
+    "DESCRIPTION": "Gain Block equal to your missing HP."
+  },
+  "theBalance:InfiniteOverdraft": {
+    "NAME": "Screw Tomorrow",
+    "DESCRIPTION": "Exhaust. Cards cost 0 this turn. NL Skip your next turn."
+  },
+  "theBalance:AssetReorganization": {
+    "NAME": "Reshuffle",
+    "DESCRIPTION": "Swap your discard pile and draw pile."
+  },
+  "theBalance:ScaleTilt": {
+    "NAME": "No Stronger Than Me",
+    "DESCRIPTION": "Enemy gains !M! Strength. NL Whenever the enemy gains Strength, you gain an equal amount."
+  },
+  "theBalance:RiskActuary": {
+    "NAME": "Masochist",
+    "DESCRIPTION": "Whenever you gain a negative status, gain !M! Block."
+  },
+  "theBalance:HighInterestStorage": {
+    "NAME": "New Year Money Interest",
+    "DESCRIPTION": "Unused Energy is converted into next turn's [E] and !M! *Pocket *Money."
+  },
+  "theBalance:EnergyRecycling": {
+    "NAME": "Waste Recycling",
+    "DESCRIPTION": "Whenever you play an Exhaust card, add a random Parity Strike into your hand. It costs 0."
+  },
+  "theBalance:BadDebtDeduction": {
+    "NAME": "Misfortunes Never Come Alone",
+    "DESCRIPTION": "Whenever you draw a Status or Curse card, draw !M! cards."
+  },
+  "theBalance:SymmetricalAesthetics": {
+    "NAME": "Bad Luck Together",
+    "DESCRIPTION": "Gain 3 Symmetry. NL Whenever you receive a Debuff, apply it to the enemy as well."
+  },
+  "theBalance:HedgeFund": {
+    "NAME": "Learned from Pain",
+    "DESCRIPTION": "Innate. If you lost HP this turn, gain [E] next turn."
+  },
+  "theBalance:StableManagement": {
+    "NAME": "Good Girl Mode",
+    "DESCRIPTION": "Exhaust. When gaining Strength, convert it to Dexterity instead. NL At the start of your turn, gain !M! Dexterity."
+  },
+  "theBalance:CompoundInterest": {
+    "NAME": "Money Temptation",
+    "DESCRIPTION": "Whenever you lose Gold (Spent or Stolen), gain Block equal to !M!% of the amount lost."
+  },
+  "theBalance:MacroRegulation": {
+    "NAME": "Listen To Me",
+    "DESCRIPTION": "Innate. At the end of your turn, set your Strength and Dexterity to the average of the two (Rounded up)."
+  },
+  "theBalance:CapitalAccumulation": {
+    "NAME": "Gold Digger",
+    "DESCRIPTION": "Exhaust. Gain !M! additional Gold after combat. NL For every 100 Gold you have, gain 5 less Gold."
+  },
+  "theBalance:MirrorBarrier": {
+    "NAME": "Mirror: Reflect Reflect!",
+    "DESCRIPTION": "When you take damage, the enemy takes double that amount."
+  },
+  "theBalance:BurnBoats": {
+    "NAME": "Gone Bad",
+    "DESCRIPTION": "You can no longer gain Block. Block gained is converted into damage to a random enemy. NL Damage increased by !M!%."
+  },
+  "theBalance:DexToStrConvert": {
+    "NAME": "Pride Collapse",
+    "DESCRIPTION": "Exhaust. Lose all *Dexterity. For every 1 point lost, gain !M! *Strength."
+  },
+  "theBalance:PriceOfHubris": {
+    "NAME": "Soul of Hubris",
+    "DESCRIPTION": "Exhaust. NL Gain 1 Intangible. NL Gain Strength equal to !M!% of your current Gold. NL Lose 50% of your Gold."
   }
 }

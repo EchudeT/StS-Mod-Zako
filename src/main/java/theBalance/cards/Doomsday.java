@@ -15,7 +15,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class Doomsday extends AbstractDynamicCard {
 
     // 末日 - Doomsday
-    // 对全场（含自己）造成 20(30) 点伤害 2 次。
+    // 对全场（含自己）造成 30(40) 点伤害 2 次。
 
     public static final String ID = BalanceMod.makeID(Doomsday.class.getSimpleName());
     public static final String IMG = makeCardPath("Doomsday.png");
@@ -25,7 +25,7 @@ public class Doomsday extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
-    private static final int COST = 3;
+    private static final int COST = 1;
     private static final int DAMAGE = 20;
     private static final int UPGRADE_PLUS_DMG = 10;
     private static final int MAGIC = 2;

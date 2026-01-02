@@ -16,5 +16,13 @@
       "multikeyword"
     ],
     "DESCRIPTION": "Make sure the first element in the NAMES is the same as your PROPER_NAME. The rest is to match keywords like the single word keyword."
+  },
+  {
+    "PROPER_NAME": "Pocket Money",
+    "NAMES": [
+      "pocket money",
+      "pocket_money"
+    ],
+    "DESCRIPTION": "A special currency. When spending #yGold, #yPocket #yMoney is consumed first."
   }
 ]

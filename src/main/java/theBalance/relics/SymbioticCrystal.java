@@ -19,7 +19,7 @@ public class SymbioticCrystal extends CustomRelic {
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("SymbioticCrystal.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
 
-    private static final float HEAL_RATE = 0.2F;
+    private static final float HEAL_RATE = 0.25F;
     public SymbioticCrystal() {
         super(ID, IMG, OUTLINE, RelicTier.SPECIAL, LandingSound.MAGICAL);
     }
@@ -43,11 +43,11 @@ public class SymbioticCrystal extends CustomRelic {
         return damageAmount;
     }
 
-    // 玩家格挡减半
-    @Override
-    public int onPlayerGainedBlock(float blockAmount) {
-        return Math.round(blockAmount * 0.5F);
-    }
+    // 玩家格挡减半 patch实现
+//    @Override
+//    public int onPlayerGainedBlock(float blockAmount) {
+//        return Math.round(blockAmount * 0.5F);
+//    }
 
     // 敌人格挡减半逻辑需要配合Power或者Patch，这里建议使用之前的 Power 方式，
     // 或者如果你想纯 Patch，也可以Patch AbstractCreature.addBlock。

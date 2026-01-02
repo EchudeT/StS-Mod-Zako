@@ -12,7 +12,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class LifeLeverage extends AbstractDynamicCard {
 
     // 生命杠杆 - Life Leverage
-    // 获得已损生命值的格挡。 (升级后：额外获得5格挡)
+    // 获得已损生命值的格挡。 (升级后：减一费)
 
     public static final String ID = BalanceMod.makeID(LifeLeverage.class.getSimpleName());
     public static final String IMG = makeCardPath("LifeLeverage.png");
@@ -44,7 +44,7 @@ public class LifeLeverage extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_BLOCK);
+            // upgradeMagicNumber(UPGRADE_PLUS_BLOCK);
             upgradeBaseCost(1);
             initializeDescription();
         }

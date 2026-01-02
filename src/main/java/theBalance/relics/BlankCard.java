@@ -34,14 +34,16 @@ public class BlankCard extends CustomRelic {
     public void onEquip() {
         AbstractCard card1 = new Lending();
         AbstractCard card2 = new Lending();
+        AbstractCard card3 = new Lending();
 
         float centerX = Settings.WIDTH / 2.0F;
         float centerY = Settings.HEIGHT / 2.0F;
 
-        float offset = 250.0F * Settings.scale;
+        float offset = 400F * Settings.scale;
 
         AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(card1, centerX - offset, centerY));
-        AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(card2, centerX + offset, centerY));
+        AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(card2, centerX, centerY));
+        AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(card3, centerX + offset, centerY));
     }
 
 

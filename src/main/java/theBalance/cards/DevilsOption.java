@@ -19,14 +19,14 @@ public class DevilsOption extends AbstractDynamicCard {
     public static final String ID = BalanceMod.makeID(DevilsOption.class.getSimpleName());
     public static final String IMG = makeCardPath("DevilsOption.png");
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardRarity RARITY = CardRarity.SPECIAL;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = 0;
     private static final int MAGIC = 12;  // 获得的金币
-    private static final int UPGRADE_PLUS_MAGIC = 8;
+    private static final int UPGRADE_PLUS_MAGIC = 6;
 
     public DevilsOption() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -36,9 +36,10 @@ public class DevilsOption extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         // 获得战斗津贴
-        AbstractDungeon.actionManager.addToBottom(
-            new ApplyPowerAction(p, p, new theBalance.powers.CombatGoldPower(p, magicNumber), magicNumber));
+//        AbstractDungeon.actionManager.addToBottom(
+//            new ApplyPowerAction(p, p, new theBalance.powers.CombatGoldPower(p, magicNumber), magicNumber));
 
+        p.gainGold(magicNumber);
         // 使用Dazed作为茫然的替代
         AbstractDungeon.actionManager.addToBottom(
             new MakeTempCardInDiscardAction(new Dazed(), 2));

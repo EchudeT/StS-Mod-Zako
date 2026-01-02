@@ -23,8 +23,8 @@ public class DefensiveStancePower extends AbstractPower implements CloneablePowe
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power.png"));
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("DefensePower84.png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("DefensePower32.png"));
 
     public DefensiveStancePower(final AbstractCreature owner, int amount) {
         name = NAME;

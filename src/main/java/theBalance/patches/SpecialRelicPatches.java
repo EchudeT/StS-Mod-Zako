@@ -181,4 +181,26 @@ public class SpecialRelicPatches {
             }
         }
     }
+
+    @SpirePatch(
+            clz = AbstractCard.class,
+            method = "applyPowersToBlock"
+    )
+    public static class SymbioticCrystalCardPatch {
+        // Postfix 意味着在这个方法执行完之后，我们再插一脚
+        @SpirePostfixPatch
+        public static void Postfix(AbstractCard __instance) {
+            // 检查玩家是否拥有该遗物
+            if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(SymbioticCrystal.ID)) {
+                // 将当前计算出的格挡值减半
+                __instance.block = (int) ((__instance.block + 1) * 0.5F);
+
+                // 如果计算后格挡值变了，标记为“已修改”，这样游戏内数字会变色（通常是绿色或红色）
+                if (__instance.block != __instance.baseBlock) {
+                    __instance.isBlockModified = true;
+                }
+            }
+        }
+    }
+
 }

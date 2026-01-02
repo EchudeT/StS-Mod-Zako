@@ -19,7 +19,7 @@ public class Blade extends AbstractDynamicCard {
     public static final String ID = BalanceMod.makeID(Blade.class.getSimpleName());
     public static final String IMG = makeCardPath("Blade.png");
 
-    private static final CardRarity RARITY = CardRarity.RARE;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;

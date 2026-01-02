@@ -24,7 +24,7 @@ public class MirrorShield extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
-    private static final int COST = 2;
+    private static final int COST = 1;
     private static final int MAGIC = 1;  // 缓冲层数
     private static final int UPGRADE_PLUS_MAGIC = 1;
     private static final int MAGIC2 = 3;  // 荆棘层数

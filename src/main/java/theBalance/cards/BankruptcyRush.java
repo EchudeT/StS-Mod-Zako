@@ -30,7 +30,7 @@ public class BankruptcyRush extends AbstractDynamicCard {
     private static final int COST = 1;
     private static final int DAMAGE = 14;
     private static final int UPGRADE_PLUS_DMG = 4;
-    private static final int MAGIC = 15;  // 消耗的金币
+    private static final int MAGIC = 12;  // 消耗的金币
     private static final int UPGRADE_REDUCE_GOLD = 5;
     private static final int MAGIC2 = 5;  // 金币不足时扣的生命
 
@@ -89,7 +89,7 @@ public class BankruptcyRush extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeMagicNumber(-UPGRADE_REDUCE_GOLD);  // 降低所需金币
+            // upgradeMagicNumber(-UPGRADE_REDUCE_GOLD);  // 降低所需金币
             initializeDescription();
         }
     }

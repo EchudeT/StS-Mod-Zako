@@ -96,30 +96,25 @@ public class BadDebtRecovery extends AbstractDynamicCard {
     private static class ChooseFromDiscardCard extends AbstractCard {
         public static final String ID = BadDebtRecovery.ID + "_Discard";
         // 复用主卡牌的图片，或者你可以做专门的图片
-        public static final String IMG = BadDebtRecovery.IMG;
+        public static final String IMG = makeCardPath("BadDebtRecovery.png");
 
         public ChooseFromDiscardCard() {
             super(ID, "弃牌堆", IMG, -2, "从弃牌堆选择 1 张牌加入手牌。",
                     CardType.SKILL, CardColor.COLORLESS, CardRarity.SPECIAL, CardTarget.NONE);
-            // 这里的文本建议放入 JSON (ID: "theBalance:BadDebtRecovery_Discard")
         }
 
         @Override
         public void use(AbstractPlayer p, AbstractMonster m) {
-            // 这里不需要 addToBottom，因为 ChooseOneAction 会自动将其加入队列
-            // 但为了安全起见，通常还是 addToBot，或者直接在 Action 队列里执行
-            // ChooseOneAction 的逻辑是：选中卡牌后，调用该卡牌的 use，所以这里必须 addToBot
-            addToBot(new PickFromDiscardAction(1));
+            addToBot(new com.megacrit.cardcrawl.actions.common.BetterDiscardPileToHandAction(1));
         }
 
         @Override public void upgrade() {}
         @Override public AbstractCard makeCopy() { return new ChooseFromDiscardCard(); }
     }
 
-    // 选项2：从抽牌堆寻找
     private static class ChooseFromDrawCard extends AbstractCard {
         public static final String ID = BadDebtRecovery.ID + "_Draw";
-        public static final String IMG = BadDebtRecovery.IMG;
+        public static final String IMG = makeCardPath("BadDebtRecovery.png");
 
         public ChooseFromDrawCard() {
             super(ID, "抽牌堆", IMG, -2, "从抽牌堆选择 1 张牌加入手牌。",
@@ -133,92 +128,5 @@ public class BadDebtRecovery extends AbstractDynamicCard {
 
         @Override public void upgrade() {}
         @Override public AbstractCard makeCopy() { return new ChooseFromDrawCard(); }
-    }
-
-    // =================================================================================
-    // 自定义动作：修复后的从弃牌堆拿牌
-    // =================================================================================
-    public static class PickFromDiscardAction extends AbstractGameAction {
-        private final AbstractPlayer p;
-
-        public PickFromDiscardAction(int amount) {
-            this.p = AbstractDungeon.player;
-            this.setValues(this.p, AbstractDungeon.player, amount);
-            this.actionType = ActionType.CARD_MANIPULATION;
-            this.duration = Settings.ACTION_DUR_FASTER; // 使用较快的动画时间
-        }
-
-        @Override
-        public void update() {
-            // 1. 如果弃牌堆空了，直接结束
-            if (this.p.discardPile.isEmpty()) {
-                this.isDone = true;
-                return;
-            }
-
-            // 2. 动作开始时，打开选择界面
-            if (this.duration == Settings.ACTION_DUR_FASTER) {
-                // 如果弃牌堆数量正好等于或少于要拿的数量，直接全部拿走，不弹窗
-                if (this.p.discardPile.size() <= this.amount) {
-                    for (AbstractCard c : this.p.discardPile.group) {
-                        if (this.p.hand.size() < 10) {
-                            this.p.hand.addToHand(c);
-                            c.lighten(false);
-                        }
-                        this.p.discardPile.removeCard(c);
-                    }
-                    this.p.hand.refreshHandLayout();
-                    this.isDone = true;
-                    return;
-                }
-
-                // 否则打开网格选择界面
-                // 参数：(目标CardGroup, 数量, 标题文本, 是否是"任意数量")
-                AbstractDungeon.gridSelectScreen.open(this.p.discardPile, this.amount, "选择加入手牌", false);
-
-                // ★ 关键修改：这里调用 tickDuration 会导致 duration 减少，
-                // 但我们必须等待玩家选完，所以这里仅仅减少一点点或者干脆不调用 tickDuration 直到选完
-                // 为了逻辑清晰，我们这里只 tick 一次让它不要卡死，但通过 return 暂停 update 直到选择完成
-                this.tickDuration();
-                return;
-            }
-
-            // 3. 等待玩家选择
-            if (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
-                for (AbstractCard c : AbstractDungeon.gridSelectScreen.selectedCards) {
-                    // 加入手牌逻辑
-                    if (this.p.hand.size() < 10) {
-                        this.p.hand.addToHand(c);
-                    } else {
-                        // 如果手牌满了，把选中的牌放回弃牌堆（或者你可以改为放回抽牌堆，看设计）
-                        this.p.discardPile.addToTop(c);
-                        this.p.createHandIsFullDialog();
-                    }
-
-                    // 从弃牌堆逻辑移除（因为 gridSelectScreen 只是选中，没从原 Group 移出）
-                    this.p.discardPile.removeCard(c);
-
-                    c.lighten(false);
-                    c.unhover();
-                    c.applyPowers(); // 刷新数值
-                }
-
-                AbstractDungeon.gridSelectScreen.selectedCards.clear();
-                this.p.hand.refreshHandLayout();
-
-                // 强制刷新弃牌堆位置，防止视觉残留
-                for (AbstractCard c : this.p.discardPile.group) {
-                    c.unhover();
-                    c.target_x = CardGroup.DISCARD_PILE_X;
-                    c.target_y = 0.0F;
-                }
-
-                this.isDone = true;
-            }
-
-            // 如果 duration 耗尽还没选（不太可能发生，因为打开界面时游戏会暂停逻辑更新），这里兜底
-            // 但在 Action 中，只要还在打开 GridScreen，通常不会走到这里
-            // this.tickDuration();
-        }
     }
 }

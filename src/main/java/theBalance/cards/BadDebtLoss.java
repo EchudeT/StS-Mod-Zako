@@ -16,7 +16,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class BadDebtLoss extends AbstractDynamicCard {
 
     // 坏账损失 - Bad Debt Loss
-    // 造成 14(18) 点伤害。将 1 张[虚空]加入抽牌堆。
+    // 造成 10(14) 点伤害。将 1 张[虚空]加入抽牌堆。
 
     public static final String ID = BalanceMod.makeID(BadDebtLoss.class.getSimpleName());
     public static final String IMG = makeCardPath("BadDebtLoss.png");
@@ -27,7 +27,7 @@ public class BadDebtLoss extends AbstractDynamicCard {
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = 0;
-    private static final int DAMAGE = 14;
+    private static final int DAMAGE = 10;
     private static final int UPGRADE_PLUS_DMG = 4;
     private static final int MAGIC = 1;  // 虚空数量
 

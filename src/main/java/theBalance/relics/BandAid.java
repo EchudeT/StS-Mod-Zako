@@ -4,6 +4,7 @@ import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theBalance.BalanceMod;
 import theBalance.util.TextureLoader;
@@ -25,15 +26,15 @@ public class BandAid extends CustomRelic {
     }
 
     @Override
-    public void onLoseHp(int damageAmount) {
-        // 当玩家失去生命（通常来自卡牌效果，如LoseHPAction）
-        if (damageAmount > 0) {
+    public int onAttacked(DamageInfo info, int damageAmount) {
+        if (damageAmount > 0 && info.owner == AbstractDungeon.player) {
             flash();
-            AbstractDungeon.actionManager.addToTop(
-                new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, BLOCK_AMOUNT));
-            AbstractDungeon.actionManager.addToTop(
-                new RelicAboveCreatureAction(AbstractDungeon.player, this));
+            addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+
+            addToTop(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, BLOCK_AMOUNT));
         }
+
+        return damageAmount;
     }
 
     @Override

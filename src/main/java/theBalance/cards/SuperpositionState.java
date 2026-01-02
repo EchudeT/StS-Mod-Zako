@@ -19,12 +19,13 @@ public class SuperpositionState extends AbstractDynamicCard {
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
-    private static final int MAGIC = 4;
+    private static final int MAGIC = 3;
+    private static final int BLOCK = 3;
     private static final int UPGRADE_PLUS_MAGIC = 2;
 
     public SuperpositionState() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        this.baseBlock = 1;
+        this.baseBlock = BLOCK;
         baseMagicNumber = magicNumber = MAGIC;
     }
 

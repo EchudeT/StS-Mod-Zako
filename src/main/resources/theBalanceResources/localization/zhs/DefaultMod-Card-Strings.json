@@ -16,8 +16,8 @@
     "DESCRIPTION": "获得 !B! 点格挡。 NL 若上回合失去过生命，改为获得 !M! 点格挡。"
   },
   "theBalance:HighInterestLoan": {
-    "NAME": "借来的嚣张",
-    "DESCRIPTION": "造成 !D! 点伤害。 NL 下回合敌人获得 !M! 点力量。"
+    "NAME": "嚣张的本钱",
+    "DESCRIPTION": "每当你失去 零花钱 时，抽 !M! 张牌。"
   },
   "theBalance:ImbalancedBooks": {
     "NAME": "越强越想欺负",
@@ -29,7 +29,7 @@
   },
   "theBalance:Kickback": {
     "NAME": "零花钱讨要",
-    "DESCRIPTION": "造成 !D! 点伤害。 NL 获得 !M! 层战斗津贴。"
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 获得 !M! 层零花钱。"
   },
   "theBalance:EquivalentStrike": {
     "NAME": "用力过猛",
@@ -41,7 +41,7 @@
   },
   "theBalance:GoldShatter": {
     "NAME": "爆金币啦",
-    "DESCRIPTION": "消耗 !M! 金币。 NL 造成 !D! 点伤害。"
+    "DESCRIPTION": "失去 !M! 金币。 NL 造成 !D! 点伤害。"
   },
   "theBalance:Collection": {
     "NAME": "痛打落水狗",
@@ -66,19 +66,19 @@
   },
   "theBalance:MoneyOffensive": {
     "NAME": "氪金力量",
-    "DESCRIPTION": "消耗 。消耗 !M! 金币。 NL 造成 !D! 点伤害。"
+    "DESCRIPTION": "失去 !M! 金币。 NL 造成 !D! 点伤害。"
   },
   "theBalance:LastStrike": {
     "NAME": "虚张声势",
     "DESCRIPTION": "消耗 。造成 !D! 点伤害。 NL 失去 !M! 点力量。"
   },
   "theBalance:MirrorProjection": {
-    "NAME": "笨蛋反弹",
+    "NAME": "镜像·笨蛋反弹",
     "DESCRIPTION": "造成等同于敌人意图伤害 !M! %的伤害。"
   },
   "theBalance:BankruptcyRush": {
     "NAME": "破防一击",
-    "DESCRIPTION": "消耗 !M! 金币。 NL 造成 !D! 点伤害。 NL 金币不足则扣 !theBalance:SM! 生命。"
+    "DESCRIPTION": "失去 !M! 金币。 NL 造成 !D! 点伤害。 NL 金币不足则扣 !theBalance:SM! 生命。"
   },
   "theBalance:DebtHarvest": {
     "NAME": "受虐积怨",
@@ -114,15 +114,15 @@
   },
   "theBalance:CapitalBlackHole": {
     "NAME": "虚荣心爆棚",
-    "DESCRIPTION": "消耗所有 战斗津贴 。 NL 每 !M! 点 津贴 对全体敌人造成 !theBalance:SM! 点伤害。"
+    "DESCRIPTION": "失去所有 零花钱 。 NL 每 !M! 点 零花钱 对全体敌人造成 !theBalance:SM! 点伤害。"
   },
   "theBalance:InfiniteExpansion": {
     "NAME": "小鬼的傲慢",
-    "DESCRIPTION": "保留 。造成 !D! 伤害。 NL 每存留一回合伤害翻倍。受伤后倍率重置。"
+    "DESCRIPTION": "保留 。造成 !D! 伤害。 NL 每存留一回合伤害翻倍，受到的伤害增加100%。受伤后倍率重置。"
   },
   "theBalance:AbsoluteNeutrality": {
     "NAME": "一起变杂鱼吧~",
-    "DESCRIPTION": "消耗 。若敌血量比你高，将其生命百分比降至与你相同（伤害上限 !M! ）。"
+    "DESCRIPTION": "消耗 。若敌人血量百分比高于你，将其生命百分比降至与你相同（伤害上限 !M! ）。"
   },
   "theBalance:DevilsOption": {
     "NAME": "撒娇借款",
@@ -130,7 +130,7 @@
   },
   "theBalance:Hedge": {
     "NAME": "躲在身后",
-    "DESCRIPTION": "获得 !B! 点格挡。 NL 若受到攻击伤害，敌人获得 !M! 力量。"
+    "DESCRIPTION": "获得 !B! 点格挡。 NL 若本回合被破防，敌人获得 !M! 力量。"
   },
   "theBalance:RiskMortgage": {
     "NAME": "透支体能",
@@ -138,11 +138,11 @@
   },
   "theBalance:InsuranceContract": {
     "NAME": "碰瓷补偿",
-    "DESCRIPTION": "获得 !B! 点格挡。 NL 若格挡被打破，获得 !M! 点战斗津贴。"
+    "DESCRIPTION": "获得 !B! 点格挡。 NL 若格挡被打破，获得 !M! 点零花钱。"
   },
   "theBalance:InventoryClearance": {
     "NAME": "乱丢垃圾",
-    "DESCRIPTION": "弃所有手牌。 NL 每弃一张抽 1 张牌并获 !M! 点战斗津贴。"
+    "DESCRIPTION": "弃所有手牌。 NL 每弃一张抽 1 张牌并获 !M! 点零花钱。"
   },
   "theBalance:QuickFinancing": {
     "NAME": "这就去叫人",
@@ -154,7 +154,7 @@
   },
   "theBalance:WealthEqualization": {
     "NAME": "大家都是杂鱼",
-    "DESCRIPTION": "双方力量取平均值。"
+    "DESCRIPTION": "双方力量取平均值。（向下取整）"
   },
   "theBalance:TemporaryPreservation": {
     "NAME": "假装求饶",
@@ -181,7 +181,7 @@
     "DESCRIPTION": "消耗 。全场所有状态层数翻倍。"
   },
   "theBalance:MirrorShield": {
-    "NAME": "反弹护甲",
+    "NAME": "镜像·反弹护甲",
     "DESCRIPTION": "消耗 。双方获得 !M! 层 缓冲 ， !theBalance:SM! 层 荆棘 。"
   },
   "theBalance:PhaseShift": {
@@ -194,7 +194,7 @@
   },
   "theBalance:RiskHedge": {
     "NAME": "大叔打款",
-    "DESCRIPTION": "消耗 !M! X金币。 NL 每 !M! 金币获 !theBalance:SM! 层 多层护甲 。赛后不返还。"
+    "DESCRIPTION": "消耗 !M! X金币。 NL 每 !M! 金币获 !theBalance:SM! 层 多层护甲 。"
   },
   "theBalance:ResonanceShield": {
     "NAME": "安慰奖",
@@ -202,11 +202,12 @@
   },
   "theBalance:LiquidAssets": {
     "NAME": "挥霍式防守",
-    "DESCRIPTION": "格挡不再消失。 NL 每当触发格挡，失去等量战斗津贴。"
+    "DESCRIPTION": "获得 !B! 点格挡。 NL 失去 !M! 点 *零花钱 ：再次获得 !B! 点格挡。",
+    "UPGRADE_DESCRIPTION": "获得 !B! 点格挡。 NL 失去 !M! 点 *零花钱 ：再次获得 !B! 点格挡。"
   },
   "theBalance:TemporaryImmunity": {
     "NAME": "抓不到我",
-    "DESCRIPTION": "获得 !M! 层 灵体 。 NL 下回合失去 15% 当前生命。"
+    "DESCRIPTION": "获得 !M! 层 灵体 。 NL 下回合失去 最大生命 15% 的当前生命。"
   },
   "theBalance:InformationAsymmetry": {
     "NAME": "快点看我！",
@@ -222,11 +223,11 @@
   },
   "theBalance:Exemption": {
     "NAME": "耍赖皮",
-    "DESCRIPTION": "本回合下一张牌的负面效果不再生效。"
+    "DESCRIPTION": "消耗 。 NL 获得 !M! 层 人工制品 。 NL 抽 1 张牌。"
   },
   "theBalance:Transfer": {
     "NAME": "期待明天",
-    "DESCRIPTION": "本回合失去1点能量和1层力量， NL 下回合获得 !M! 点能量和 !M! 层力量，并多抽 !M! 张牌。"
+    "DESCRIPTION": "本回合失去1层力量， NL 下回合获得 !M! 点能量和 !M! 层力量，并多抽 !M! 张牌。"
   },
   "theBalance:ZeroSumGame": {
     "NAME": "气死你",
@@ -238,7 +239,7 @@
   },
   "theBalance:MultilayerFortress": {
     "NAME": "重金保镖",
-    "DESCRIPTION": "消耗 X*!M! 金币。 NL 获得 X*!theBalance:SM! 层 多层护甲 。"
+    "DESCRIPTION": "失去 X*!M! 金币。 NL 获得 X*!theBalance:SM! 层 多层护甲 。"
   },
   "theBalance:EnrageMarket": {
     "NAME": "激怒大叔",
@@ -250,18 +251,18 @@
   },
   "theBalance:MagnifyingLens": {
     "NAME": "焦点中心",
-    "DESCRIPTION": "获 !M! 力量。 NL 下回合敌人获 !theBalance:SM! 力量。"
+    "DESCRIPTION": "获得 !M! 力量。 NL 下回合敌人获得 !theBalance:SM! 力量。"
   },
   "theBalance:SuperpositionState": {
     "NAME": "连续残影",
-    "DESCRIPTION": "获得 1 点格挡 !M! 次。"
+    "DESCRIPTION": "获得  !B!  点格挡 !M! 次。"
   },
   "theBalance:Lending": {
     "NAME": "投资大叔",
     "DESCRIPTION": "虚无 。 失去30 金币。战胜后获 !theBalance:SM! 金币。 NL 全体敌人获得 3 力量。"
   },
   "theBalance:MirrorSoul": {
-    "NAME": "我就学你",
+    "NAME": "镜像·我就学你",
     "DESCRIPTION": "消耗 。移除负面效果。 NL 复制指定敌人buff给自己。"
   },
   "theBalance:Ceasefire": {
@@ -290,7 +291,7 @@
   },
   "theBalance:HighInterestStorage": {
     "NAME": "压岁钱利息",
-    "DESCRIPTION": "结余能量转为下回合的 [E] 和 !M! 点战斗津贴。"
+    "DESCRIPTION": "结余能量转为下回合的 [E] 和 !M! 点零花钱。"
   },
   "theBalance:EnergyRecycling": {
     "NAME": "废料再利用",
@@ -310,7 +311,7 @@
   },
   "theBalance:StableManagement": {
     "NAME": "乖乖女模式",
-    "DESCRIPTION": "消耗。 每当获得力量，力量转化为敏捷。 NL 每回合开始获得 !M! 点敏捷。"
+    "DESCRIPTION": "消耗。 获得力量时，力量转化为敏捷。 NL 每回合开始获得 !M! 点敏捷。"
   },
   "theBalance:CompoundInterest": {
     "NAME": "金钱诱惑",
@@ -318,14 +319,14 @@
   },
   "theBalance:MacroRegulation": {
     "NAME": "全听我的",
-    "DESCRIPTION": "固有 。你的力量和敏捷永远取两者的平均值。"
+    "DESCRIPTION": "固有 。当你的回合结束时，你的力量和敏捷会取两者的平均值。(向上取整)"
   },
   "theBalance:CapitalAccumulation": {
     "NAME": "拜金少女",
-    "DESCRIPTION": "战后额外获 !M! 金币。 NL 每有 100 金币，少获得 5 金币。"
+    "DESCRIPTION": "消耗。 战后额外获 !M! 金币。 NL 每有 100 金币，少获得 5 金币。"
   },
   "theBalance:MirrorBarrier": {
-    "NAME": "反弹反弹！",
+    "NAME": "镜像·反弹反弹！",
     "DESCRIPTION": "受伤时敌人受到双倍伤害。"
   },
   "theBalance:BurnBoats": {
@@ -334,10 +335,10 @@
   },
   "theBalance:DexToStrConvert": {
     "NAME": "自尊崩坏",
-    "DESCRIPTION": "消耗 。消耗所有 !M! 点 *敏捷 。 NL 每消耗 1 点，获得 !M! 点 *力量 。"
+    "DESCRIPTION": "消耗 。失去所有 *敏捷 。每失去 1 点，获得 !M! 点 *力量 。"
   },
   "theBalance:PriceOfHubris": {
-    "NAME": "傲慢之价",
-    "DESCRIPTION": "消耗 。 NL 获得 1 层 实体 。 NL 获得等同于你当前金币 !M! % 的 力量 。 NL 失去 50% 的金币。"
+    "NAME": "傲慢灵魂",
+    "DESCRIPTION": "消耗 。 NL 获得 1 层 无实体 。 NL 获得等同于你当前金币 !M! % 的 力量 。 NL 失去 50% 的金币。"
   }
 }

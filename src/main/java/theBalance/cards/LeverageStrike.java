@@ -17,7 +17,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class LeverageStrike extends AbstractDynamicCard {
 
     // 杠杆打击 - Leverage Strike
-    // 造成 8(11) 点伤害 X 次。你获得 X 层虚弱。
+    // 造成 9(12) 点伤害 X 次。你获得 X 层虚弱。
 
     public static final String ID = BalanceMod.makeID(LeverageStrike.class.getSimpleName());
     public static final String IMG = makeCardPath("LeverageStrike.png");
@@ -28,7 +28,7 @@ public class LeverageStrike extends AbstractDynamicCard {
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = -1;  // X cost
-    private static final int DAMAGE = 8;
+    private static final int DAMAGE = 9;
     private static final int UPGRADE_PLUS_DMG = 3;
 
     public LeverageStrike() {

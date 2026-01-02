@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import theBalance.BalanceMod;
+import theBalance.cards.DevilsOption;
 
 import static theBalance.BalanceMod.makeEventPath;
 
@@ -19,7 +20,7 @@ public class MysteriousPatronEvent extends AbstractImageEvent {
     private static final String NAME = eventStrings.NAME;
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
-    public static final String IMG = makeEventPath("IdentityCrisisEvent.png"); // 需要一张大叔的剪影图
+    public static final String IMG = makeEventPath("MysteriousPatronEvent.png"); // 需要一张大叔的剪影图
 
     private int screenNum = 0;
 
@@ -31,7 +32,7 @@ public class MysteriousPatronEvent extends AbstractImageEvent {
         super(NAME, DESCRIPTIONS[0], IMG);
 
         // 选项 1: 撒娇
-        imageEventText.setDialogOption(OPTIONS[0] + GOLD_GAIN + OPTIONS[1], new Shame());
+        imageEventText.setDialogOption(OPTIONS[0] + GOLD_GAIN + OPTIONS[1], new DevilsOption());
 
         // 选项 2: 勒索
         int hpLoss = (int)(AbstractDungeon.player.maxHealth * (HP_LOSS_PERCENT / 100.0f));
@@ -50,6 +51,7 @@ public class MysteriousPatronEvent extends AbstractImageEvent {
                         this.imageEventText.updateBodyText(DESCRIPTIONS[1]);
                         AbstractDungeon.player.gainGold(GOLD_GAIN);
                         AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Shame(), Settings.WIDTH / 2.0f, Settings.HEIGHT / 2.0f));
+                        AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new DevilsOption(), Settings.WIDTH / 2.0f, Settings.HEIGHT / 2.0f));
                         break;
 
                     case 1: // 勒索

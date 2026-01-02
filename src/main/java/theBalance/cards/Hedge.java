@@ -13,7 +13,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class Hedge extends AbstractDynamicCard {
 
     // 对冲 - Hedge
-    // 获得 8(11) 点格挡。若受到攻击伤害，敌人获得 1 力量。
+    // 获得 12(16) 点格挡。若受到攻击伤害，敌人获得 1 力量。
 
     public static final String ID = BalanceMod.makeID(Hedge.class.getSimpleName());
     public static final String IMG = makeCardPath("Hedge.png");
@@ -24,8 +24,8 @@ public class Hedge extends AbstractDynamicCard {
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
-    private static final int BLOCK = 8;
-    private static final int UPGRADE_PLUS_BLOCK = 3;
+    private static final int BLOCK = 12;
+    private static final int UPGRADE_PLUS_BLOCK = 4;
     private static final int MAGIC = 1;  // 敌人获得的力量
 
     public Hedge() {

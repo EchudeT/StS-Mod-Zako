@@ -37,7 +37,7 @@ public class AbsoluteNeutrality extends AbstractDynamicCard {
         float rateP = (float) p.currentHealth / p.maxHealth;
         float rateM = (float) m.currentHealth / m.maxHealth;
         if (rateM > rateP) {
-            int expectHealthM = (int)(m.maxHealth * rateM);
+            int expectHealthM = (int)(m.maxHealth * rateP);
             int damageAmount = Math.min(m.currentHealth - expectHealthM, magicNumber);
 
             if (damageAmount > 0) {

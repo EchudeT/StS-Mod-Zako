@@ -16,10 +16,10 @@ public class Lending extends AbstractDynamicCard {
     public static final String ID = BalanceMod.makeID(Lending.class.getSimpleName());
     public static final String IMG = makeCardPath("Lending.png");
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.SPECIAL;
     private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
+    public static final CardColor COLOR = CardColor.COLORLESS;
 
     private static final int COST = 0;
     private static final int MAGIC = 40;

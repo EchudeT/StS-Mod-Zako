@@ -1,9 +1,11 @@
 package theBalance.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
 import theBalance.BalanceMod;
 import theBalance.characters.Zako;
 
@@ -19,16 +21,21 @@ public class Exemption extends AbstractDynamicCard {
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
+    private static final int ARTIFACT_AMOUNT = 1;
 
     public Exemption() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        this.baseMagicNumber = this.magicNumber = ARTIFACT_AMOUNT;
+        this.exhaust = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        // 本回合下一张牌的负面效果不再生效
-        AbstractDungeon.actionManager.addToBottom(
-            new ApplyPowerAction(p, p, new theBalance.powers.ExemptionPower(p), 1));
+        // 1. 获得 1 层人工制品
+        addToBot(new ApplyPowerAction(p, p, new ArtifactPower(p, this.magicNumber), this.magicNumber));
+
+        // 2. 抽 1 张牌
+        addToBot(new DrawCardAction(p, 1));
     }
 
     @Override

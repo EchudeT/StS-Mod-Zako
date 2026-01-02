@@ -37,7 +37,7 @@ public class BurnBoatsPatch {
         // 使用 THORNS 类型，代表这是由能力造成的伤害，通常不享受力量加成（视平衡性而定）
         AbstractDungeon.actionManager.addToBottom(
                 new DamageRandomEnemyAction(
-                        new DamageInfo(__instance, damageAmount, DamageInfo.DamageType.THORNS),
+                        new DamageInfo(__instance, damageAmount, DamageInfo.DamageType.NORMAL),
                         AbstractGameAction.AttackEffect.FIRE
                 )
         );

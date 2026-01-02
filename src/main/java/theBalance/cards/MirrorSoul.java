@@ -1,20 +1,24 @@
 package theBalance.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.*;
 import theBalance.BalanceMod;
 import theBalance.characters.Zako;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import static theBalance.BalanceMod.makeCardPath;
 
 public class MirrorSoul extends AbstractDynamicCard {
 
     // 镜像之魂 - Mirror Soul
-    // 消耗。移除负面效果。复制指定敌人Buff给自己。 (升级：0费)
-
     public static final String ID = BalanceMod.makeID(MirrorSoul.class.getSimpleName());
     public static final String IMG = makeCardPath("MirrorSoul.png");
 
@@ -25,6 +29,25 @@ public class MirrorSoul extends AbstractDynamicCard {
 
     private static final int COST = 1;
 
+    // =================================================================================
+    // ★ 黑名单列表：在此处添加所有会导致崩溃或无意义的怪物专属能力 ID
+    // =================================================================================
+    private static final Set<String> BLACKLIST = new HashSet<>(Arrays.asList(
+            CurlUpPower.POWER_ID,       // 蜷缩 (会导致崩溃，除非你有 Patch)
+            TimeWarpPower.POWER_ID,     // 时光扭曲 (UI显示问题，逻辑混乱)
+            "Split",                    // 史莱姆分裂
+            MinionPower.POWER_ID,       // 爪牙 (玩家变成爪牙没意义)
+            ModeShiftPower.POWER_ID,    // 形态转换 (守护者)
+            "Unawakened",               // 未觉醒 (觉醒者)
+            "Life Link",                //以此类推，黑灵链接
+            "Fading",                   // 瞬逝 (你不想玩家回合结束就死吧)
+            InvinciblePower.POWER_ID,   // 无敌 (心脏的锁血，虽然玩家拿了很强，但UI可能会坏)
+            BeatOfDeathPower.POWER_ID,  // 死之律动 (这是Buff? 它是正面效果吗? 通常不算Buff但以防万一)
+            "Shifting",                 // 守护者变身
+            "Anger",                    // 老头的愤怒 (可能会导致贴图错误)
+            "Spore Cloud"               // 蘑菇鼠的死后爆炸
+    ));
+
     public MirrorSoul() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.exhaust = true;
@@ -32,51 +55,67 @@ public class MirrorSoul extends AbstractDynamicCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        // 1. 移除自身的负面效果
         for (AbstractPower pow : p.powers) {
             if (pow.type == AbstractPower.PowerType.DEBUFF) {
-                AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction(p, p, pow.ID));
+                addToBot(new RemoveSpecificPowerAction(p, p, pow.ID));
             }
         }
 
+        // 2. 复制敌人的正面效果
         if (m != null) {
             for (AbstractPower pow : m.powers) {
+                // 只复制 BUFF
                 if (pow.type == AbstractPower.PowerType.BUFF) {
+
+                    // ★ 核心逻辑：黑名单检查 ★
+                    if (BLACKLIST.contains(pow.ID)) {
+                        System.out.println("MirrorSoul: 跳过黑名单能力 -> " + pow.ID + " (" + pow.name + ")");
+                        continue;
+                    }
+
                     AbstractPower copiedPower = null;
 
-                    // 方法 A: 如果是支持 BaseMod 的 Mod Power，它们通常实现了 CloneablePowerInterface
+                    // 方法 A: Mod通用接口复制
                     if (pow instanceof basemod.interfaces.CloneablePowerInterface) {
                         copiedPower = ((basemod.interfaces.CloneablePowerInterface) pow).makeCopy();
-                        copiedPower.owner = p; // 将拥有者改为玩家
+                        copiedPower.owner = p;
                     }
                     else {
-                        // 方法 B: 针对原版 Power，使用反射尝试调用标准构造函数 (Creature, int)
+                        // 方法 B: 反射复制
                         try {
-                            // 尝试寻找 (拥有者, 层数) 这种构造函数
+                            // 尝试 (Owner, Amount)
                             java.lang.reflect.Constructor<? extends AbstractPower> c =
-                                    pow.getClass().getConstructor(com.megacrit.cardcrawl.core.AbstractCreature.class, int.class);
+                                    pow.getClass().getConstructor(AbstractCreature.class, int.class);
                             copiedPower = c.newInstance(p, pow.amount);
                         } catch (Exception e) {
-                            // 如果没有标准构造函数（比如某些复杂的 Power），尝试 (拥有者) 构造函数
                             try {
+                                // 尝试 (Owner)
                                 java.lang.reflect.Constructor<? extends AbstractPower> c =
-                                        pow.getClass().getConstructor(com.megacrit.cardcrawl.core.AbstractCreature.class);
+                                        pow.getClass().getConstructor(AbstractCreature.class);
                                 copiedPower = c.newInstance(p);
                                 copiedPower.amount = pow.amount;
                             } catch (Exception e2) {
-                                // 实在复制不了的特殊 Power 只能手动 hardcode 或者放弃
-                                System.out.println("无法复制能力: " + pow.ID);
+                                // 尝试 (Owner, Amount, boolean) - 针对某些特殊 Power
+                                try {
+                                    java.lang.reflect.Constructor<? extends AbstractPower> c =
+                                            pow.getClass().getConstructor(AbstractCreature.class, int.class, boolean.class);
+                                    copiedPower = c.newInstance(p, pow.amount, false);
+                                } catch (Exception e3) {
+                                    System.out.println("MirrorSoul: 无法复制能力 (构造函数不匹配) -> " + pow.ID);
+                                }
                             }
                         }
                     }
 
+                    // 最终应用
                     if (copiedPower != null) {
-                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, copiedPower, pow.amount));
+                        addToBot(new ApplyPowerAction(p, p, copiedPower, pow.amount));
                     }
                 }
             }
         }
     }
-
 
     @Override
     public void upgrade() {

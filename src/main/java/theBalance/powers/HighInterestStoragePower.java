@@ -23,8 +23,8 @@ public class HighInterestStoragePower extends AbstractPower implements Cloneable
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("GoldPower84.png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("GoldPower32.png"));
 
     private int storedEnergy = 0;
 

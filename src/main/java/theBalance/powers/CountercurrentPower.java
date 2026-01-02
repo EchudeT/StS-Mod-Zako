@@ -24,8 +24,8 @@ public class CountercurrentPower extends AbstractPower implements CloneablePower
 
     // 用来记录玩家具体转换了哪些正面效果，以便双倍送给敌人
     private ArrayList<ConvertedBuffData> buffList = new ArrayList<>();
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power.png"));
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("SpecialPower84.png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("SpecialPower32.png"));
 
     public CountercurrentPower(final AbstractCreature owner) {
         this.name = powerStrings.NAME;
@@ -138,4 +138,41 @@ public class CountercurrentPower extends AbstractPower implements CloneablePower
         int amount;
         ConvertedBuffData(String id, int amt) { this.typeID = id; this.amount = amt; }
     }
+
+    @Override
+    public void updateDescription() {
+        // 如果列表为空，说明还没有触发转换，或者身上没有负面效果
+        if (buffList.isEmpty()) {
+            description = DESCRIPTIONS[0]; // "没有负面效果需要转换。"
+        } else {
+            // 计算转换的总层数 (例如：3层虚弱 + 2层易伤 = 5)
+            int totalConverted = 0;
+            for (ConvertedBuffData data : buffList) {
+                totalConverted += data.amount;
+            }
+
+            // 拼接字符串
+            // DESCRIPTIONS[1]: "已转换 #b"
+            // totalConverted: 数值 (例如 5)
+            // DESCRIPTIONS[2]: " 个负面效果，回合结束时敌人将获得双倍。"
+            description = DESCRIPTIONS[1] + totalConverted + DESCRIPTIONS[2];
+
+            // ================================================================
+            // 进阶优化（可选）：如果你希望玩家能看到具体转换了什么
+            // ================================================================
+            /*
+            StringBuilder sb = new StringBuilder();
+            sb.append(description).append(" NL (");
+            for (int i = 0; i < buffList.size(); i++) {
+                ConvertedBuffData data = buffList.get(i);
+                // 这里你需要获取对应 Power 的名称，简单起见可以用 ID 代替，或者根据 ID 查找 name
+                sb.append(data.typeID).append(": ").append(data.amount);
+                if (i < buffList.size() - 1) sb.append(", ");
+            }
+            sb.append(")");
+            description = sb.toString();
+            */
+        }
+    }
+
 }

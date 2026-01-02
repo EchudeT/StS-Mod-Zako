@@ -13,7 +13,7 @@ import static theBalance.BalanceMod.makeCardPath;
 public class InsuranceContract extends AbstractDynamicCard {
 
     // 保险合同 - Insurance Contract
-    // 获得 7(10) 点格挡。若格挡被打破，获得 10(20) 点战斗津贴。
+    // 获得 8(11) 点格挡。若格挡被打破，获得 10(15) 点战斗津贴。
 
     public static final String ID = BalanceMod.makeID(InsuranceContract.class.getSimpleName());
     public static final String IMG = makeCardPath("InsuranceContract.png");
@@ -24,10 +24,10 @@ public class InsuranceContract extends AbstractDynamicCard {
     public static final CardColor COLOR = Zako.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
-    private static final int BLOCK = 7;
+    private static final int BLOCK = 8;
     private static final int UPGRADE_PLUS_BLOCK = 3;
-    private static final int MAGIC = 8;
-    private static final int UPGRADE_PLUS_MAGIC = 4;
+    private static final int MAGIC = 10;
+    private static final int UPGRADE_PLUS_MAGIC = 5;
 
     public InsuranceContract() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);

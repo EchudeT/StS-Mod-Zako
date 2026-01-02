@@ -2,7 +2,7 @@ package theBalance.patches;
 
 import basemod.ReflectionHacks; // 必须确保有这个依赖
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -16,51 +16,41 @@ import java.util.ArrayList;
 
 @SpirePatch(
         clz = ApplyPowerAction.class,
-        method = "update"
+        method = SpirePatch.CONSTRUCTOR,
+        paramtypez = {
+                AbstractCreature.class,
+                AbstractCreature.class,
+                AbstractPower.class,
+                int.class,
+                boolean.class,
+                AbstractGameAction.AttackEffect.class
+        }
 )
 public class SymmetricalAestheticsPatch {
 
-    @SpirePrefixPatch
-    public static void Prefix(ApplyPowerAction __instance) {
+    @SpirePostfixPatch
+    public static void Postfix(ApplyPowerAction __instance, AbstractCreature target, AbstractCreature source, AbstractPower powerToApply, int stackAmount, boolean isFast, AbstractGameAction.AttackEffect effect) {
+        // 1. 基础检查
         if (AbstractDungeon.player == null || !AbstractDungeon.player.hasPower(SymmetricalAestheticsPower.POWER_ID)) {
             return;
         }
 
-        // 1. 死循环防护
+        // 2. 防止无限递归：如果是我们自己生成的子类动作，直接忽略
         if (__instance instanceof SymmetricalApplyPowerAction) {
             return;
         }
 
-        // 2. 获取时间字段 (全部使用反射)
-        // duration 在父类 AbstractGameAction 中
-        float duration = ReflectionHacks.getPrivate(__instance, AbstractGameAction.class, "duration");
-
-        // startingDuration 在当前类 ApplyPowerAction 中
-        // 注意：ApplyPowerAction 的字段名通常是 "startingDuration"
-        float startingDuration = ReflectionHacks.getPrivate(__instance, ApplyPowerAction.class, "startingDuration");
-
-        // 3. 仅在动作刚开始的那一帧触发
-        // 在 update 的第一帧，duration 应该等于 startingDuration
-        if (Math.abs(duration - startingDuration) > 0.001f) {
-            return;
-        }
-
-        // 4. 检查核心条件 (玩家是否拥有能力)
-
-
-        // 5. 获取 Power 和 Target (使用反射读取 private 字段)
-        AbstractPower powerToApply = ReflectionHacks.getPrivate(__instance, ApplyPowerAction.class, "powerToApply");
-        AbstractCreature target = __instance.target;
-
-        // 安全检查
+        // 3. 安全检查
         if (target == null || powerToApply == null) return;
 
-        // 6. 只处理 Debuff
-        if (powerToApply.type == AbstractPower.PowerType.DEBUFF) {
+        // 4. 只处理 Debuff
+        if (powerToApply.type == AbstractPower.PowerType.DEBUFF || (powerToApply.type == AbstractPower.PowerType.BUFF && powerToApply.amount < 0)) {
 
             // 收集同步目标
             ArrayList<AbstractCreature> targets = new ArrayList<>();
+            // 总是包含玩家
             targets.add(AbstractDungeon.player);
+            // 包含所有活着的怪物
             if (AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().monsters != null) {
                 for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
                     if (!m.isDeadOrEscaped()) targets.add(m);
@@ -69,8 +59,10 @@ public class SymmetricalAestheticsPatch {
 
             // 执行同步
             for (AbstractCreature t : targets) {
-                if (t == target) continue; // 跳过原目标
+                // 跳过该动作原本的目标 (例如本来就是给敌人A上的，就不用再给A上一遍)
+                if (t == target) continue;
 
+                // 复制 Power
                 AbstractPower copy = duplicatePower(powerToApply, t);
                 if (copy != null) {
                     // 加入自定义动作
@@ -88,6 +80,7 @@ public class SymmetricalAestheticsPatch {
             super(target, source, powerToApply, stackAmount);
         }
     }
+
 
 
     /**

@@ -3,17 +3,17 @@
 
     <!--Hello! You'll basically should only need to change these names and the steam path (just below)-->
     <!--The author name(s) as they appear in MTS and any other comments are in your ModTheSpire.json-->
-    <groupId>defaultmod</groupId>
-    <artifactId>DefaultMod</artifactId> <!--Keep a note of this one: this is the ID used in the "auto add cards" method-->
-    <name>狡诈的杂鱼</name>
+    <groupId>zakomod</groupId>
+    <artifactId>ZakoMod</artifactId> <!--Keep a note of this one: this is the ID used in the "auto add cards" method-->
+    <name>Zako</name>
     <version>0.6.1</version>
     <description>GuGuGu. 还在路上.</description>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <SlayTheSpire.version>01-23-2019</SlayTheSpire.version>
-        <ModTheSpire.version>3.8.0</ModTheSpire.version>
+        <SlayTheSpire.version>12-18-2022</SlayTheSpire.version>
+        <ModTheSpire.version>0.0.0</ModTheSpire.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!--CHANGE THIS TO YOUR STEAM INSTALLATION-->
         <Steam.path>D:\Game\Steam\steamapps</Steam.path>

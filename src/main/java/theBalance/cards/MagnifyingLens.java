@@ -23,7 +23,7 @@ public class MagnifyingLens extends AbstractDynamicCard {
     private static final int COST = 1;
     private static final int MAGIC = 2;
     private static final int UPGRADE_PLUS_MAGIC = 1;
-    private static final int MAGIC2 = 5;
+    private static final int MAGIC2 = 3;
 
     public MagnifyingLens() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
